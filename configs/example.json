@@ -1,0 +1,13 @@
+{
+  "target_hash_power": 0.25,
+  "coalition_hash": 0.10,
+  "gamma": 0.5,
+  "tpr": 0.9,
+  "fpr": 0.01,
+  "natural_fork_rate": 0.05,
+  "target_accepted_blocks": 10000,
+  "seed": 42,
+  "strategy": "selfish",
+  "punishment_enabled": true,
+  "output_path": "results/run.json"
+}

@@ -1,0 +1,12 @@
+{
+  "stage": "production-confirmation-template",
+  "seed": 61000,
+  "repetitions": 50,
+  "accepted_blocks": 100000,
+  "bootstrap_samples": 5000,
+  "tpr": [0.5,0.7,0.9,1.0],
+  "fpr": [0,0.001,0.01,0.05,0.10],
+  "robustness_bins": [0.0001,0.0005],
+  "aggregate": {"target_hash": [], "coalition_power": [], "gamma": [], "natural_fork_rate": []},
+  "composition": {"target_hash": [], "candidate_power": [], "gamma": [], "natural_fork_rate": [], "structures": []}
+}

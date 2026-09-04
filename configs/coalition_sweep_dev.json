@@ -1,0 +1,9 @@
+{
+  "repetitions": 3,
+  "tpr": [0.7, 0.9],
+  "fpr": [0.0, 0.05],
+  "populations": [
+    {"target_hash_power": 0.20, "coalition_candidates": [{"id":"c1","hash_power":0.05},{"id":"c2","hash_power":0.05},{"id":"c3","hash_power":0.05}], "gamma":0.25, "natural_fork_rate":0.0, "target_accepted_blocks":750, "seed":6100},
+    {"target_hash_power": 0.25, "coalition_candidates": [{"id":"c1","hash_power":0.025},{"id":"c2","hash_power":0.05},{"id":"c3","hash_power":0.075}], "gamma":0.5, "natural_fork_rate":0.02, "target_accepted_blocks":750, "seed":6200}
+  ]
+}

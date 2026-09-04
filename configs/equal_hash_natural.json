@@ -1,0 +1,16 @@
+{
+  "target_hash_power": 0.25,
+  "coalition_candidates": [
+    {"id":"c1","hash_power":0.04},
+    {"id":"c2","hash_power":0.06},
+    {"id":"c3","hash_power":0.10}
+  ],
+  "active_coalitions": [["c3"],["c1","c2"]],
+  "gamma": 0.5,
+  "natural_fork_rate": 0.02,
+  "target_accepted_blocks": 50000,
+  "seed": 32000,
+  "repetitions": 30,
+  "tpr": [1.0],
+  "fpr": [0.0]
+}

@@ -1,0 +1,23 @@
+{
+  "stage": "development",
+  "seed": 41000,
+  "repetitions": 10,
+  "accepted_blocks": 10000,
+  "bootstrap_samples": 1000,
+  "tpr": [0.5, 0.7, 0.9, 1.0],
+  "fpr": [0, 0.001, 0.01, 0.05, 0.10],
+  "robustness_bins": [0.0001, 0.0005],
+  "aggregate": {
+    "target_hash": [0.15, 0.25, 0.35],
+    "coalition_power": [0.05, 0.10, 0.20],
+    "gamma": [0, 0.5, 1],
+    "natural_fork_rate": [0, 0.02]
+  },
+  "composition": {
+    "target_hash": [0.20, 0.25, 0.30],
+    "candidate_power": [0.10],
+    "gamma": [0, 0.5, 1],
+    "natural_fork_rate": [0, 0.02],
+    "structures": ["singleton", "two_equal", "two_unequal"]
+  }
+}

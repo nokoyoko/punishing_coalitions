@@ -1,0 +1,21 @@
+{
+  "stage":"oceanic-v3-expanded-aggregate",
+  "expected_model_version":"race-owner-oceanic-residual-v3",
+  "seed":51000,
+  "repetitions":30,
+  "accepted_blocks":30000,
+  "bootstrap_samples":2000,
+  "execution_workers":8,
+  "stage_c_max_candidates":0,
+  "minimum_residual_power":0.05,
+  "tpr":[0.5,0.7,0.9,1.0],
+  "fpr":[0,0.001,0.01,0.05,0.10],
+  "robustness_bins":[0.0001,0.0005],
+  "aggregate":{
+    "target_hash":[0.10,0.15,0.20,0.25,0.30,0.35],
+    "coalition_power":[0.025,0.05,0.075,0.10,0.125,0.15,0.175,0.20,0.225,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60],
+    "gamma":[0,0.25,0.5,0.75,1],
+    "natural_fork_rate":[0,0.005,0.02]
+  },
+  "composition":{"target_hash":[],"candidate_power":[],"gamma":[],"natural_fork_rate":[],"structures":[]}
+}

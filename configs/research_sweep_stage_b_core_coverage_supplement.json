@@ -1,0 +1,341 @@
+{
+  "stage": "central-coverage-supplement-planning-only",
+  "do_not_execute": true,
+  "base_config": "configs/research_sweep_stage_b.json",
+  "model_version": "race-owner-precedence-v2",
+  "explicit_missing_environments": [
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.25,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.5,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.5,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.5,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.75,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 1,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 1,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.1,
+      "gamma": 1,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.25,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.5,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.5,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.5,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.75,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 1,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 1,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.15,
+      "gamma": 1,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.2,
+      "gamma": 0.25,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.2,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.2,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.2,
+      "gamma": 0.75,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.2,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.2,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.25,
+      "gamma": 0.25,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.25,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.25,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.25,
+      "gamma": 0.75,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.25,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.25,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.3,
+      "gamma": 0.25,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.3,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.3,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.3,
+      "gamma": 0.75,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.3,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.3,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.25,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.25,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.5,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.5,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.5,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.75,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 0.75,
+      "natural_fork_rate": 0.02
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 1,
+      "natural_fork_rate": 0
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 1,
+      "natural_fork_rate": 0.005
+    },
+    {
+      "target_hash_power": 0.35,
+      "gamma": 1,
+      "natural_fork_rate": 0.02
+    }
+  ],
+  "candidate_power": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3
+  ],
+  "structures": [
+    "singleton",
+    "two_equal",
+    "two_unequal",
+    "three_equal",
+    "three_moderate",
+    "three_concentrated"
+  ],
+  "repetitions": 30,
+  "accepted_blocks": 30000
+}

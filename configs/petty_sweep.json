@@ -1,0 +1,9 @@
+{
+  "base": {"target_accepted_blocks": 5000, "seed": 100},
+  "grid": {
+    "target_hash_power": [0.2, 0.3], "coalition_hash": [0.0, 0.1],
+    "gamma": [0.0, 0.5], "tpr": [0.7, 1.0], "fpr": [0.0, 0.05],
+    "natural_fork_rate": [0.0, 0.05]
+  },
+  "repetitions": 3
+}

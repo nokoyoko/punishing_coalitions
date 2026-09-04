@@ -1,0 +1,143 @@
+{
+  "stage": "profitable-core-supplement",
+  "expected_model_version": "race-owner-precedence-v2",
+  "seed": 51000,
+  "repetitions": 30,
+  "accepted_blocks": 30000,
+  "bootstrap_samples": 2000,
+  "execution_workers": 8,
+  "stage_c_max_candidates": 0,
+  "tpr": [
+    0.5,
+    0.7,
+    0.9,
+    1.0
+  ],
+  "fpr": [
+    0,
+    0.001,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "robustness_bins": [
+    0.0001,
+    0.0005
+  ],
+  "aggregate": {
+    "target_hash": [],
+    "coalition_power": [],
+    "gamma": [],
+    "natural_fork_rate": []
+  },
+  "composition": {
+    "target_hash": [
+      0.35
+    ],
+    "candidate_power": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "gamma": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "natural_fork_rate": [
+      0.0,
+      0.005,
+      0.02
+    ],
+    "structures": [
+      "singleton",
+      "two_equal",
+      "two_unequal",
+      "three_equal",
+      "three_moderate",
+      "three_concentrated"
+    ]
+  },
+  "authorized_environment_triplets": [
+    [
+      0.35,
+      0.0,
+      0.0
+    ],
+    [
+      0.35,
+      0.0,
+      0.005
+    ],
+    [
+      0.35,
+      0.0,
+      0.02
+    ],
+    [
+      0.35,
+      0.25,
+      0.0
+    ],
+    [
+      0.35,
+      0.25,
+      0.005
+    ],
+    [
+      0.35,
+      0.25,
+      0.02
+    ],
+    [
+      0.35,
+      0.5,
+      0.0
+    ],
+    [
+      0.35,
+      0.5,
+      0.005
+    ],
+    [
+      0.35,
+      0.5,
+      0.02
+    ],
+    [
+      0.35,
+      0.75,
+      0.0
+    ],
+    [
+      0.35,
+      0.75,
+      0.005
+    ],
+    [
+      0.35,
+      0.75,
+      0.02
+    ],
+    [
+      0.35,
+      1.0,
+      0.0
+    ],
+    [
+      0.35,
+      1.0,
+      0.005
+    ],
+    [
+      0.35,
+      1.0,
+      0.02
+    ]
+  ]
+}

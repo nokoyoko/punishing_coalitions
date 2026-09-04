@@ -1,0 +1,1 @@
+{"target_hash_power": [0.15, 0.25, 0.35], "gamma": [0.0, 0.5, 1.0], "target_accepted_blocks": 3000, "repetitions": 10, "seed": 700}

@@ -1,0 +1,33 @@
+{
+  "implementation": "punishment_sim.coalition.ExplicitSimulation",
+  "event_time": "discrete discovery events; no timestamps or exponential clocks",
+  "actors": {
+    "target": {"persistent": true, "independent": true, "strategy": ["honest", "selfish"]},
+    "candidate": {"persistent": true, "independent": true, "rewards": "individual"},
+    "active_member": {"punishment": "choose non-target sibling when target flagged"},
+    "inactive_or_leaveout": {"punishment": false, "identity_and_hash_retained": true},
+    "honest_residual": {"aggregate_actor": true, "internal_forks": false}
+  },
+  "random_streams": ["discoveries", "ties", "natural"],
+  "seed": "SHA256(explicit:base_seed_plus_repetition:stream)",
+  "state": ["tip", "private_deque", "pending", "race", "explicit_block_dictionary"],
+  "block_dispositions": ["unresolved", "accepted", "orphaned"],
+  "gamma": {
+    "meaning": "fraction or reduced-form probability of neutral non-target hash owning neither sibling that mines on the target branch",
+    "target_races": true,
+    "benign_non_target_races": false,
+    "ownership_precedence": "target and competing sibling owners remain on their own branches",
+    "active_flagged_override": "neutral active punisher chooses non-target sibling"
+  },
+  "lambda": {
+    "meaning": "Bernoulli probability of a one-discovery pending propagation window",
+    "eligible": "honest-strategy public blocks and selfish-strategy non-target public blocks at lead zero",
+    "same_actor_fork": false,
+    "residual_internal_fork": false
+  },
+  "classification": {"scope": "target identity for full conditional simulation", "race_origin_used": false},
+  "punishment": {"changes_only": "tie-breaking branch choice", "transfers": false, "publication_change": false},
+  "reward": {"accepted_block": 1, "orphan_or_unresolved": 0, "payoff": "actor accepted / total accepted"},
+  "termination": {"main": "accepted_count >= configured target", "flush": ["race", "pending"], "private_chain_flush": false},
+  "code_paths": ["Population", "ExplicitSimulation.__init__", "_draw", "_new", "_accept", "_orphan", "_begin_race", "step", "run", "study", "mining_cache_key"]
+}

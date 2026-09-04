@@ -1,0 +1,24 @@
+{
+  "stage":"composition-parallel-smoke",
+  "expected_model_version":"race-owner-oceanic-residual-v3",
+  "seed":61000,
+  "repetitions":2,
+  "accepted_blocks":200,
+  "bootstrap_samples":20,
+  "execution_workers":2,
+  "stage_c_max_candidates":0,
+  "minimum_residual_power":0.05,
+  "tpr":[0.5,1.0],
+  "fpr":[0,0.1],
+  "robustness_bins":[0.0001,0.0005],
+  "authorized_environment_triplets":[[0.10,1.0,0],[0.30,0.75,0.02],[0.30,1.0,0.02]],
+  "aggregate":{"target_hash":[],"coalition_power":[],"gamma":[],"natural_fork_rate":[]},
+  "composition":{
+    "target_hash":[0.10,0.30],
+    "candidate_power":[0.05,0.60],
+    "gamma":[0.75,1.0],
+    "natural_fork_rate":[0,0.02],
+    "systematic":{"member_counts":[2,4,6],"power_step":0.01,"minimum_member_power":0.01,
+      "sampling":{"mode":"hhi_quantiles","max_per_cell":1}}
+  }
+}

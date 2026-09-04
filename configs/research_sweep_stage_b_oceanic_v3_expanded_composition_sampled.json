@@ -1,0 +1,28 @@
+{
+  "stage":"oceanic-v3-expanded-composition-hhi-sample",
+  "expected_model_version":"race-owner-oceanic-residual-v3",
+  "seed":51000,
+  "repetitions":30,
+  "accepted_blocks":30000,
+  "bootstrap_samples":2000,
+  "execution_workers":8,
+  "stage_c_max_candidates":0,
+  "minimum_residual_power":0.05,
+  "tpr":[0.5,0.7,0.9,1.0],
+  "fpr":[0,0.001,0.01,0.05,0.10],
+  "robustness_bins":[0.0001,0.0005],
+  "authorized_environment_file":"results/research_sweep_stage_b_oceanic_v3_expanded/analysis_tables/authorized_punishment_environments.csv",
+  "aggregate":{"target_hash":[],"coalition_power":[],"gamma":[],"natural_fork_rate":[]},
+  "composition":{
+    "target_hash":[0.10,0.15,0.20,0.25,0.30,0.35],
+    "candidate_power":[0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60],
+    "gamma":[0,0.25,0.5,0.75,1],
+    "natural_fork_rate":[0,0.005,0.02],
+    "systematic":{
+      "member_counts":[2,3,4,5,6],
+      "power_step":0.01,
+      "minimum_member_power":0.01,
+      "sampling":{"mode":"hhi_quantiles","max_per_cell":5}
+    }
+  }
+}
