@@ -1,0 +1,56 @@
+{
+  "scope_basis": "local definitions only; no production checkpoint validation or execution",
+  "task_population_and_design_sha256": "06cf60d814d4659ad1075eb8b070f82b1ac59a113e3c0c197192b503a876f807",
+  "authorized_environment_count": 42,
+  "top_level_configurations": 11802,
+  "repetitions": 30,
+  "accepted_blocks": 30000,
+  "by_lambda": [
+    {
+      "natural_fork_rate": 0,
+      "top_level_configurations": 3934,
+      "mining_simulations": 942060,
+      "accepted_block_work_units": 28261800000,
+      "by_cardinality": {
+        "2": 798,
+        "3": 798,
+        "4": 784,
+        "5": 784,
+        "6": 770
+      }
+    },
+    {
+      "natural_fork_rate": 0.005,
+      "top_level_configurations": 3934,
+      "mining_simulations": 942060,
+      "accepted_block_work_units": 28261800000,
+      "by_cardinality": {
+        "2": 798,
+        "3": 798,
+        "4": 784,
+        "5": 784,
+        "6": 770
+      }
+    },
+    {
+      "natural_fork_rate": 0.02,
+      "top_level_configurations": 3934,
+      "mining_simulations": 942060,
+      "accepted_block_work_units": 28261800000,
+      "by_cardinality": {
+        "2": 798,
+        "3": 798,
+        "4": 784,
+        "5": 784,
+        "6": 770
+      }
+    }
+  ],
+  "zero_lambda_configurations": 3934,
+  "positive_lambda_configurations": 7868,
+  "represented_mining_simulations": 2826180,
+  "future_positive_lambda_mining_simulations": 1884120,
+  "zero_lambda_mining_simulations_eligible_for_reuse": 942060,
+  "conditions_per_full_k_member_population": "H, S0, HF(C), SC(C), S(C minus j) for each of k members; (4+k)*repetitions",
+  "work_note": "accepted-block target times simulations; not elapsed time or exact discovery count"
+}

@@ -114,7 +114,7 @@ def test_cache_key_covers_behavior_and_ignores_detector_parameters():
     assert key==mining_cache_key(p,0,"selfish",True,("c1",))
     assert key!=mining_cache_key(Population(.2,(("c1",.1),),.75,.02,100,4),0,"selfish",True,("c1",))
     # TPR and FPR cannot be supplied to, and therefore cannot affect, the mining key.
-    assert len(key)==10 and key[0]=="race-owner-oceanic-residual-v3"
+    assert len(key)==10 and key[0]=="race-owner-oceanic-all-races-v4"
 
 
 def test_thresholds_retain_tied_minimizers():

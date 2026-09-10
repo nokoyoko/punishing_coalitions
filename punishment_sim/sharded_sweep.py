@@ -39,6 +39,8 @@ def _task_record(task,num_shards):
 
 
 def build_manifest(spec,output_dir,num_shards):
+    if spec.get("expected_model_version",MODEL_VERSION)!=MODEL_VERSION:
+        raise ValueError("configuration model version does not match simulator")
     tasks,requested,valid=generate_tasks(spec); out=Path(output_dir);out.mkdir(parents=True,exist_ok=True)
     records=sorted((_task_record(t,num_shards) for t in tasks),key=lambda x:x["task_id"])
     manifest=out/"task_manifest.jsonl"; temp=manifest.with_name(f".{manifest.name}.{os.getpid()}.tmp")
@@ -76,20 +78,72 @@ def _atomic_json(path,data):
     os.replace(temp,path)
 
 
+def _validate_checkpoint_payload(saved,record,config_hash,repetitions,model_version):
+    """Validate native batch identity, complete conditions, and payoff accounting."""
+    from .checkpoint_compatibility import canonical
+    if saved.get("checkpoint_schema")!=CHECKPOINT_SCHEMA:return False,"schema"
+    if saved.get("model_version")!=model_version:return False,"model_version"
+    if saved.get("configuration_hash")!=config_hash:return False,"configuration_hash"
+    if saved.get("configuration_id")!=record["task_id"]:return False,"task_id"
+    if saved.get("num_shards")!=record["num_shards"]:return False,"num_shards"
+    if saved.get("shard_index")!=shard_for(record["task_id"],record["num_shards"]):return False,"shard_assignment"
+    if canonical(saved.get("population"))!=canonical(record["population"]):return False,"population"
+    if canonical(saved.get("coalitions"))!=canonical(record["coalitions"]):return False,"coalitions"
+    if saved.get("repetitions")!=repetitions:return False,"repetitions"
+    result=saved["result"]; population=_population_from_dict(record["population"])
+    if json.loads(canonical(result["population"]))!=json.loads(canonical(asdict(population))):return False,"result_population"
+    coalitions={"|".join(c):set(c) for c in record["coalitions"]}
+    expected={(rep,c) for rep in range(repetitions) for c in coalitions}
+    observed=[(r["repetition"],r["coalition"]) for r in result["repetitions"]]
+    if len(observed)!=len(expected) or set(observed)!=expected:return False,"repetition_coverage"
+    if sorted(r["coalition"] for r in result["summary"])!=sorted(coalitions):return False,"coalition_coverage"
+    expected_members={(c,j) for c,ms in coalitions.items() for j in ms}
+    actual_members=[(r["coalition"],r["member_id"]) for r in result["members"]]
+    if len(actual_members)!=len(expected_members) or set(actual_members)!=expected_members:return False,"member_coverage"
+    powers={m.id:m.hash_power for m in population.miners}
+    def valid_vector(vector):
+        if set(vector)!=set(powers):return False
+        total=sum(v["accepted"] for v in vector.values())
+        if total<population.target_accepted_blocks:return False
+        for actor,v in vector.items():
+            if v["hash_power"]!=powers[actor]:return False
+            if type(v["accepted"]) is not int or v["accepted"]<0:return False
+            if abs(v["payoff"]-v["accepted"]/total)>1e-12:return False
+        return abs(sum(v["payoff"] for v in vector.values())-1)<1e-12
+    for row in result["repetitions"]:
+        members=coalitions[row["coalition"]]
+        if set(row["coalition_members"])!=members:return False,"coalition_members"
+        if set(row["leaveouts"])!=members or set(row["terminal_leaveouts"])!=members:return False,"leaveout_coverage"
+        vectors=[row[k] for k in ("U_H","U_HF","U_S0","U_SC")]+list(row["leaveouts"].values())
+        if not all(valid_vector(v) for v in vectors):return False,"actor_payoff_accounting"
+    for collection in ("summary","members","detector","repetitions"):
+        for row in result[collection]:
+            if row["configuration_id"]!=config_id(asdict(population)):return False,"row_configuration_id"
+            if row["natural_fork_rate"]!=population.natural_fork_rate or row["gamma"]!=population.gamma:return False,"row_environment"
+            if row["repetition_count"]!=repetitions or row["accepted_block_target"]!=population.target_accepted_blocks:return False,"row_stopping_rule"
+    conditions={("honest",False,()),("selfish",False,())};requests=2
+    for c in record["coalitions"]:
+        c=tuple(c);requests+=2+len(c)
+        conditions.update((("honest",bool(c),c),("selfish",bool(c),c)))
+        conditions.update(("selfish",bool(remaining),remaining) for j in c for remaining in [tuple(x for x in c if x!=j)])
+    expected_misses=len(conditions)*repetitions; expected_hits=requests*repetitions-expected_misses
+    if saved["cache_audit"].get("misses")!=expected_misses or saved["cache_audit"].get("hits")!=expected_hits:return False,"cache_accounting"
+    if result["meta"]["mining_simulations"]!=expected_misses:return False,"result_cache_accounting"
+    return True,"valid"
+
+
 def validate_checkpoint(path,record,config_hash,repetitions):
     try:
+        from .checkpoint_compatibility import validate_compatibility
         saved=json.loads(Path(path).read_text())
-        if saved.get("checkpoint_schema")!=CHECKPOINT_SCHEMA:return False,"schema"
-        if saved.get("model_version")!=MODEL_VERSION:return False,"model_version"
-        if saved.get("configuration_hash")!=config_hash:return False,"configuration_hash"
-        if saved.get("configuration_id")!=record["task_id"]:return False,"task_id"
-        if saved.get("num_shards")!=record["num_shards"]:return False,"num_shards"
-        result=saved["result"]
-        if len(result.get("repetitions",[]))!=repetitions*len(record["coalitions"]):return False,"repetition_coverage"
-        if {r["repetition"] for r in result["repetitions"]}!=set(range(repetitions)):return False,"repetition_ids"
-        if len(result.get("summary",[]))!=len(record["coalitions"]):return False,"coalition_coverage"
+        valid,reason=_validate_checkpoint_payload(saved,record,config_hash,repetitions,MODEL_VERSION)
+        if not valid:return valid,reason
+        if saved.get("compatibility_provenance"):
+            return validate_compatibility(saved,record,config_hash,repetitions)
+        if saved.get("simulation_model_version",MODEL_VERSION)!=MODEL_VERSION:return False,"simulation_model_version"
         return True,"valid"
-    except Exception as exc:return False,f"corrupt:{type(exc).__name__}"
+    except Exception as exc:
+        return False,f"corrupt:{type(exc).__name__}"
 
 
 def _set_worker_thread_limits():
@@ -101,12 +155,24 @@ def _set_worker_thread_limits():
 def _status(out,data):_atomic_json(Path(out)/"run_status.json",data)
 
 
-def run_shard(spec,output_dir,workers=28,num_shards=1,shard_index=None,progress_interval=5.0):
+def select_execution_records(records,natural_fork_rates=None):
+    """Filter execution only; never change the full manifest, IDs, or spec hash."""
+    if natural_fork_rates is None:
+        return records
+    rates=frozenset(float(x) for x in natural_fork_rates)
+    available={float(r["population"]["natural_fork_rate"]) for r in records}
+    if not rates or not rates <= available:
+        raise ValueError("execution natural-fork rates must be a nonempty subset of the full manifest")
+    return [r for r in records if float(r["population"]["natural_fork_rate"]) in rates]
+
+
+def run_shard(spec,output_dir,workers=28,num_shards=1,shard_index=None,progress_interval=5.0,
+              natural_fork_rates=None):
     if workers < 1:raise ValueError("workers must be positive")
     if shard_index is not None and not 0<=shard_index<num_shards:raise ValueError("shard-index outside [0,num-shards)")
     _set_worker_thread_limits();out=Path(output_dir);checkpoint_dir=out/"checkpoints";checkpoint_dir.mkdir(parents=True,exist_ok=True)
     tasks,manifest=build_manifest(spec,out,num_shards);config_hash=manifest["configuration_hash"]
-    records=[_task_record(t,num_shards) for t in tasks]
+    records=select_execution_records([_task_record(t,num_shards) for t in tasks],natural_fork_rates)
     if shard_index is not None:records=[r for r in records if r["shard_index"]==shard_index]
     records.sort(key=lambda x:x["task_id"]);repetitions=int(spec["repetitions"])
     reusable=[];pending=[];invalid=[]
@@ -122,6 +188,7 @@ def run_shard(spec,output_dir,workers=28,num_shards=1,shard_index=None,progress_
     started=time.monotonic();completed=0;completed_work=0;failed=0
     base={"model_version":MODEL_VERSION,"configuration_hash":config_hash,"num_shards":num_shards,
           "shard_index":shard_index,"workers":workers,"total_tasks":len(records),
+          "manifest_total_tasks":len(tasks),"execution_natural_fork_rates":sorted(set(natural_fork_rates)) if natural_fork_rates is not None else None,
           "reused_checkpoints":len(reusable),"initial_invalid_checkpoints":len(invalid)}
     def update(force=False):
         elapsed=max(time.monotonic()-started,1e-9);done=len(reusable)+completed
@@ -136,7 +203,7 @@ def run_shard(spec,output_dir,workers=28,num_shards=1,shard_index=None,progress_
     update(True);last=time.monotonic()
     def save_success(record,audit,result):
         nonlocal completed,completed_work
-        payload={"checkpoint_schema":CHECKPOINT_SCHEMA,"model_version":MODEL_VERSION,
+        payload={"checkpoint_schema":CHECKPOINT_SCHEMA,"model_version":MODEL_VERSION,"simulation_model_version":MODEL_VERSION,
             "configuration_hash":config_hash,"configuration_id":record["task_id"],"num_shards":record["num_shards"],"shard_index":record["shard_index"],
             "population":record["population"],"coalitions":record["coalitions"],"repetitions":repetitions,
             "cache_audit":audit,"result":result}
@@ -180,6 +247,7 @@ def merge_shards(spec,output_dir,num_shards):
     out=Path(output_dir);tasks,manifest=build_manifest(spec,out,num_shards);config_hash=manifest["configuration_hash"]
     repetitions=int(spec["repetitions"]);records=sorted((_task_record(t,num_shards) for t in tasks),key=lambda x:x["task_id"])
     seen=set();problems=[];by_shard={str(i):0 for i in range(num_shards)}
+    provenance_counts={};simulation_counts={}
     for record in records:
         identifier=record["task_id"]
         if identifier in seen:problems.append({"task_id":identifier,"problem":"duplicate_expected_task_id"})
@@ -190,16 +258,22 @@ def merge_shards(spec,output_dir,num_shards):
         saved=json.loads(path.read_text())
         if saved["shard_index"]!=record["shard_index"]:problems.append({"task_id":identifier,"problem":"shard_assignment"});continue
         by_shard[str(record["shard_index"])]+=1
+        from .checkpoint_compatibility import checkpoint_provenance
+        kind=checkpoint_provenance(saved)["execution_provenance"]
+        provenance_counts[kind]=provenance_counts.get(kind,0)+1
+        simulation_counts[kind]=simulation_counts.get(kind,0)+saved["cache_audit"]["misses"]
     expected_envs={(t.population.target_hash_power,t.population.gamma,t.population.natural_fork_rate) for t in tasks}
     audit={"status":"COMPLETE" if not problems else "INCOMPLETE","model_version":MODEL_VERSION,
            "configuration_hash":config_hash,"expected_task_count":len(records),
            "valid_checkpoint_count":len(records)-len(problems),"problem_count":len(problems),
-           "expected_authorized_environment_count":len(expected_envs),"tasks_by_shard":by_shard,"problems":problems}
+           "expected_authorized_environment_count":len(expected_envs),"tasks_by_shard":by_shard,"problems":problems,
+           "checkpoints_by_execution_provenance":provenance_counts,"represented_simulations_by_execution_provenance":simulation_counts,
+           "mining_simulations_executed_by_merge":0}
     _atomic_json(out/"merge_audit.json",audit)
     with (out/"merge_audit.csv").open("w",newline="") as f:
         writer=csv.DictWriter(f,fieldnames=["task_id","problem"]);writer.writeheader();writer.writerows(problems)
     if problems:raise RuntimeError(f"merge refused: {len(problems)} missing, corrupt, duplicate, or inconsistent tasks")
-    result=run_sweep(spec,out)
+    result=run_sweep(spec,out,require_checkpoints=True)
     audit["merged_output_configuration_count"]=len(result["mining_configurations"])
     audit["analysis_ready"]=audit["merged_output_configuration_count"]==len(records)
     audit["status"]="COMPLETE" if audit["analysis_ready"] else "INCOMPLETE"

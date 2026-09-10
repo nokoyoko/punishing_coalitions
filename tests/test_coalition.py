@@ -1,4 +1,5 @@
 import json
+import math
 
 import pytest
 
@@ -66,9 +67,55 @@ def test_paired_statistics_statuses():
 
 
 def test_paired_statistics_use_requested_student_t_critical_values():
-    for n, critical in ((30, 2.045), (50, 2.010)):
+    for n, critical in ((20, 2.093), (30, 2.045), (50, 2.010)):
         s=paired_stats(list(range(n)))
         assert s["ci95_high"]-s["mean"] == pytest.approx(critical*s["standard_error"])
+
+
+@pytest.mark.parametrize('offset,classification', [(1,'SUPPORTED'),(-1,'REFUTED'),(0,'INCONCLUSIVE')])
+def test_twenty_repetition_crn_statistics_and_classifications(offset,classification):
+    # Common variation cancels before computing uncertainty, leaving +/-1 noise.
+    right=[10*i for i in range(20)]
+    left=[x+offset+(-1 if i%2==0 else 1) for i,x in enumerate(right)]
+    stat=paired_stats([x-y for x,y in zip(left,right)],left,right)
+    assert stat['n']==20 and stat['mean']==pytest.approx(offset)
+    assert stat['sample_sd']==pytest.approx(math.sqrt(20/19))
+    assert stat['standard_error']==pytest.approx(1/math.sqrt(19))
+    assert stat['ci95_low']==pytest.approx(offset-2.093/math.sqrt(19))
+    assert stat['ci95_high']==pytest.approx(offset+2.093/math.sqrt(19))
+    assert stat['paired_variance']==pytest.approx(20/19)
+    assert stat['independent_variance_estimate']>1000*stat['paired_variance']
+    assert stat['crn_variance_reduction']>.999
+    assert stat['crn_increased_variance'] is False
+    assert status(stat)==status(stat,strict=True)==classification
+
+
+def test_twenty_repetition_study_uses_complete_seed_prefix_and_uncertainty(monkeypatch):
+    p=pop(candidates=(("c1",.05),("c2",.10)),blocks=20,seed=51000)
+    cache={};options={'selected_coalitions':[("c1","c2")],'simulation_cache':cache}
+    historical_length=study(p,30,[.9],[.01],**options)
+    assert len(cache)==6*30
+    def no_new_mining(*a,**k):pytest.fail('first 20 seeds must already be cached')
+    monkeypatch.setattr(ExplicitSimulation,'run',no_new_mining)
+    reduced=study(p,20,[.9],[.01],**options)
+    assert reduced['meta']['cache_hits']==6*20 and reduced['meta']['cache_misses']==0
+    assert [r['repetition'] for r in reduced['repetitions']]==list(range(20))
+    for old,new in zip(historical_length['repetitions'],reduced['repetitions']):
+        assert old['repetition_count']==30 and new['repetition_count']==20
+        assert {k:v for k,v in old.items() if k!='repetition_count'}=={
+            k:v for k,v in new.items() if k!='repetition_count'}
+    summary=reduced['summary'][0];detector=reduced['detector'][0]
+    statistics=[summary['deterrence'],summary['punishment_reduction'],detector['expected_target_deterrence']]
+    statistics.extend(detector['false_positive_conditional_stats'].values())
+    for member in reduced['members']:statistics.extend([member['baseline'],member['deviation']])
+    for stat in statistics:
+        assert stat['n']==20
+        assert stat['standard_error']==pytest.approx(stat['sample_sd']/math.sqrt(20))
+        assert stat['ci95_high']-stat['mean']==pytest.approx(2.093*stat['standard_error'])
+        assert stat['mean']-stat['ci95_low']==pytest.approx(2.093*stat['standard_error'])
+    assert summary['target_honest']==pytest.approx(sum(r['U_H']['target']['payoff'] for r in reduced['repetitions'])/20)
+    # This exercises in-memory recomputation under one runtime, not a historical
+    # checkpoint importer or an authorization to truncate saved results.
 
 
 def test_no_prior_means_no_unconditional_mixture():

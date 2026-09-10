@@ -1,0 +1,332 @@
+{
+  "source_model": "race-owner-oceanic-residual-v3",
+  "source_sha256": "be135fb2dc3c43cf1b5d6b04529e9e69b776ef304bbf55ad47f0e4005c0f1216",
+  "target_hash_power": 0.2,
+  "candidates": [
+    [
+      "c1",
+      0.1
+    ],
+    [
+      "c2",
+      0.15
+    ]
+  ],
+  "target_accepted_blocks": 200,
+  "flagged": true,
+  "trace_mode": true,
+  "cases": [
+    {
+      "gamma": 0,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [],
+      "sha256": "444ac164925a16621382dd2a0d365b765300fdb9861865ddfdd1c18badc9249f"
+    },
+    {
+      "gamma": 0,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [
+        "c1"
+      ],
+      "sha256": "c43d35057a53eceb4792d094affd3c237cc9e3e3cea189122cd41a01664654ac"
+    },
+    {
+      "gamma": 0,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "8a52e8c37e88c52161368d7d33f6b967857acefb6b2102a9650e10f518d69625"
+    },
+    {
+      "gamma": 0,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [],
+      "sha256": "323f15f97b5114d33dd520d00449efe60980be2bafaf8e675d04aa06e54e25b0"
+    },
+    {
+      "gamma": 0,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [
+        "c1"
+      ],
+      "sha256": "2bb576947ba0512c7946854cb90895ea167d9aed34a8100497a2def28b0c11a3"
+    },
+    {
+      "gamma": 0,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "604802953ec7ba9310dcecf383ee27d801cb7a3299c3c87353cdf00efa310341"
+    },
+    {
+      "gamma": 0,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [],
+      "sha256": "e05eaf89690c49d3cf8c65671f3697fa5386610535e1e94960f13e3f730eadbb"
+    },
+    {
+      "gamma": 0,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [
+        "c1"
+      ],
+      "sha256": "3c868d55a32ebaeda2490807d237ec86cac51fa8f46d0175ad97e3be8fc0f43d"
+    },
+    {
+      "gamma": 0,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "8bdc2a692bb646a4977dccf1de5ab47f9e1ff18314aed54403912bb47483e91e"
+    },
+    {
+      "gamma": 0,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [],
+      "sha256": "09f860fa5aca39ba78779eb02961a005f08085010a2a995c09014e869a1d1032"
+    },
+    {
+      "gamma": 0,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [
+        "c1"
+      ],
+      "sha256": "c71e0c1cb033419b466e8e0e002aa189519c29082293a19a949e7a1ce06c867f"
+    },
+    {
+      "gamma": 0,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "4eaf889d5e604499420a14dc5d85f8f28f1891f68df49fcc3066af83d4a030bb"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [],
+      "sha256": "444ac164925a16621382dd2a0d365b765300fdb9861865ddfdd1c18badc9249f"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [
+        "c1"
+      ],
+      "sha256": "c43d35057a53eceb4792d094affd3c237cc9e3e3cea189122cd41a01664654ac"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "8a52e8c37e88c52161368d7d33f6b967857acefb6b2102a9650e10f518d69625"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [],
+      "sha256": "f86740b12e924a3482202002f01956dceb01216e4f76cd76acdcf83a7c0f1c14"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [
+        "c1"
+      ],
+      "sha256": "b560a57acd2e36709c7339a90fdf9e955ecdbd03ed954740f2305f404bf86555"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "37374c60fa38abbbdf411e171ae8ade4a395eddadedb26fc918a2553d4c60642"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [],
+      "sha256": "e05eaf89690c49d3cf8c65671f3697fa5386610535e1e94960f13e3f730eadbb"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [
+        "c1"
+      ],
+      "sha256": "3c868d55a32ebaeda2490807d237ec86cac51fa8f46d0175ad97e3be8fc0f43d"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "8bdc2a692bb646a4977dccf1de5ab47f9e1ff18314aed54403912bb47483e91e"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [],
+      "sha256": "6c1115c89616c2882938033617769f4206d145b0a7a6063030f9a05cf99ab8c7"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [
+        "c1"
+      ],
+      "sha256": "689e67e4764da2a8081f13e6e20abbd57c49b9d5543b0ffc43c54004eb23beaa"
+    },
+    {
+      "gamma": 0.5,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "aab9b4d9ad39e6d85a302f547fa7226036b69fb844bfb689f59f751eef6117fb"
+    },
+    {
+      "gamma": 1,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [],
+      "sha256": "444ac164925a16621382dd2a0d365b765300fdb9861865ddfdd1c18badc9249f"
+    },
+    {
+      "gamma": 1,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [
+        "c1"
+      ],
+      "sha256": "c43d35057a53eceb4792d094affd3c237cc9e3e3cea189122cd41a01664654ac"
+    },
+    {
+      "gamma": 1,
+      "seed": 1,
+      "strategy": "honest",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "8a52e8c37e88c52161368d7d33f6b967857acefb6b2102a9650e10f518d69625"
+    },
+    {
+      "gamma": 1,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [],
+      "sha256": "92ecd0599fc24dabcc56a97314244b1fe6f22be164bd45508f8cbb3b44e87dc9"
+    },
+    {
+      "gamma": 1,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [
+        "c1"
+      ],
+      "sha256": "2fcb80ddd4bec9747e586b860772933718dea0c968681c6fabea825fe9c61c50"
+    },
+    {
+      "gamma": 1,
+      "seed": 1,
+      "strategy": "selfish",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "5efe9cbbaf8e20b5852015c41760c8d1ae05ebfa8fb0daf7a1630505d2ad6988"
+    },
+    {
+      "gamma": 1,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [],
+      "sha256": "e05eaf89690c49d3cf8c65671f3697fa5386610535e1e94960f13e3f730eadbb"
+    },
+    {
+      "gamma": 1,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [
+        "c1"
+      ],
+      "sha256": "3c868d55a32ebaeda2490807d237ec86cac51fa8f46d0175ad97e3be8fc0f43d"
+    },
+    {
+      "gamma": 1,
+      "seed": 17,
+      "strategy": "honest",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "8bdc2a692bb646a4977dccf1de5ab47f9e1ff18314aed54403912bb47483e91e"
+    },
+    {
+      "gamma": 1,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [],
+      "sha256": "01de845ba9a2713e8e1c4bb436dc7c47d98933bf49d8530945d299159ead88ec"
+    },
+    {
+      "gamma": 1,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [
+        "c1"
+      ],
+      "sha256": "ab6e83638b3e2d0744f07ea1783a97f0fc8e4f3c13743c4599e0f72b6020cc35"
+    },
+    {
+      "gamma": 1,
+      "seed": 17,
+      "strategy": "selfish",
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "sha256": "245a94bd6aae1f43215058bd7558c73df891846095ebb2017b6ee3dc0df082bc"
+    }
+  ]
+}

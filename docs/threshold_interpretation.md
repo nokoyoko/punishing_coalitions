@@ -22,3 +22,10 @@ Candidate-population power is never substituted for active coalition power.
 Minimizers retain configuration, coalition, member vector, cardinality, and
 structure; ties are preserved. Censored and no-result surfaces should use
 symbols rather than connected numeric interpolation in figures.
+
+For the refined 0.01 power design, report “minimum observed winning coalition
+power: 0.24 on the tested 0.01 grid,” not a continuous threshold of exactly 0.24.
+The sampled compositions are not exhaustive. `minimum_thresholds.csv` groups by
+structure; systematic structures encode complete member vectors and generally
+have only one observed total each. Environment-wide minima must aggregate across
+all qualifying sampled structures and retain the corresponding witnesses.

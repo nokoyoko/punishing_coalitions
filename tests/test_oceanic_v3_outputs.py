@@ -6,9 +6,10 @@ from analysis.stage_b_racefix import read_csv
 A=Path('results/research_sweep_stage_b_oceanic_v3');R=Path('results/research_sweep_stage_b_oceanic_v3_profitable_core');T=R/'analysis_tables'
 
 def test_v3_version_and_cache_separation():
- assert MODEL_VERSION=='race-owner-oceanic-residual-v3'
- assert {r['model_version'] for r in read_csv(A/'mining_configurations.csv')}=={MODEL_VERSION}
- assert {r['model_version'] for r in read_csv(R/'mining_configurations.csv')}=={MODEL_VERSION}
+ historical_version='race-owner-oceanic-residual-v3'
+ assert MODEL_VERSION!=historical_version
+ assert {r['model_version'] for r in read_csv(A/'mining_configurations.csv')}=={historical_version}
+ assert {r['model_version'] for r in read_csv(R/'mining_configurations.csv')}=={historical_version}
  audit=json.loads((R/'checkpoint_reuse_audit.json').read_text());assert not audit['pre_v3_reuse'] and audit['v3_aggregate_checkpoints_reused']==198
 
 def test_benchmark_matches_and_critical_point_profitable():

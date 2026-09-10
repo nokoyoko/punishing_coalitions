@@ -111,6 +111,7 @@ class Simulation:
 
     def _begin_race(self, branch_a: int, branch_b: int,
                     origin: RaceOrigin) -> None:
+        assert not self.private, "public race requires an empty private chain"
         owner_a = self.blocks[branch_a].owner
         owner_b = self.blocks[branch_b].owner
         assert owner_a != owner_b
@@ -183,11 +184,11 @@ class Simulation:
                     chosen = target_branch if supports_target else other_branch
                     coalition_choice = "target" if supports_target else "non_target"
             else:
-                # Ordinary tie: each represented branch owner supports its own
-                # block; a third actor splits evenly. Target label is irrelevant.
-                if actor == owner_a:
+                # Residual labels never confer ownership. A deferred neutral
+                # draw represents first-seen propagation for this one-step race.
+                if actor != Actor.HONEST and actor == owner_a:
                     chosen = branch_a
-                elif actor == owner_b:
+                elif actor != Actor.HONEST and actor == owner_b:
                     chosen = branch_b
                 else:
                     chosen = branch_a if self.honest_tie_rng.random() < .5 else branch_b

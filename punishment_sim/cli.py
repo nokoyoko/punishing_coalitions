@@ -67,7 +67,7 @@ def main(argv=None) -> None:
     p = sub.add_parser("equal-hash-report"); p.add_argument("--zero-json",required=True); p.add_argument("--natural-json",required=True); p.add_argument("--output-dir",required=True)
     p = sub.add_parser("research-sweep"); p.add_argument("--config",required=True); p.add_argument("--output-dir",required=True); p.add_argument("--dry-run",action="store_true")
     p = sub.add_parser("research-shard-plan"); p.add_argument("--config",required=True); p.add_argument("--output-dir",required=True); p.add_argument("--num-shards",type=int,required=True)
-    p = sub.add_parser("research-shard-run"); p.add_argument("--config",required=True); p.add_argument("--output-dir",required=True); p.add_argument("--workers",type=int,default=28); p.add_argument("--num-shards",type=int,default=1); p.add_argument("--shard-index",type=int)
+    p = sub.add_parser("research-shard-run"); p.add_argument("--config",required=True); p.add_argument("--output-dir",required=True); p.add_argument("--workers",type=int,default=28); p.add_argument("--num-shards",type=int,default=1); p.add_argument("--shard-index",type=int); p.add_argument("--natural-fork-rates",type=float,nargs="+",help="Execution-only filter; full manifest and merge scope remain unchanged")
     p = sub.add_parser("research-shard-merge"); p.add_argument("--config",required=True); p.add_argument("--output-dir",required=True); p.add_argument("--num-shards",type=int,required=True)
     args = parser.parse_args(argv)
     if args.command in {"run", "compare"}:
@@ -140,7 +140,7 @@ def main(argv=None) -> None:
     elif args.command=="research-shard-plan":
         spec=json.loads(Path(args.config).read_text());_,summary=build_manifest(spec,args.output_dir,args.num_shards);print(json.dumps(summary,indent=2))
     elif args.command=="research-shard-run":
-        spec=json.loads(Path(args.config).read_text());print(json.dumps(run_shard(spec,args.output_dir,args.workers,args.num_shards,args.shard_index),indent=2))
+        spec=json.loads(Path(args.config).read_text());print(json.dumps(run_shard(spec,args.output_dir,args.workers,args.num_shards,args.shard_index,natural_fork_rates=args.natural_fork_rates),indent=2))
     elif args.command=="research-shard-merge":
         spec=json.loads(Path(args.config).read_text());print(json.dumps(merge_shards(spec,args.output_dir,args.num_shards),indent=2))
     else:

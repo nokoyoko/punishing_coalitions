@@ -225,9 +225,9 @@ def metric_audits(root):
     fields=("metric","mathematical_definition","actor","environments_compared","repetition_calculation","interval_method","status_rule","source_function","output_table_columns")
     _write(root/"metric_definition_audit.csv",[dict(zip(fields,x)) for x in rows])
     stat=[
-      {"method":"paired Student-t interval","unit":"independent repetition","confidence":"two-sided 95%","metrics":"deterrence; punishment reduction; baseline and deviation credibility; false-positive loss; equal-hash payoff comparisons","paired_before_interval":"yes","finite_sample":"hard-coded t critical including df=29","blocks_as_independent_units":"no"},
+      {"method":"paired Student-t interval","unit":"independent repetition","confidence":"two-sided 95%","metrics":"deterrence; punishment reduction; baseline and deviation credibility; false-positive loss; equal-hash payoff comparisons","paired_before_interval":"yes","finite_sample":"tabulated t critical at df=n-1, including df=19 (20 repetitions) and df=29 (30 repetitions); normal fallback for unlisted df","blocks_as_independent_units":"no"},
       {"method":"paired tuple bootstrap","unit":"independent repetition tuple (H,S0,SC)","confidence":"2.5/97.5 percentile","metrics":"continuous TPR minimum","paired_before_interval":"yes","finite_sample":"2000 deterministic resamples; invalid ratio draws excluded and counted","blocks_as_independent_units":"no"},
-      {"method":"Benjamini-Hochberg exploratory FDR","unit":"equal-hash comparison","confidence":"q<0.05","metrics":"one family per payoff metric","paired_before_interval":"not applicable","finite_sample":"p-values derived from paired t statistic with df=29","blocks_as_independent_units":"no"},
+      {"method":"Benjamini-Hochberg exploratory FDR","unit":"equal-hash comparison","confidence":"q<0.05","metrics":"one family per payoff metric","paired_before_interval":"not applicable","finite_sample":"p-values derived from paired t statistic with df=n-1 (19 for 20 repetitions)","blocks_as_independent_units":"no"},
     ]
     _write(root/"statistical_method_audit.csv",stat)
 
@@ -237,14 +237,22 @@ def consistency_checks(root,coalitions,thresholds,adjusted):
     checks=[]
     def add(name,status,evidence,classification):checks.append({"check":name,"status":status,"evidence":evidence,"classification":classification})
     zero=[abs(float(r["conditional_loss"])) for r in fp if float(r["natural_fork_rate"])==0]
-    add("lambda_zero_false_positive","PASS",f"n={len(zero)} max_abs={max(zero)}","validated invariant")
+    add("lambda_zero_false_positive",("PASS" if max(zero)<=1e-12 else "FAIL") if zero else "NOT_CHECKED",f"n={len(zero)} max_abs={max(zero) if zero else None}","validated invariant")
     accounting_path=root/"checkpoint_accounting_audit.json"
     accounting=json.loads(accounting_path.read_text()) if accounting_path.exists() else {}
-    add("actor_revenue_shares_sum_to_one","PASS" if accounting.get("bad_revenue_sum_vectors",0)==0 else "FAIL",
+    add("actor_revenue_shares_sum_to_one",("PASS" if accounting.get("bad_revenue_sum_vectors")==0 else "FAIL") if accounting else "NOT_CHECKED",
         f"checkpoint actor vectors={accounting.get('actor_vectors_checked','not run')}; bad sums={accounting.get('bad_revenue_sum_vectors','unknown')}; max error={accounting.get('maximum_revenue_sum_error','unknown')}","checkpoint-wide accounting audit")
     add("equal_hash_residual_power","PASS","group_equal_active includes candidate_population_power and equal comparisons retain common target/candidate total","validated grouping")
     add("leave_one_out_identity","PASS","leaveout changes active set only; Population.candidates and all actor identities are unchanged","validated implementation")
-    add("duplicate_cache_keys","PASS","451440 unique keys; dry-run and actual counts identical","validated cache behavior")
+    cache_path=root/"cache_audit.csv"
+    cache_rows=_read(cache_path) if cache_path.exists() else []
+    cache=cache_rows[0] if len(cache_rows)==1 else {}
+    expected=cache.get("unique_mining_simulations")
+    represented=cache.get("mining_simulations_represented",cache.get("actual_unique_mining_simulations"))
+    add("duplicate_cache_keys",("PASS" if int(expected)==int(represented) else "FAIL")
+        if expected is not None and represented is not None else "NOT_CHECKED",
+        f"expected unique simulations={expected}; represented={represented}; not newly executed work",
+        "cache coverage counts; checkpoint identity validated separately")
     # Clean aggregate monotonicity checks, keeping network environment fixed.
     agg=[r for r in coalitions if r["family"] in ("aggregate","both") and r["structure"]=="singleton"]
     for metric,col in (("deterrence","deterrence"),("punishment_reduction","punishment_reduction")):
@@ -273,7 +281,7 @@ def consistency_checks(root,coalitions,thresholds,adjusted):
     add("false_positive_loss_vs_lambda","REVIEW",f"matched adjacent pairs={fp_pairs}; decreases={fp_down}","actor-based fork context and Monte Carlo variation; no monotonicity imposed")
     add("singleton_aggregate_composition_agreement","PASS","behaviorally identical populations were deduplicated and labeled family=both","cache-backed identity")
     add("inactive_candidate_effect","EXPECTED_CONTEXT_EFFECT","inactive candidates mine honestly but remain distinct actors; natural forks cannot occur within an actor, so repartition changes representable actor pairs","model aggregation effect")
-    add("coalition_reward_accounting","PASS" if accounting.get("bad_accepted_count_payoffs",0)==0 else "FAIL",
+    add("coalition_reward_accounting",("PASS" if accounting.get("bad_accepted_count_payoffs")==0 and accounting.get("bad_actor_identity_vectors")==0 else "FAIL") if accounting else "NOT_CHECKED",
         f"payoff-versus-accepted-count mismatches={accounting.get('bad_accepted_count_payoffs','unknown')}; identities mismatched={accounting.get('bad_actor_identity_vectors','unknown')}","checkpoint-wide accounting audit")
     add("threshold_surface_monotonicity","REVIEW","See threshold_audit.csv boundary/censoring fields; observed rows were not smoothed","Monte Carlo and grid-boundary effects")
     _write(root/"model_consistency_checks.csv",checks); return checks

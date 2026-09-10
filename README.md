@@ -79,3 +79,22 @@ own branches. `gamma` applies to neutral explicit hash and always splits the
 aggregate residual-oceanic mass, even when its aggregate label appears on the
 competing sibling. Active neutral punishers choose the non-target branch.
 Forks internal to residual oceanic mass remain unmodeled.
+
+The current model is `race-owner-oceanic-all-races-v4`: residual-oceanic labels
+never confer ownership in public ties, including target-absent natural forks.
+Neutral target-absent actors use 50/50 first-seen propagation. See
+[the v4 correction and checkpoint compatibility procedure](docs/oceanic_all_races_v4.md).
+Historical v3 results retain their original provenance.
+
+The retained coarse, 30-repetition correction plan is in the [v4 manual runbook](docs/oceanic_v4_targeted_rerun_plan.md).
+It documents explicit zero-lambda provenance import, execution-only lambda
+filtering, strict merge, and comparison; these production commands have not been run locally.
+
+The proposed refined experiment uses 0.01 target and coalition-total increments
+and exactly **20 repetitions per configuration**, with no staged follow-up;
+see [the refined v4 design and exact scope](docs/oceanic_v4_1pct_design.md).
+It preserves the old coarse configurations. The coarse positive-lambda-only
+runbook and same-design importer do not apply to this expanded, 20-repetition
+design. Historical 30-repetition checkpoints cannot supply a first-20 prefix
+through the current importer. The fresh-work plan therefore covers all
+39,934,200 mining simulations and 1,198,026,000,000 accepted-block work units.

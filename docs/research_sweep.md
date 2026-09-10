@@ -14,6 +14,14 @@ estimates report requested populations, valid and unique populations, conditiona
 environment requests, unique mining simulations, cache hits, detector
 evaluations, and accepted-block work units.
 
+The separate [refined v4 1%-resolution configuration](oceanic_v4_1pct_design.md)
+uses exactly **20 repetitions for every top-level configuration** and 30,000
+accepted blocks per simulation, with no staged follow-up. Its combinatorial
+scope planner reports 250,170 configurations, 39,934,200 mining simulations and
+1,198,026,000,000 accepted-block work units. It preserves paired uncertainty
+outputs, using the df=19 Student-t interval for 20 repetitions. The historical
+30-repetition checkpoint importer does not support first-20 prefix reuse.
+
 `continuous_tpr_thresholds.csv` uses the conditional tuple-level formula and a
 reproducible bootstrap over repetitions. `false_positive_vectors.csv` keeps
 conditional actor losses separate from FPR-weighted expected costs. Composition

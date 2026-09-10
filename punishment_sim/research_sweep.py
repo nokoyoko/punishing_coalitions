@@ -133,6 +133,12 @@ def generate_tasks(spec):
     residual_floor=float(spec.get("minimum_residual_power",0))
     authorized={tuple(map(float,x)) for x in spec.get("authorized_environment_triplets",[])}
     authorized_file=spec.get("authorized_environment_file")
+    authorization_rule=spec.get("authorization_rule")
+    if authorization_rule is not None:
+        if authorization_rule!="analytic_vanilla_eyal_sirer":
+            raise ValueError("unknown authorization_rule")
+        if authorized_file or "authorized_environment_triplets" in spec:
+            raise ValueError("analytical authorization cannot be combined with a stored admission list")
     if authorized_file:
         path=Path(authorized_file)
         if not path.exists():
@@ -148,6 +154,9 @@ def generate_tasks(spec):
         authorized={(float(r["target_hash_power"]),float(r["gamma"]),float(r["natural_fork_rate"])) for r in admitted}
         if not authorized: raise ValueError("authorized_environment_file contains no admitted environments")
     def environment_allowed(alpha,gamma,rate):
+        if authorization_rule=="analytic_vanilla_eyal_sirer":
+            from .theory import vanilla_selfish_mining_profitable
+            return vanilla_selfish_mining_profitable(alpha,gamma)
         return not authorized or (float(alpha),float(gamma),float(rate)) in authorized
     agg=spec.get("aggregate",{})
     for alpha,power,gamma,rate in itertools.product(agg.get("target_hash",[]),agg.get("coalition_power",[]),
@@ -160,12 +169,16 @@ def generate_tasks(spec):
     comp=spec.get("composition",{})
     systematic=comp.get("systematic")
     if systematic:
+        selected_by_cell={}
         step=float(systematic.get("power_step",.01)); minimum=float(systematic.get("minimum_member_power",step))
         for alpha,total,gamma,rate,members in itertools.product(comp.get("target_hash",[]),comp.get("candidate_power",[]),
                 comp.get("gamma",[]),comp.get("natural_fork_rate",[]),systematic.get("member_counts",[])):
             if not environment_allowed(alpha,gamma,rate): continue
-            exhaustive=systematic_compositions(total,int(members),step,minimum)
-            selected=select_systematic_compositions(exhaustive,systematic.get("sampling")); requested+=len(selected)
+            cell=(total,int(members))
+            if cell not in selected_by_cell:
+                exhaustive=systematic_compositions(total,int(members),step,minimum)
+                selected_by_cell[cell]=select_systematic_compositions(exhaustive,systematic.get("sampling"))
+            selected=selected_by_cell[cell]; requested+=len(selected)
             if 1-alpha-total < residual_floor-1e-12 or alpha+total >= 1: continue
             for shares in selected:
                 candidates=tuple((f"c{i+1}",share) for i,share in enumerate(shares))
@@ -362,16 +375,56 @@ def _thresholds(coalitions,detector):
     return output
 
 
-def run_sweep(spec,output_dir):
+def select_stage_c_candidates(coalition_rows,tpr_index,spec):
+    """Select confirmation inputs from completed analysis; zero means uncapped.
+
+    Positive limits retain the existing deterministic priority order. This
+    function does not run confirmation simulations or change mining results.
+    """
+    limit=int(spec.get("stage_c_max_candidates",250))
+    if limit < 0:
+        raise ValueError("stage_c_max_candidates must be nonnegative (0 means uncapped)")
+    stage_c=[]
+    for r in coalition_rows:
+        reasons=[]
+        if r["effectiveness_status"]=="INCONCLUSIVE": reasons.append("effectiveness_ci_crosses_zero")
+        if r["members"] and r["winning_point"] and (not r["baseline_credible"] or not r["deviation_proof"]):
+            reasons.append("winning_point_not_statistically_supported")
+        t=tpr_index[(r["configuration_id"],r["coalition"])]
+        if t["status"]=="DETERRABLE" and t["bootstrap_ci_low"] is not None and any(
+                t["bootstrap_ci_low"]<=q<=t["bootstrap_ci_high"] for q in spec["tpr"]):
+            reasons.append("tpr_interval_crosses_reporting_threshold")
+        if reasons: stage_c.append({"configuration_id":r["configuration_id"],"coalition":r["coalition"],
+            "target_hash_power":r["target_hash_power"],"gamma":r["gamma"],"natural_fork_rate":r["natural_fork_rate"],
+            "structure":r["structure"],"candidate_population_power":r["candidate_population_power"],
+            "active_hash_power":r["active_hash_power"],"selection_reason":"|".join(reasons)})
+    priority={"effectiveness_ci_crosses_zero":0,"winning_point_not_statistically_supported":1,
+              "tpr_interval_crosses_reporting_threshold":2}
+    stage_c.sort(key=lambda r:(min(priority[x] for x in r["selection_reason"].split("|")),
+                               r["target_hash_power"],r["gamma"],r["natural_fork_rate"],r["active_hash_power"],
+                               r["configuration_id"],r["coalition"]))
+    return stage_c[:limit] if limit else stage_c
+
+
+def run_sweep(spec,output_dir,require_checkpoints=False):
     if spec.get("expected_model_version",MODEL_VERSION)!=MODEL_VERSION:
         raise ValueError(f"configuration expects {spec['expected_model_version']}, simulator is {MODEL_VERSION}")
     started=time.monotonic(); out=Path(output_dir); out.mkdir(parents=True,exist_ok=True)
     tasks,requested,valid=generate_tasks(spec); audit={"hits":0,"misses":0}
     checkpoint_dir=out/"checkpoints"; checkpoint_dir.mkdir(exist_ok=True)
     mining_configs=[]; coalition_rows=[]; member_rows=[]; detector_rows=[]; tpr_rows=[]; fp_rows=[]; repetition_rows=[]; boundary_rows=[]
-    raw_results={}; reps_n=int(spec["repetitions"]); bootstrap=int(spec.get("bootstrap_samples",1000))
+    provenance_by_config={}; executed_here=0; reps_n=int(spec["repetitions"]); bootstrap=int(spec.get("bootstrap_samples",1000))
     false_positive_keys=set()
     missing=[t for t in tasks if not (checkpoint_dir/f"{config_id(asdict(t.population))}.json").exists()]
+    missing_ids={config_id(asdict(t.population)) for t in missing}
+    if require_checkpoints:
+        if missing:
+            raise RuntimeError("analysis-only merge requires every checkpoint; mining is disabled")
+        from .sharded_sweep import _task_record, specification_hash, validate_checkpoint
+        manifest=json.loads((out/"manifest_audit.json").read_text())
+        strict_hash=specification_hash(spec)
+        if manifest["configuration_hash"]!=strict_hash or manifest["model_version"]!=MODEL_VERSION:
+            raise RuntimeError("analysis-only merge manifest mismatch")
     resumed_at_start=len(tasks)-len(missing); new_checkpoints=len(missing)
     workers=max(1,int(spec.get("execution_workers",1)))
     if missing and workers>1:
@@ -380,19 +433,26 @@ def run_sweep(spec,output_dir):
             for future in concurrent.futures.as_completed(futures):
                 cid,task_audit,result=future.result()
                 (checkpoint_dir/f"{cid}.json").write_text(json.dumps(
-                    {"configuration_id":cid,"cache_audit":task_audit,"result":result})+"\n")
+                    {"configuration_id":cid,"model_version":MODEL_VERSION,"simulation_model_version":MODEL_VERSION,"cache_audit":task_audit,"result":result})+"\n")
     for task in tasks:
         cid=config_id(asdict(task.population)); checkpoint=checkpoint_dir/f"{cid}.json"
+        if require_checkpoints:
+            valid,reason=validate_checkpoint(checkpoint,_task_record(task,manifest["num_shards"]),strict_hash,reps_n)
+            if not valid: raise RuntimeError(f"analysis-only merge refused {cid}: {reason}")
         if checkpoint.exists():
             saved=json.loads(checkpoint.read_text()); result=saved["result"]
             task_audit=saved["cache_audit"]
         else:
+            if require_checkpoints: raise RuntimeError("checkpoint disappeared; mining is disabled")
             task_audit={"hits":0,"misses":0}
             result=study(task.population,reps_n,spec["tpr"],spec["fpr"],selected_coalitions=task.coalitions,
                          simulation_cache={},cache_audit=task_audit)
-            checkpoint.write_text(json.dumps({"configuration_id":cid,"cache_audit":task_audit,"result":result})+"\n")
+            checkpoint.write_text(json.dumps({"configuration_id":cid,"model_version":MODEL_VERSION,"simulation_model_version":MODEL_VERSION,"cache_audit":task_audit,"result":result})+"\n")
         audit["hits"]+=task_audit["hits"]; audit["misses"]+=task_audit["misses"]
-        raw_results[cid]=result
+        if cid in missing_ids: executed_here+=task_audit["misses"]
+        saved=json.loads(checkpoint.read_text())
+        from .checkpoint_compatibility import checkpoint_provenance
+        provenance_by_config[cid]=checkpoint_provenance(saved)
         mining_configs.append({"configuration_id":cid,"family":task.family,"structure":task.structure,"model_version":MODEL_VERSION,
             "target_hash_power":task.population.target_hash_power,"candidate_total":task.candidate_total,
             "candidate_distribution":dict(task.population.candidates),"residual_honest_power":task.population.residual_hash_power,
@@ -525,33 +585,36 @@ def run_sweep(spec,output_dir):
         if r["winning"] and not any(x["winning"] and x["configuration_id"]==r["configuration_id"] and set(x["members"])<set(r["members"]) for x in coalition_rows):
             minimal.append({**r,"minimum_tpr":tpr_index[(r["configuration_id"],r["coalition"])]["tpr_min"],
                             "false_positive_losses":fp_index.get((r["configuration_id"],r["coalition"]),[])})
-    stage_c=[]
-    for r in coalition_rows:
-        reasons=[]
-        if r["effectiveness_status"]=="INCONCLUSIVE": reasons.append("effectiveness_ci_crosses_zero")
-        if r["members"] and r["winning_point"] and (not r["baseline_credible"] or not r["deviation_proof"]):
-            reasons.append("winning_point_not_statistically_supported")
-        t=tpr_index[(r["configuration_id"],r["coalition"])]
-        if t["status"]=="DETERRABLE" and t["bootstrap_ci_low"] is not None and any(
-                t["bootstrap_ci_low"]<=q<=t["bootstrap_ci_high"] for q in spec["tpr"]):
-            reasons.append("tpr_interval_crosses_reporting_threshold")
-        if reasons: stage_c.append({"configuration_id":r["configuration_id"],"coalition":r["coalition"],
-            "target_hash_power":r["target_hash_power"],"gamma":r["gamma"],"natural_fork_rate":r["natural_fork_rate"],
-            "structure":r["structure"],"candidate_population_power":r["candidate_population_power"],
-            "active_hash_power":r["active_hash_power"],"selection_reason":"|".join(reasons)})
-    priority={"effectiveness_ci_crosses_zero":0,"winning_point_not_statistically_supported":1,
-              "tpr_interval_crosses_reporting_threshold":2}
-    stage_c.sort(key=lambda r:(min(priority[x] for x in r["selection_reason"].split("|")),
-                               r["target_hash_power"],r["gamma"],r["natural_fork_rate"],r["active_hash_power"],
-                               r["configuration_id"],r["coalition"]))
-    stage_c=stage_c[:int(spec.get("stage_c_max_candidates",250))]
+    stage_c=select_stage_c_candidates(coalition_rows,tpr_index,spec)
     plan=dry_run(spec); plan.update({"actual_cache_hits":audit["hits"],"actual_cache_misses":audit["misses"],
-        "actual_unique_mining_simulations":audit["misses"],"resumed_population_checkpoints":resumed_at_start,
+        "actual_unique_mining_simulations":audit["misses"],
+        "mining_simulations_executed_in_this_analysis_invocation":executed_here,
+        "mining_simulations_represented":audit["misses"],
+        "legacy_actual_count_semantics":"represented historical checkpoint cache counts; not work executed during merge",
+        "resumed_population_checkpoints":resumed_at_start,
         "new_population_checkpoints":new_checkpoints,"runtime_seconds":time.monotonic()-started})
     outputs={"mining_configurations":mining_configs,"coalitions":coalition_rows,"members":member_rows,
         "detector":detector_rows,"tpr_thresholds":tpr_rows,"false_positive_vectors":fp_rows,
         "equal_hash_comparisons":comparisons,"thresholds":thresholds,"minimal_winning_coalitions":minimal,
         "repetitions":repetition_rows,"cache_audit":plan,"stage_c_candidates":stage_c,"terminal_boundary_diagnostics":boundary_rows}
+    # Artifact model and original execution model are deliberately separate.
+    for rows in outputs.values():
+        if not isinstance(rows,list): continue
+        for row in rows:
+            cid=row.get("configuration_id")
+            if cid in provenance_by_config: row.update(provenance_by_config[cid])
+            for side in ("left","right"):
+                cid=row.get(f"{side}_configuration_id")
+                if cid in provenance_by_config:
+                    row.update({f"{side}_{k}":v for k,v in provenance_by_config[cid].items()})
+    provenance_rows=[{"configuration_id":cid,**p} for cid,p in sorted(provenance_by_config.items())]
+    outputs["checkpoint_provenance"]=provenance_rows
+    _write_csv(out/"checkpoint_provenance.csv",provenance_rows)
+    (out/"checkpoint_provenance_audit.json").write_text(json.dumps({
+        "artifact_model_version":MODEL_VERSION,"configuration_count":len(provenance_rows),
+        "by_execution_model":{v:sum(p["simulation_model_version"]==v for p in provenance_rows)
+            for v in sorted({p["simulation_model_version"] for p in provenance_rows})},
+        "mining_simulations_executed_in_this_analysis_invocation":executed_here},indent=2)+"\n")
     audit_rows=output_completeness_audit(outputs); outputs["output_completeness_audit"]=audit_rows
     names={"mining_configurations":mining_configs,"coalition_results":coalition_rows,"member_credibility":member_rows,
         "detector_evaluations":detector_rows,"continuous_tpr_thresholds":tpr_rows,"false_positive_vectors":fp_rows,

@@ -8,23 +8,30 @@ from analysis.stage_b_racefix import write_csv
 from punishment_sim.theory import eyal_sirer_profitability_threshold,vanilla_selfish_mining_profitable
 
 def generate(config_path,output_dir):
-    spec=json.loads(Path(config_path).read_text()); aggregate=spec['aggregate']
-    targets=sorted({float(x) for x in aggregate['target_hash']})
-    gammas=sorted({float(x) for x in aggregate['gamma']})
-    rates=sorted({float(x) for x in aggregate['natural_fork_rate']})
+    spec=json.loads(Path(config_path).read_text())
+    # Work with either aggregate or composition-only designs; never inherit a
+    # stale admission list when a scientific grid expands.
+    grids=[spec.get(name,{}) for name in ('aggregate','composition')]
+    pairs=sorted({(float(a),float(g)) for grid in grids
+        for a in grid.get('target_hash',[]) for g in grid.get('gamma',[])})
+    environments={(float(a),float(g),float(r)) for grid in grids
+        for a in grid.get('target_hash',[]) for g in grid.get('gamma',[])
+        for r in grid.get('natural_fork_rate',[])}
+    rates=sorted({r for a,g,r in environments})
+    if not pairs or not environments:raise ValueError('configuration has no mining grid')
     domain=[]
-    for alpha in targets:
-        for gamma in gammas:
-            threshold=eyal_sirer_profitability_threshold(gamma)
-            profitable=vanilla_selfish_mining_profitable(alpha,gamma)
-            domain.append({'target_hash_power':alpha,'gamma':gamma,'eyal_sirer_threshold':threshold,
-                'margin_above_threshold':float(Decimal(str(alpha))-Decimal(str(threshold))),
-                'profitable_vanilla_selfish_mining':profitable,
-                'admission_basis':'strict alpha > (1-gamma)/(3-2gamma); alpha < 1/2'})
+    for alpha,gamma in pairs:
+        threshold=eyal_sirer_profitability_threshold(gamma)
+        profitable=vanilla_selfish_mining_profitable(alpha,gamma)
+        domain.append({'target_hash_power':alpha,'gamma':gamma,'eyal_sirer_threshold':threshold,
+            'margin_above_threshold':float(Decimal(str(alpha))-Decimal(str(threshold))),
+            'profitable_vanilla_selfish_mining':profitable,
+            'admission_basis':'strict alpha > (1-gamma)/(3-2gamma); alpha < 1/2'})
     authorized=[]
     for row in domain:
         if not row['profitable_vanilla_selfish_mining']:continue
         for rate in rates:
+            if (row['target_hash_power'],row['gamma'],rate) not in environments:continue
             authorized.append({'target_hash_power':row['target_hash_power'],'gamma':row['gamma'],
                 'natural_fork_rate':rate,'eyal_sirer_threshold':row['eyal_sirer_threshold'],
                 'margin_above_threshold':row['margin_above_threshold'],

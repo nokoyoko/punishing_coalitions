@@ -2,8 +2,10 @@
 
 One simulation repetition—not an individual block—is the unit of analysis.
 Block outcomes within a run are dependent through private lead, races, pending
-propagation, and stopping. Thirty repetitions use distinct seeds and are
-treated as approximately independent. Conditional environments at a common
+propagation, and stopping. The refined v4 1%-resolution sweep uses exactly
+20 repetitions per configuration; historical Stage B designs used 30.
+Repetitions use distinct seeds and are treated as approximately independent.
+Conditional environments at a common
 repetition use deterministic common random numbers, inducing useful pairing;
 state-dependent stream consumption means pairing is not literal event-by-event
 identity after paths diverge.
@@ -16,9 +18,12 @@ diverge state-dependently after different race decisions.
 
 Deterrence, punishment reduction, both member credibility margins,
 false-positive loss, and equal-active-hash payoff comparisons first construct
-one matched difference per repetition. The reported mean, standard error, and
-two-sided 95% interval are then calculated across those 30 differences using
-the hard-coded df=29 Student-t critical value 2.045. No endpoints from separate
+one matched difference per repetition. The reported mean, sample standard
+deviation, standard error (sample SD / sqrt(n)), and two-sided 95% interval are
+then calculated across those n differences. The tabulated Student-t critical
+value is 2.093 at df=19 for the refined 20-repetition design and remains 2.045
+at df=29 for historical 30-repetition designs. Supported/refuted/inconclusive
+classification rules are unchanged. No endpoints from separate
 payoff intervals are subtracted. No within-run blocks are treated as iid.
 
 Continuous TPR uncertainty jointly resamples complete `(H,S0,SC)` repetition
@@ -27,13 +32,15 @@ from resampled tuple means, excludes draws that do not satisfy the deterrable
 ratio regime, counts valid/invalid draws, and reports 2.5/97.5 percentiles.
 
 For the exploratory composition audit, two-sided p-values are derived from the
-paired Student-t statistic and df=29. Benjamini–Hochberg FDR adjustment at 0.05
-is performed separately within five prespecified metric families, each with
-4,050 tests. Original differences, intervals, p-values, and unadjusted statuses
+paired Student-t statistic and df=n-1 (19 for the refined sweep).
+Benjamini–Hochberg FDR adjustment at 0.05 is performed separately within five
+prespecified metric families. The historical audit had 4,050 tests per family;
+refined analysis uses the actual observed comparisons, not that historical count.
+Original differences, intervals, p-values, and unadjusted statuses
 remain in `equal_hash_comparisons_adjusted.csv`.
 
 Simulation estimates remain random because finite discovery, natural-fork, and
 tie streams are sampled. Student-t coverage and bootstrap percentile coverage
-are approximate at 30 repetitions. Selection, threshold minimization, and the
+are approximate with finite repetitions, including both 20 and 30. Selection, threshold minimization, and the
 minimum-member operation add post-selection uncertainty not captured by a
 single member interval.

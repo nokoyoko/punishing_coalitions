@@ -13,7 +13,7 @@ from typing import Iterable
 
 from .model import Disposition, RaceOrigin
 
-MODEL_VERSION = "race-owner-oceanic-residual-v3"
+MODEL_VERSION = "race-owner-oceanic-all-races-v4"
 OCEANIC_RESIDUAL_ID = "honest_residual"
 
 @dataclass(frozen=True)
@@ -115,6 +115,7 @@ class ExplicitSimulation:
     def is_persistent_explicit_actor(self, actor):
         return actor in self.miners and not self.is_oceanic_residual(actor)
     def _begin_race(self,a,b,origin):
+        assert not self.private, "public race requires an empty private chain"
         assert self.blocks[a].parent_id==self.blocks[b].parent_id
         oa,ob=self.blocks[a].owner_id,self.blocks[b].owner_id; assert oa!=ob
         target=a if oa=="target" else b if ob=="target" else None
@@ -143,8 +144,10 @@ class ExplicitSimulation:
             if self.tie_rng.random()<self.p.gamma:
                 return target,("OCEANIC_GAMMA_TARGET" if self.is_oceanic_residual(actor) else "NEUTRAL_EXPLICIT_GAMMA_TARGET")
             return other,("OCEANIC_GAMMA_COMPETING" if self.is_oceanic_residual(actor) else "NEUTRAL_EXPLICIT_GAMMA_COMPETING")
-        if actor==oa:return a,"OWN_BRANCH_A"
-        if actor==ob:return b,"OWN_BRANCH_B"
+        if self.is_persistent_explicit_actor(actor):
+            if actor==oa:return a,"OWN_BRANCH_A"
+            if actor==ob:return b,"OWN_BRANCH_B"
+        # One deferred draw represents first-seen propagation for this race.
         if self.tie_rng.random()<.5:return a,"BENIGN_NEUTRAL_A"
         return b,"BENIGN_NEUTRAL_B"
     def step(self):
@@ -220,7 +223,7 @@ def paired_stats(values, left=None, right=None):
     n=len(values); mu=mean(values); sd=stdev(values) if n>1 else 0.; se=sd/math.sqrt(n) if n else None
     critical={1:12.706,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,
               10:2.228,11:2.201,12:2.179,13:2.160,14:2.145,15:2.131,
-              29:2.045,49:2.010}.get(n-1,1.96)
+              19:2.093,29:2.045,49:2.010}.get(n-1,1.96)
     lo=mu-critical*se; hi=mu+critical*se
     paired_var=sd*sd
     independent_var=(stdev(left)**2+stdev(right)**2) if left is not None and right is not None and n>1 else None
