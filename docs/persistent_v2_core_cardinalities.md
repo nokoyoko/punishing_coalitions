@@ -95,10 +95,12 @@ Each lambda has the same counts within a dataset:
 ## Runtime projections from existing evidence
 
 `python -m analysis.project_persistent_v2_cardinalities` reuses the completed
-[local .51 benchmark](persistent_v2_51pct_benchmark.json). Its runtime fingerprint
-still matches the current mining/validation/reduction pipeline: those source
-files are unchanged. No benchmark was rerun. The new collection layer is analysis
-only and has a separate source fingerprint. Detailed artifacts:
+[local .51 benchmark](persistent_v2_51pct_benchmark.json). Mining, validation and
+reduction code remains unchanged. The subsequent [manifest canonicalization
+fix](persistent_v2_manifest_checksum_fix.md) changes the shard module source
+fingerprint only through its documented control-plane addition; the evidence test
+verifies the exact remaining benchmark source. No benchmark was rerun. The new
+collection layer is analysis only and has a separate source fingerprint. Detailed artifacts:
 [core](persistent_v2_core_2to4_projection.json),
 [extension 5](persistent_v2_extension_5_projection.json), and
 [extension 6](persistent_v2_extension_6_projection.json).
@@ -269,9 +271,11 @@ Tests cover config partitioning and unchanged science, native identity partition
 fixed phases, population-local baseline reuse, authenticated source rejection,
 noncolliding combined merges, stable core outputs with present/unavailable extensions,
 explicit extended thresholds, preliminary first-five reconstruction, and unchanged
-historical petty-v4 configuration. The prior .51 benchmark remains frozen and its
-runtime fingerprint still matches the unchanged simulation/validation/reduction code.
+historical petty-v4 configuration. The prior .51 benchmark remains frozen; its
+source comparison accounts explicitly for the later manifest canonicalization fix.
+Fresh-plan startup regressions and current verification are documented in the
+[checksum-fix report](persistent_v2_manifest_checksum_fix.md).
 
-Verification: `.venv/bin/python -m pytest -q` completed with **1,055 passed, 9 expected failures** in 93.29 seconds. The nine expected failures are the retained historical-v1 cases. `git diff --check` passed; new-file whitespace checks also passed. The CLI help check passed.
+Cardinality-design verification (before the subsequent checksum fix): `.venv/bin/python -m pytest -q` completed with **1,055 passed, 9 expected failures** in 93.29 seconds. The nine expected failures are the retained historical-v1 cases. `git diff --check` passed; new-file whitespace checks also passed. The CLI help check passed.
 No production sweep, new production benchmark, SSH, `/xtra` access, or remote job
 was performed. Only temporary plan enumeration and small local test fixtures ran.

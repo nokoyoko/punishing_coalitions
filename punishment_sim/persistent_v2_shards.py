@@ -119,6 +119,9 @@ def prepare_study(design, directory):
         "accepted_block_work_after_reuse": unique*design["accepted_blocks"],
         "by_lambda": per_lambda, "by_cardinality": dict(cardinalities), "populations_by_shard": dict(shard_counts)}
     unsigned = {"layout": LAYOUT, "design": design, "runtime": runtime, "plan_sha256": plan_hash, "scope": scope}
+    # Hash the durable JSON representation: integer keys become strings, whose
+    # canonical sort order can differ (e.g. shard 2 versus shard 10).
+    unsigned = json.loads(canonical_json(unsigned))
     manifest = {**unsigned, "study_id": digest(unsigned)}
     keys = directory / "receipts"
     keys.mkdir(mode=0o700)
