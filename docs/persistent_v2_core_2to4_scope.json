@@ -1,0 +1,266 @@
+{
+  "populations": 126666,
+  "top_level_rule_configurations": 759996,
+  "repetitions": 10,
+  "per_variant_simulations": 8866620,
+  "per_variant_policy_only_simulations": 6333300,
+  "shared_baseline_simulations": 2533320,
+  "before_reuse": 53199720,
+  "after_reuse": 40533120,
+  "saved_by_baseline_reuse": 12666600,
+  "accepted_block_work_before_reuse": 1595991600000,
+  "accepted_block_work_after_reuse": 1215993600000,
+  "by_lambda": {
+    "0": {
+      "populations": 42222,
+      "per_variant_simulations": 2955540,
+      "shared_baselines": 844440,
+      "before_reuse": 17733240,
+      "after_reuse": 13511040,
+      "accepted_block_work": 405331200000
+    },
+    "0.005": {
+      "populations": 42222,
+      "per_variant_simulations": 2955540,
+      "shared_baselines": 844440,
+      "before_reuse": 17733240,
+      "after_reuse": 13511040,
+      "accepted_block_work": 405331200000
+    },
+    "0.02": {
+      "populations": 42222,
+      "per_variant_simulations": 2955540,
+      "shared_baselines": 844440,
+      "before_reuse": 17733240,
+      "after_reuse": 13511040,
+      "accepted_block_work": 405331200000
+    }
+  },
+  "by_cardinality": {
+    "2": 42036,
+    "3": 42594,
+    "4": 42036
+  },
+  "populations_by_shard": {
+    "14": 4575,
+    "7": 4597,
+    "3": 4534,
+    "16": 4499,
+    "2": 4609,
+    "19": 4397,
+    "21": 4534,
+    "13": 4473,
+    "5": 4594,
+    "12": 4492,
+    "27": 4502,
+    "8": 4630,
+    "20": 4474,
+    "1": 4531,
+    "25": 4403,
+    "18": 4534,
+    "23": 4616,
+    "15": 4559,
+    "26": 4391,
+    "17": 4533,
+    "22": 4406,
+    "6": 4576,
+    "9": 4497,
+    "10": 4545,
+    "0": 4555,
+    "24": 4403,
+    "4": 4540,
+    "11": 4667
+  },
+  "exact_enumeration": true,
+  "native_task_plan_sha256": "94777cf6121c6f8c49d2b37d90b5f2f9681e551cc82dbc25ebc2813c91d4379e",
+  "native_plan_bytes": 79740928,
+  "configuration_sha256": "2c27d9a185b2210079f833e9cc45f55cb2248ded649a3227ec400800f3b1bfb0",
+  "coalition_totals": [
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14,
+    0.15,
+    0.16,
+    0.17,
+    0.18,
+    0.19,
+    0.2,
+    0.21,
+    0.22,
+    0.23,
+    0.24,
+    0.25,
+    0.26,
+    0.27,
+    0.28,
+    0.29,
+    0.3,
+    0.31,
+    0.32,
+    0.33,
+    0.34,
+    0.35,
+    0.36,
+    0.37,
+    0.38,
+    0.39,
+    0.4,
+    0.41,
+    0.42,
+    0.43,
+    0.44,
+    0.45,
+    0.46,
+    0.47,
+    0.48,
+    0.49,
+    0.5,
+    0.51
+  ],
+  "feasible_total_cardinality_cells": 141,
+  "sampled_structures_per_environment": 681,
+  "authorized_environments": 186,
+  "sampled_structures_per_total": {
+    "0.05": 5,
+    "0.06": 8,
+    "0.07": 10,
+    "0.08": 14,
+    "0.09": 14,
+    "0.1": 15,
+    "0.11": 15,
+    "0.12": 15,
+    "0.13": 15,
+    "0.14": 15,
+    "0.15": 15,
+    "0.16": 15,
+    "0.17": 15,
+    "0.18": 15,
+    "0.19": 15,
+    "0.2": 15,
+    "0.21": 15,
+    "0.22": 15,
+    "0.23": 15,
+    "0.24": 15,
+    "0.25": 15,
+    "0.26": 15,
+    "0.27": 15,
+    "0.28": 15,
+    "0.29": 15,
+    "0.3": 15,
+    "0.31": 15,
+    "0.32": 15,
+    "0.33": 15,
+    "0.34": 15,
+    "0.35": 15,
+    "0.36": 15,
+    "0.37": 15,
+    "0.38": 15,
+    "0.39": 15,
+    "0.4": 15,
+    "0.41": 15,
+    "0.42": 15,
+    "0.43": 15,
+    "0.44": 15,
+    "0.45": 15,
+    "0.46": 15,
+    "0.47": 15,
+    "0.48": 15,
+    "0.49": 15,
+    "0.5": 15,
+    "0.51": 15
+  },
+  "feasible_cells_by_cardinality": {
+    "2": 47,
+    "3": 47,
+    "4": 47
+  },
+  "identity_sha256_by_cardinality": {
+    "2": "4e41abfe9fee96bd9a7b9bbd15f20b7f2fa466a5bc7159bae36546492fd2dbdd",
+    "3": "994cad770b63157df525c6976cd3a72767dcf8739364b414aaa8be970e75692c",
+    "4": "a1ac91d410f6b50fcbd13bdd6cb4d31fb8504569181d51f10e940f7ac4f2b2f0"
+  },
+  "execution_phases": {
+    "Phase I": {
+      "repetitions": [
+        1,
+        5
+      ],
+      "unique_simulations": 20266560,
+      "before_reuse": 26599860,
+      "shared_baselines": 1266660,
+      "nominal_block_work": 607996800000
+    },
+    "Phase II": {
+      "repetitions": [
+        6,
+        10
+      ],
+      "unique_simulations": 20266560,
+      "before_reuse": 26599860,
+      "shared_baselines": 1266660,
+      "nominal_block_work": 607996800000
+    }
+  },
+  "final_repetitions": 10,
+  "adaptive_followup": false,
+  "historical_checkpoint_reuse": false,
+  "configuration": "configs/persistent_v2_core_2to4_1pct_10rep.json",
+  "dataset_role": "core",
+  "cardinalities": [
+    2,
+    3,
+    4
+  ],
+  "previous_2to6": {
+    "populations": 208320,
+    "top_level_rule_configurations": 1249920,
+    "before_reuse": 99714600,
+    "shared_baseline_simulations": 4166400,
+    "after_reuse": 78882600,
+    "accepted_block_work_after_reuse": 2366478000000
+  },
+  "reductions_vs_2to6": {
+    "populations": {
+      "absolute": 81654,
+      "percent": 39.19642857142857
+    },
+    "top_level_rule_configurations": {
+      "absolute": 489924,
+      "percent": 39.19642857142857
+    },
+    "before_reuse": {
+      "absolute": 46514880,
+      "percent": 46.64801343033016
+    },
+    "shared_baseline_simulations": {
+      "absolute": 1633080,
+      "percent": 39.19642857142857
+    },
+    "after_reuse": {
+      "absolute": 38349480,
+      "percent": 48.6158924781891
+    },
+    "accepted_block_work_after_reuse": {
+      "absolute": 1150484400000,
+      "percent": 48.6158924781891
+    }
+  },
+  "identity_audit": {
+    "all_population_bodies_and_rule_task_ids_match_2to6": true,
+    "full_plan_matches_prior_51pct_plan": true,
+    "reference_identity_sha256_by_cardinality": {
+      "2": "4e41abfe9fee96bd9a7b9bbd15f20b7f2fa466a5bc7159bae36546492fd2dbdd",
+      "3": "994cad770b63157df525c6976cd3a72767dcf8739364b414aaa8be970e75692c",
+      "4": "a1ac91d410f6b50fcbd13bdd6cb4d31fb8504569181d51f10e940f7ac4f2b2f0",
+      "5": "290eadcf0f246cbd58740de63b425f225a375680bf63b1fa6004086e783041ac",
+      "6": "2b0b7ba88058c354684ec1ca8e61cd2200e7ed89784e5f7a389725da8d45ae70"
+    }
+  }
+}

@@ -9,10 +9,9 @@ ROOT=Path(__file__).resolve().parents[1]
 PHASES=('mining_seconds','native_validation_seconds','extraction_seconds','compact_validation_seconds','aggregation_seconds','serialization_write_seconds')
 
 
-def main():
+def project(scope):
     b=json.loads((ROOT/'docs/persistent_v2_51pct_benchmark.json').read_text())
     if b['status']!='COMPLETE':raise ValueError('benchmark incomplete')
-    scope=json.loads((ROOT/'docs/persistent_v2_51pct_scope.json').read_text())
     old=json.loads((ROOT/'docs/persistent_v2_compact_projection.json').read_text())
     previous=json.loads((ROOT/'docs/persistent_v2_compact_benchmark.json').read_text())
     studies={s['members']:s for s in b['studies']}
@@ -80,6 +79,11 @@ def main():
             'runtime_note':'measured mixed two-member all-rule and six-member ignore/selfish rates; perfect scaling; not confidence bounds; excludes final merge/export, setup and untimed bookkeeping; high-power/skewed cells and target hardware remain unmeasured',
             'storage_note':'actual 1000-task packing; cardinality interpolation; final primary retains preliminary records and both catalogs; export allowances normally refer to the selected current snapshot; 2x headroom is a planning allowance, not an upper bound; backups additional',
             'capacity_verified':False,'production_launched':False}
+    return output
+
+
+def main():
+    output = project(json.loads((ROOT/'docs/persistent_v2_51pct_scope.json').read_text()))
     atomic_json(ROOT/'docs/persistent_v2_51pct_projection.json',output)
     print(json.dumps({k:v for k,v in output.items() if k not in ('scope','storage_note','runtime_note')},indent=2))
 

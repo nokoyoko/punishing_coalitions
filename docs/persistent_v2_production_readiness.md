@@ -1,6 +1,6 @@
 # Persistent v2 production-readiness changes — 2026-09-21
 
-Current production planning is documented in [the 0.51 cutoff and fixed 5+5 workflow](persistent_v2_51pct_phased_production.md). Earlier scope/runtime figures below remain historical evidence.
+Current production planning is documented in [the core 2–4 design and optional 5/6 extensions](persistent_v2_core_cardinalities.md), with the 0.51 cutoff and fixed 5+5 phases. Earlier scope/runtime figures below remain historical evidence.
 
 This report describes the **previous twenty-repetition/full-ledger plan**.
 The [ten-repetition compact-storage follow-up](persistent_v2_compact_production.md)

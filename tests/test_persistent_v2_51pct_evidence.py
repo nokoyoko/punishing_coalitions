@@ -17,6 +17,8 @@ def test_frozen_validator_matches_prior_source_hash():
 def test_exact_51_inventory_and_configuration_identity():
     scope=json.loads((ROOT/'docs/persistent_v2_51pct_scope.json').read_text())
     design=json.loads((ROOT/'configs/persistent_v2_1pct_10rep.json').read_text())
+    # Retained measurement/inventory describes the historical combined 2–6 plan.
+    design['composition']['systematic']['member_counts'] = [2, 3, 4, 5, 6]
     assert scope['configuration_sha256']==digest(design)
     assert scope['coalition_totals']==[i/100 for i in range(5,52)]
     assert scope['feasible_total_cardinality_cells']==234

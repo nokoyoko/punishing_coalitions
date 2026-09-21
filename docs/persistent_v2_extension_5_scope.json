@@ -1,0 +1,258 @@
+{
+  "populations": 41292,
+  "top_level_rule_configurations": 247752,
+  "repetitions": 10,
+  "per_variant_simulations": 3716280,
+  "per_variant_policy_only_simulations": 2890440,
+  "shared_baseline_simulations": 825840,
+  "before_reuse": 22297680,
+  "after_reuse": 18168480,
+  "saved_by_baseline_reuse": 4129200,
+  "accepted_block_work_before_reuse": 668930400000,
+  "accepted_block_work_after_reuse": 545054400000,
+  "by_lambda": {
+    "0": {
+      "populations": 13764,
+      "per_variant_simulations": 1238760,
+      "shared_baselines": 275280,
+      "before_reuse": 7432560,
+      "after_reuse": 6056160,
+      "accepted_block_work": 181684800000
+    },
+    "0.005": {
+      "populations": 13764,
+      "per_variant_simulations": 1238760,
+      "shared_baselines": 275280,
+      "before_reuse": 7432560,
+      "after_reuse": 6056160,
+      "accepted_block_work": 181684800000
+    },
+    "0.02": {
+      "populations": 13764,
+      "per_variant_simulations": 1238760,
+      "shared_baselines": 275280,
+      "before_reuse": 7432560,
+      "after_reuse": 6056160,
+      "accepted_block_work": 181684800000
+    }
+  },
+  "by_cardinality": {
+    "5": 41292
+  },
+  "populations_by_shard": {
+    "21": 1497,
+    "2": 1459,
+    "27": 1504,
+    "26": 1486,
+    "7": 1477,
+    "14": 1453,
+    "4": 1508,
+    "1": 1424,
+    "23": 1423,
+    "15": 1524,
+    "8": 1453,
+    "12": 1458,
+    "9": 1399,
+    "24": 1450,
+    "25": 1513,
+    "16": 1543,
+    "6": 1520,
+    "20": 1463,
+    "11": 1456,
+    "22": 1474,
+    "17": 1463,
+    "3": 1506,
+    "18": 1466,
+    "19": 1483,
+    "5": 1463,
+    "0": 1486,
+    "10": 1498,
+    "13": 1443
+  },
+  "exact_enumeration": true,
+  "native_task_plan_sha256": "c9bbfe204804572af1655f0df983f45b3eef4841c2e4e900d8b717065ae3b536",
+  "native_plan_bytes": 28368896,
+  "configuration_sha256": "083904fd8d6727a24e3d655bd9835d3d70ac5b6390d74c571817dde527b52b2e",
+  "coalition_totals": [
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14,
+    0.15,
+    0.16,
+    0.17,
+    0.18,
+    0.19,
+    0.2,
+    0.21,
+    0.22,
+    0.23,
+    0.24,
+    0.25,
+    0.26,
+    0.27,
+    0.28,
+    0.29,
+    0.3,
+    0.31,
+    0.32,
+    0.33,
+    0.34,
+    0.35,
+    0.36,
+    0.37,
+    0.38,
+    0.39,
+    0.4,
+    0.41,
+    0.42,
+    0.43,
+    0.44,
+    0.45,
+    0.46,
+    0.47,
+    0.48,
+    0.49,
+    0.5,
+    0.51
+  ],
+  "feasible_total_cardinality_cells": 47,
+  "sampled_structures_per_environment": 222,
+  "authorized_environments": 186,
+  "sampled_structures_per_total": {
+    "0.05": 1,
+    "0.06": 1,
+    "0.07": 2,
+    "0.08": 3,
+    "0.09": 5,
+    "0.1": 5,
+    "0.11": 5,
+    "0.12": 5,
+    "0.13": 5,
+    "0.14": 5,
+    "0.15": 5,
+    "0.16": 5,
+    "0.17": 5,
+    "0.18": 5,
+    "0.19": 5,
+    "0.2": 5,
+    "0.21": 5,
+    "0.22": 5,
+    "0.23": 5,
+    "0.24": 5,
+    "0.25": 5,
+    "0.26": 5,
+    "0.27": 5,
+    "0.28": 5,
+    "0.29": 5,
+    "0.3": 5,
+    "0.31": 5,
+    "0.32": 5,
+    "0.33": 5,
+    "0.34": 5,
+    "0.35": 5,
+    "0.36": 5,
+    "0.37": 5,
+    "0.38": 5,
+    "0.39": 5,
+    "0.4": 5,
+    "0.41": 5,
+    "0.42": 5,
+    "0.43": 5,
+    "0.44": 5,
+    "0.45": 5,
+    "0.46": 5,
+    "0.47": 5,
+    "0.48": 5,
+    "0.49": 5,
+    "0.5": 5,
+    "0.51": 5
+  },
+  "feasible_cells_by_cardinality": {
+    "5": 47
+  },
+  "identity_sha256_by_cardinality": {
+    "5": "290eadcf0f246cbd58740de63b425f225a375680bf63b1fa6004086e783041ac"
+  },
+  "execution_phases": {
+    "Phase I": {
+      "repetitions": [
+        1,
+        5
+      ],
+      "unique_simulations": 9084240,
+      "before_reuse": 11148840,
+      "shared_baselines": 412920,
+      "nominal_block_work": 272527200000
+    },
+    "Phase II": {
+      "repetitions": [
+        6,
+        10
+      ],
+      "unique_simulations": 9084240,
+      "before_reuse": 11148840,
+      "shared_baselines": 412920,
+      "nominal_block_work": 272527200000
+    }
+  },
+  "final_repetitions": 10,
+  "adaptive_followup": false,
+  "historical_checkpoint_reuse": false,
+  "configuration": "configs/persistent_v2_extension_5_1pct_10rep.json",
+  "dataset_role": "extension_5",
+  "cardinalities": [
+    5
+  ],
+  "previous_2to6": {
+    "populations": 208320,
+    "top_level_rule_configurations": 1249920,
+    "before_reuse": 99714600,
+    "shared_baseline_simulations": 4166400,
+    "after_reuse": 78882600,
+    "accepted_block_work_after_reuse": 2366478000000
+  },
+  "reductions_vs_2to6": {
+    "populations": {
+      "absolute": 167028,
+      "percent": 80.17857142857143
+    },
+    "top_level_rule_configurations": {
+      "absolute": 1002168,
+      "percent": 80.17857142857143
+    },
+    "before_reuse": {
+      "absolute": 77416920,
+      "percent": 77.63850027979855
+    },
+    "shared_baseline_simulations": {
+      "absolute": 3340560,
+      "percent": 80.17857142857143
+    },
+    "after_reuse": {
+      "absolute": 60714120,
+      "percent": 76.96769629804291
+    },
+    "accepted_block_work_after_reuse": {
+      "absolute": 1821423600000,
+      "percent": 76.96769629804291
+    }
+  },
+  "identity_audit": {
+    "all_population_bodies_and_rule_task_ids_match_2to6": true,
+    "full_plan_matches_prior_51pct_plan": true,
+    "reference_identity_sha256_by_cardinality": {
+      "2": "4e41abfe9fee96bd9a7b9bbd15f20b7f2fa466a5bc7159bae36546492fd2dbdd",
+      "3": "994cad770b63157df525c6976cd3a72767dcf8739364b414aaa8be970e75692c",
+      "4": "a1ac91d410f6b50fcbd13bdd6cb4d31fb8504569181d51f10e940f7ac4f2b2f0",
+      "5": "290eadcf0f246cbd58740de63b425f225a375680bf63b1fa6004086e783041ac",
+      "6": "2b0b7ba88058c354684ec1ca8e61cd2200e7ed89784e5f7a389725da8d45ae70"
+    }
+  }
+}

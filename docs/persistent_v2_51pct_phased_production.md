@@ -1,6 +1,6 @@
 # Persistent v2: 51% cutoff, stable five-repetition preview, ten-repetition final
 
-This is the current future strict cross-rule production design. It supersedes the
+This report preserves the prior combined 2–6 design. The current future production design is [core 2–4 with optional 5/6 extensions](persistent_v2_core_cardinalities.md). The configuration link below now resolves to the core compatibility alias; counts in this report describe the prior 2–6 inventory. It supersedes the
 0.60 compact-production planning figures, while preserving their benchmark and
 scope artifacts as historical evidence. Historical petty-v4 remains unchanged.
 

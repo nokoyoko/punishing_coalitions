@@ -114,9 +114,7 @@
     ],
     "systematic": {
       "member_counts": [
-        2,
-        3,
-        4
+        5
       ],
       "power_step": 0.01,
       "minimum_member_power": 0.01,

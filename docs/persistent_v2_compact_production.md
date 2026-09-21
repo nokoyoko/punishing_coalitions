@@ -1,6 +1,6 @@
 # Persistent v2: ten repetitions and compact production storage
 
-Current production planning is documented in [the 0.51 cutoff and fixed 5+5 workflow](persistent_v2_51pct_phased_production.md). Earlier scope/runtime figures below remain historical evidence.
+Current production planning is documented in [the core 2–4 design and optional 5/6 extensions](persistent_v2_core_cardinalities.md), with the 0.51 cutoff and fixed 5+5 phases. Earlier scope/runtime figures below remain historical evidence.
 
 The intended design is now **ten independent repetitions for every configuration**,
 at 30,000 reference-chain blocks, across all six variants. There is no staged

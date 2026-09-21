@@ -56,15 +56,16 @@ def test_intended_design_exactly_ten_and_historical_grid_untouched():
         assert current[key] == historical[key]
     expected_composition = copy.deepcopy(historical["composition"])
     expected_composition["candidate_power"] = [i/100 for i in range(5,52)]
+    expected_composition["systematic"]["member_counts"] = [2, 3, 4]
     assert current["composition"] == expected_composition
     assert historical["composition"]["candidate_power"][-1] == .60
-    scope = json.loads((ROOT / "docs/persistent_v2_51pct_scope.json").read_text())
-    assert scope["exact_enumeration"] and scope["populations"] == 208320
-    assert scope["top_level_rule_configurations"] == 1249920
-    assert scope["per_variant_simulations"] == 16619100
-    assert scope["after_reuse"] == 78882600
-    assert scope["accepted_block_work_after_reuse"] == 2366478000000
-    assert sum(scope["populations_by_shard"].values()) == 208320
+    scope = json.loads((ROOT / "docs/persistent_v2_core_2to4_scope.json").read_text())
+    assert scope["exact_enumeration"] and scope["populations"] == 126666
+    assert scope["top_level_rule_configurations"] == 759996
+    assert scope["per_variant_simulations"] == 8866620
+    assert scope["after_reuse"] == 40533120
+    assert scope["accepted_block_work_after_reuse"] == 1215993600000
+    assert sum(scope["populations_by_shard"].values()) == 126666
     assert not scope["adaptive_followup"]
 
 

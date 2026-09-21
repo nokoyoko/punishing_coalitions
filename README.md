@@ -5,6 +5,8 @@ honest-or-selfish target miner, an aggregate punishment coalition, and remaining
 honest hash power. The target is never part of the coalition. The first
 milestone studies identity-based noisy detection and petty tie-breaking only.
 
+The future persistent-network-v2 cross-rule study uses a [core 2–4 design with optional 5/6 extensions](docs/persistent_v2_core_cardinalities.md), ten repetitions in fixed 5+5 phases, and explicit analysis scopes.
+
 ## Install and quick start
 
 Python 3.10+ is supported (3.12 is the intended research environment).
