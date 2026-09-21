@@ -1,0 +1,265 @@
+{
+  "captured_from": "persistent-ignore-v1 before adding selfish counter-mining",
+  "engine_cases": [
+    {
+      "strategy": "honest",
+      "rate": 0,
+      "flagged": true,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "1f4e6155467196852a12ecf41b973f9b82ce4485d0d4d1ec10a3349840f59466",
+      "configuration_id": "daa9af0ccf3cb0ce2d434a30",
+      "cache_key_sha256": "5c26bde30eddd3e548e4e78ba6fe643e6a43d4ad29e2842b0305c9650d07b90b"
+    },
+    {
+      "strategy": "honest",
+      "rate": 0,
+      "flagged": false,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "1934ac58e932facb1654845dc58476f4abe708b3b2fcfc42777188c5d09561ac",
+      "configuration_id": "daa9af0ccf3cb0ce2d434a30",
+      "cache_key_sha256": "86b09bc4d1ba598c8cdcb1ca95b11d44e91963e841dd97b60294ac74b76b863d"
+    },
+    {
+      "strategy": "honest",
+      "rate": 0,
+      "flagged": true,
+      "active": [
+        "c2"
+      ],
+      "result_sha256": "7b5c8fc462f76c471628b26f5ff1d2d880d28845ee23b2249593d92bf289c9ae",
+      "configuration_id": "daa9af0ccf3cb0ce2d434a30",
+      "cache_key_sha256": "61af8f01eaec205a82e92f59bb08fbe874b14ba7009b2c961b3c5c88794013f8"
+    },
+    {
+      "strategy": "honest",
+      "rate": 0.2,
+      "flagged": true,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "cfa9180e9707c2375a7be2d1822f89f445b2b2a60f5de4f691bb88cf0075a263",
+      "configuration_id": "bdecdf8e11ebeee6431b9b55",
+      "cache_key_sha256": "bb98c55ecc8fc701a4da459eff1438ea906a4e2571168dc3c571a53fd16bae6a"
+    },
+    {
+      "strategy": "honest",
+      "rate": 0.2,
+      "flagged": false,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "6f4470a1d2614cdd15672ed7ddfb2ce2aa6b249b97d6a42660f3b97481485ddc",
+      "configuration_id": "bdecdf8e11ebeee6431b9b55",
+      "cache_key_sha256": "6b6641d5f7d5a325744ca986456cb672760505d5a5b288d92a713d4654735439"
+    },
+    {
+      "strategy": "honest",
+      "rate": 0.2,
+      "flagged": true,
+      "active": [
+        "c2"
+      ],
+      "result_sha256": "6698f3f8a41731d2ee809488af3a4a0483e0d47ede32d2271285aafdc5e9994e",
+      "configuration_id": "bdecdf8e11ebeee6431b9b55",
+      "cache_key_sha256": "0b523536026d18e78f2403ddba50df91ee1151ed9450bdcd3fe32d59dc9f7b2e"
+    },
+    {
+      "strategy": "honest",
+      "rate": 1,
+      "flagged": true,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "23b3bd96fb0bf6266f5e25afbf6727bdc4dc0360e404c0d94519c95017057019",
+      "configuration_id": "54b795d24faecbb583f44abf",
+      "cache_key_sha256": "35d0a561f082140e3b7e2b60454f99637bd308a7831a3136ce457435fa5d5f56"
+    },
+    {
+      "strategy": "honest",
+      "rate": 1,
+      "flagged": false,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "290740e1bc80544c3aeda6ee4f194677d50cc52500fe53a1164322b6e341d66e",
+      "configuration_id": "54b795d24faecbb583f44abf",
+      "cache_key_sha256": "414abb20ea7b0036834ee260acd00993364a16b32d08bc3412ebae0e510fc8de"
+    },
+    {
+      "strategy": "honest",
+      "rate": 1,
+      "flagged": true,
+      "active": [
+        "c2"
+      ],
+      "result_sha256": "de5510baa9abeb568316ed086e2ca6f7c8dc5ba335b046708330a44ab38fb633",
+      "configuration_id": "54b795d24faecbb583f44abf",
+      "cache_key_sha256": "779f52f8fa7d417a8e824cade967648d660e50a157817abac7c54b04f3b7c9dd"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 0,
+      "flagged": true,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "55c9959387a946463db1e2fed1612e40b5d901fdbba28bb4e9f804ace3ef9cf9",
+      "configuration_id": "daa9af0ccf3cb0ce2d434a30",
+      "cache_key_sha256": "06c2d6d052eda2699d877437699b490b501f899d21947880dea7b5496c12f100"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 0,
+      "flagged": false,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "254ea8398feeae761304e8d57016fc664b7e5ac3bff9f87005100e0d94ab9ed6",
+      "configuration_id": "daa9af0ccf3cb0ce2d434a30",
+      "cache_key_sha256": "3f8f9225acd18ec12a5b41d3ed3abe18f90dea1cfd5d8777f931ab2dc36e43d2"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 0,
+      "flagged": true,
+      "active": [
+        "c2"
+      ],
+      "result_sha256": "8dde9a47694e622b12e6a6eebb7f0115d515ecd01a9672d873bb77647cee0f7b",
+      "configuration_id": "daa9af0ccf3cb0ce2d434a30",
+      "cache_key_sha256": "4630a1a92bf6cffa9f16e2c66b21f0af4eafabfc225a3d8f42ee00f54c2492f8"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 0.2,
+      "flagged": true,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "2f87bfdd11d999c9b67d48bd04cb50374f9cc09aeb40f8dc3eaafb94678af4fd",
+      "configuration_id": "bdecdf8e11ebeee6431b9b55",
+      "cache_key_sha256": "fac9622a1691bc7565ff45600574b3a892dc1d2798dfe322e5a1aa807beb1abb"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 0.2,
+      "flagged": false,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "74b43edd12ca016aabeaf873b835c501f6f7b36f9bc101c84dfdf4158ccb17fb",
+      "configuration_id": "bdecdf8e11ebeee6431b9b55",
+      "cache_key_sha256": "24ded5699539cbc49849e54f8aae8228a6382e8307edd1f305acffb1587501b2"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 0.2,
+      "flagged": true,
+      "active": [
+        "c2"
+      ],
+      "result_sha256": "d47eef236039977c2fefcaca195de2de066161ee0c80b546bab29620332c7abc",
+      "configuration_id": "bdecdf8e11ebeee6431b9b55",
+      "cache_key_sha256": "58c603f617fd5db6c1bf4112d50c3bded9ea784a42d02b121a5bc7bd93c57333"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 1,
+      "flagged": true,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "8bc5003785f4e31bc1d2b9c38eac16f0c7f769984bd2f33a4bd2b4a8ad33ee8d",
+      "configuration_id": "54b795d24faecbb583f44abf",
+      "cache_key_sha256": "9034ec704b2f149f81cf594c0e9b9807a80242c271e5f3ba989f17765fe4b9c2"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 1,
+      "flagged": false,
+      "active": [
+        "c1",
+        "c2"
+      ],
+      "result_sha256": "3b4cd04f42da9a9bfc1a21e8cbda88600bd433086c318390caf7b5572fa1f9e6",
+      "configuration_id": "54b795d24faecbb583f44abf",
+      "cache_key_sha256": "1f5b6e998ed64ff2bddf7086d31fce0b02abf2e5b8c1cdc193502b1babdc7d16"
+    },
+    {
+      "strategy": "selfish",
+      "rate": 1,
+      "flagged": true,
+      "active": [
+        "c2"
+      ],
+      "result_sha256": "a1360d2f9dba6e4ab83f34977b92a1bf1aa8fdb5b2f96572afe64b8c7e69f34f",
+      "configuration_id": "54b795d24faecbb583f44abf",
+      "cache_key_sha256": "f688bbc317abd6d9e8991fb06f8006ba1802b97db0c72f33142090b99a0e069f"
+    }
+  ],
+  "runner_specification": {
+    "expected_model_version": "persistent-ignore-v1",
+    "punishment_rule": "ignore",
+    "seed": 701,
+    "accepted_blocks": 12,
+    "repetitions": 2,
+    "bootstrap_samples": 12,
+    "tpr": [
+      0.5,
+      1
+    ],
+    "fpr": [
+      0,
+      0.1
+    ],
+    "composition": {
+      "target_hash": [
+        0.2
+      ],
+      "candidate_power": [
+        0.2
+      ],
+      "gamma": [
+        0.5
+      ],
+      "natural_fork_rate": [
+        0,
+        0.2
+      ],
+      "systematic": {
+        "power_step": 0.1,
+        "minimum_member_power": 0.1,
+        "member_counts": [
+          2
+        ]
+      }
+    }
+  },
+  "runner_files_sha256": {
+    "checkpoints/329b7dfc9e95d9034c4d2318.json": "4f8fe60b90eb3b0ddce6370a39ef68745272b05efcc8176f4869aa45ff8c7d92",
+    "checkpoints/ab3a997fb19508ab0174ebb8.json": "f95a38c6654d6226325f656816020f52a0fc619f634821869df7604c36b5c882",
+    "coalition_results.csv": "424d0c94d8459d546ed28ffa86932cc53e0b4f7617ba054e2b0c4e627450e6db",
+    "continuous_tpr_thresholds.csv": "c8fd9dd3937a43196e89f401c5fa81e9b84f6fe0ee47619efd90ef1c0c80259c",
+    "detector_evaluations.csv": "4f04c4413c4d221cdf98e9bc396dcfa406ad1a19ef75fd9ba6230ad04fd0a199",
+    "member_credibility.csv": "b1c03702743341cfd9c2d010d0bcbf77c4cd3f797cecd7d07b8bb72b339e82ba",
+    "minimum_thresholds.csv": "de678178827fac50c48b5c56fb2f53171a0810a8e76a304a025fe9119534a53d",
+    "persistent_manifest.json": "bd93db0910f9381f88cdb1187f3e58d3cba8c861ad67d4b0aeb178300734f395",
+    "persistent_results.json": "eaa49a4294b6ffb3bc124f32e2265506c577a1d71401a1f5b600fb10d44464d3",
+    "repetition_metrics.csv": "0e49c2bcc986791bcedd81f5a3d6b0327cf1ecec833423c9da6861c97cc6abc3"
+  }
+}

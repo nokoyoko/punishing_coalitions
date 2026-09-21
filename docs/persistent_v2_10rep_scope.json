@@ -1,0 +1,88 @@
+{
+  "populations": 250170,
+  "top_level_rule_configurations": 1501020,
+  "repetitions": 10,
+  "per_variant_simulations": 19967100,
+  "per_variant_policy_only_simulations": 14963700,
+  "shared_baseline_simulations": 5003400,
+  "before_reuse": 119802600,
+  "after_reuse": 94785600,
+  "saved_by_baseline_reuse": 25017000,
+  "accepted_block_work_before_reuse": 3594078000000,
+  "accepted_block_work_after_reuse": 2843568000000,
+  "by_lambda": {
+    "0": {
+      "populations": 83390,
+      "per_variant_simulations": 6655700,
+      "shared_baselines": 1667800,
+      "before_reuse": 39934200,
+      "after_reuse": 31595200,
+      "accepted_block_work": 947856000000
+    },
+    "0.005": {
+      "populations": 83390,
+      "per_variant_simulations": 6655700,
+      "shared_baselines": 1667800,
+      "before_reuse": 39934200,
+      "after_reuse": 31595200,
+      "accepted_block_work": 947856000000
+    },
+    "0.02": {
+      "populations": 83390,
+      "per_variant_simulations": 6655700,
+      "shared_baselines": 1667800,
+      "before_reuse": 39934200,
+      "after_reuse": 31595200,
+      "accepted_block_work": 947856000000
+    }
+  },
+  "by_cardinality": {
+    "2": 50406,
+    "3": 50964,
+    "4": 50406,
+    "5": 49662,
+    "6": 48732
+  },
+  "populations_by_shard": {
+    "14": 9005,
+    "7": 8956,
+    "3": 9067,
+    "16": 9024,
+    "2": 8922,
+    "21": 8943,
+    "19": 8779,
+    "13": 8913,
+    "5": 8996,
+    "12": 8864,
+    "27": 8861,
+    "8": 9044,
+    "20": 8790,
+    "1": 8959,
+    "25": 8900,
+    "26": 8751,
+    "17": 9030,
+    "18": 8990,
+    "23": 9017,
+    "15": 9003,
+    "22": 8845,
+    "6": 8927,
+    "9": 8809,
+    "4": 9005,
+    "10": 8909,
+    "0": 8941,
+    "24": 8786,
+    "11": 9134
+  },
+  "configuration": "configs/persistent_v2_1pct_10rep.json",
+  "configuration_sha256": "2230cc41e52e503935c996ed1fd25564ab9d77031da13d56fda7060c26929703",
+  "exact_enumeration": true,
+  "native_task_plan_sha256": "fbc565a880860c3936f070a4696cfada9d22e5e534db47036861ea2a6340891e",
+  "previous_20_repetitions": {
+    "before_reuse": 239605200,
+    "after_reuse": 189571200,
+    "accepted_block_work_after_reuse": 5687136000000
+  },
+  "reduction_from_20_repetitions": 0.5,
+  "staged_followup": false,
+  "historical_checkpoint_reuse": false
+}

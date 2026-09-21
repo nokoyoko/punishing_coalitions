@@ -1,0 +1,293 @@
+{
+  "network_version": "persistent-network-v2",
+  "cases": [
+    {
+      "case": "baseline",
+      "strategy": "honest",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "85cec04da8521ae0a609a90e3f90d8efc6c3015224a9c37a2af50291f90b1afe",
+      "condition_id": "eb687bd37d6c4f4fefdae9bec9fd7528296f77977232ba2e475c6f3a813e55eb"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "honest",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "e0a705ae5777413261c2aa0d070d57925d886e331919a99d54c33dac71a441db",
+      "condition_id": "97079b2c38d7d988abc554a4e31aa652a35ae432e3d7fec575944483732bc083"
+    },
+    {
+      "case": "ignore",
+      "strategy": "honest",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "40ed4d9df27ae4269ffc92366d7e33c9d175d799e8d547eb9d381fa39ab34c70",
+      "condition_id": "bbe8f06218cc0d5626c078e90d8228874d3610132b2e32b4feca247871c3a800"
+    },
+    {
+      "case": "selfish",
+      "strategy": "honest",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "25acf78b1177a8d526d68cc3f28157f9fe57174d759bca64916e53a8bcec2d38",
+      "condition_id": "06163c6fc954c6a9ead0f24090408f5c978274b19f04cd1c106a9343ffca5f47"
+    },
+    {
+      "case": "baseline",
+      "strategy": "honest",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "8c7fe7d1b4ae7677cc1cacd35bcb43ac414020f13e0277d7a21a1f1568bf2a99",
+      "condition_id": "8719bc1b283eebe4fd54e468535138f0df4091ea6821a081ad40450c76a82770"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "honest",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "4c67c483864fe790f83af920b2574279375769b7350aa5f43ed2e80937d68dc5",
+      "condition_id": "b76617bcdcf10c15ff87e5db0bd014d9ac2b04c18168c85544e1222df99de077"
+    },
+    {
+      "case": "ignore",
+      "strategy": "honest",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "86e791950c85fffbbf8e59bc885de3fb8a9cd026ba918de58c19b958191c18f7",
+      "condition_id": "b1369c441f7435103d65a132f9e46c2669f49d9ef262d3f448ec70a53af125ef"
+    },
+    {
+      "case": "selfish",
+      "strategy": "honest",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "1351f712783c57403b1d620fe19fe10a050b341a2adca8c0c5f8842423a17490",
+      "condition_id": "c9d7a25c4684cb23111561c428999c94dfc2f51396260b0f4e462fa1760d4e3d"
+    },
+    {
+      "case": "baseline",
+      "strategy": "honest",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "7970a758efe67427ebff5fe35543d911a3f916ea092e2b7203f39ac2e1b6ea0d",
+      "condition_id": "52df63b1ccaa2ded51f2d358193d71e801939b6ad18e126af0478b25002c88be"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "honest",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "4d3b2f44688053a01a788543bd8efb915a29122c8143fbfc5e52e8465d86071b",
+      "condition_id": "1e19b7a5ac11192281100783fd96fcc44c37ed3559e587816d6261421fcc9ba3"
+    },
+    {
+      "case": "ignore",
+      "strategy": "honest",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "7b0919dfda08d4976a465bf137753065fea3f497116281f908be28d41b52816c",
+      "condition_id": "23cde8258ea4d260709a5d834fad160bb02e5d9fd04b016cda9cce5cd2d5eb7c"
+    },
+    {
+      "case": "selfish",
+      "strategy": "honest",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "657241631b52623e140155ed6cef001e15743fa1487cfd3c667c889213a9ed18",
+      "condition_id": "cecf25b4dd604e9caeb5d68bde19fddfc362bb6fa3c811738a7107cb9ec0d93e"
+    },
+    {
+      "case": "baseline",
+      "strategy": "honest",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "e24db64ec930fb709c12cb8f4c938b6055567232215bc0adb0ac6165d47a9240",
+      "condition_id": "8930412e738258667836a91cc848451a30d6e7c1a4302b6bc0669029fdfb86d9"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "honest",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "471dc7aeec0f2297ea785873f62e4c16a786c21b01743a5b907b61a27ad6a206",
+      "condition_id": "8a963127e96810ccdd0ade17808d48bef9db1f05d7a14a853c3b52e1981c1787"
+    },
+    {
+      "case": "ignore",
+      "strategy": "honest",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "5eb4e3e62a74f4f0845e6ac8eae05574db892fa0b3fc01f5a0d0ec0f2c4a85b7",
+      "condition_id": "7702ff33d2f6ff875df07a039aff16ae06fd5a7ec3c97667b00698cffc59d6da"
+    },
+    {
+      "case": "selfish",
+      "strategy": "honest",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "3329dcf036642f21883a8a766ecab6c189d6e2c4e8c263f2d0d62e8b779c9669",
+      "condition_id": "0ac0ddee889aa488141d5fcf3b6bc22ade8e1923acdb256107693650f1c628ae"
+    },
+    {
+      "case": "baseline",
+      "strategy": "selfish",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "0a7a254ba20b018b71875493f8e29525f1e60a51bb8b142aef845ce609c85269",
+      "condition_id": "15419bb8b162fb364163778a3de5019328ae5aa2387cf82e3ac2ee897ba5737c"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "selfish",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "62c38608d3bd9a6597ba931f811d24bc07d7174d8c56689dd16e0d48e4da7fc1",
+      "condition_id": "be44e4a3f2effb08fb2a5ef7c7975df4eef80924acbcd186ff2c964429323dba"
+    },
+    {
+      "case": "ignore",
+      "strategy": "selfish",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "5af29ec367a1042cd0fc57427b36c3bd74272d5b6b16796a7544f78209f1373b",
+      "condition_id": "ca9c9e1a5dedd25b541d8ae7362b743735bcc035a4568605fce10927a8a3ba10"
+    },
+    {
+      "case": "selfish",
+      "strategy": "selfish",
+      "lambda": 0,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "2e345e62f8fea390466a3517c876b4febc80dc4194acc79a85260dd0f7b4abe8",
+      "condition_id": "7d7f8fae996a83707ac868a1da337cfe47e3b49b4f5888e822b8b1c6d3cfb6d4"
+    },
+    {
+      "case": "baseline",
+      "strategy": "selfish",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "69ccec019944823f9fca414d5d2be9b9107a474f0c6e5ba523774462404ede81",
+      "condition_id": "fa33552a1e202b4fd8223e7392226b6b749ebc1446f78a7686e899c5979d6cc9"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "selfish",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "cd54dbb09d7a633fc899d8f8c0cb95194f583806bebd3928e2d4e92a1769a0a1",
+      "condition_id": "c5fdd12c329289503cd79043911b61b131ec3f6a4efa6118ac5f2244484ea285"
+    },
+    {
+      "case": "ignore",
+      "strategy": "selfish",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "4734068c7355b6b74f1af71bdca69cf7c0bb418048c3e7a2c283adb23a45b3c4",
+      "condition_id": "6dd197098b4a0ceb6f23044ba9062e8998990a50f2359072a4abaff8f67dcc2c"
+    },
+    {
+      "case": "selfish",
+      "strategy": "selfish",
+      "lambda": 0.005,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "50d4c138a43ef5956161deb00c7d677486f3d3fa94329bfe9c4b1099d09d7b4f",
+      "condition_id": "f3b5918dc50170b8cb9357312c49f1fb2d26d76c2bcbf88b0a7daab0bfcb25bc"
+    },
+    {
+      "case": "baseline",
+      "strategy": "selfish",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "7725691c2df23fc436e98dc5c58718619a81a1ce0e86d8788aaf0e93f786cada",
+      "condition_id": "40e1a2fc00223c5d61148bd83aa51d33081c7e115f872cbbe6b29697f1e824eb"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "selfish",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "0d710d1e10f0ffd6f52a3726b921fe3029c1cbc52101f6659192f44c26c41e0d",
+      "condition_id": "391257a0b33f27309aa6880f0a232656450009f9bb3d988739d1e1677626817c"
+    },
+    {
+      "case": "ignore",
+      "strategy": "selfish",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "854f61cc03a4370fe6c49862a13b4c71fe5fa542db7c0cc29604b95ecf63eb27",
+      "condition_id": "322fbfd2de9ecf86859ef7f854a104964107f41de2170d2352687e865e3d90cf"
+    },
+    {
+      "case": "selfish",
+      "strategy": "selfish",
+      "lambda": 0.02,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "f41e4bae91afb748291450ba44ac253b24053fb28ce59b4c1192bed0f0602242",
+      "condition_id": "eb323707328640da3ab36453d148d19dd70dfe1cb042598cc6ab82ade8914b3a"
+    },
+    {
+      "case": "baseline",
+      "strategy": "selfish",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "77de2f8477628a776438471f3fdf8d03669ac271063e521076084835be99cda2",
+      "condition_id": "ae14c67996d768e7f6f5fb199eac0a65703bba0f1b797f6f7b311ab1ad8925f9"
+    },
+    {
+      "case": "counter_fork",
+      "strategy": "selfish",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "05fe4ec6791bb2e1b29c2bcfb30f106d03673309011552a91509ca679718aa31",
+      "condition_id": "3e5d4b5cf16417d86ab651886a937ee951de6497802991e20bed2a0f2553592f"
+    },
+    {
+      "case": "ignore",
+      "strategy": "selfish",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "c3a5d5bcba907dc477955400a7d2ec577a01305cfd222a8106279dcd404f740f",
+      "condition_id": "0544074fb088fdcfc010755eb1145d9793220b85369a480745c36d40bc20caa4"
+    },
+    {
+      "case": "selfish",
+      "strategy": "selfish",
+      "lambda": 1,
+      "seed": 84,
+      "horizon": 20,
+      "result_sha256": "0d4aa80c5883147de9f904c88adfc90e49209111abae4cdc2bafa452b116ad4f",
+      "condition_id": "ef6004e04aaf9598670899c798f06a7b3e5100f87d57bb4f9ebbbfa909e10627"
+    }
+  ]
+}

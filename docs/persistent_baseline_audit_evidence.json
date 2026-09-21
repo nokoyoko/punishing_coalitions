@@ -1,0 +1,5631 @@
+{
+  "population": {
+    "target": 0.2,
+    "c1": 0.1,
+    "c2": 0.1,
+    "residual": 0.6
+  },
+  "gamma": 0.5,
+  "repetition": 0,
+  "native_seed": 701,
+  "accepted_block_target": 40,
+  "scripted_seed": 84,
+  "completed_cases": [
+    {
+      "strategy": "honest",
+      "lambda": 0,
+      "aligned_streams": false,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 2,
+          "discovery_sequence": 2,
+          "publication_sequence": 2,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 2,
+          "rewards": 2
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "ignore": {
+          "events": 40,
+          "rewards": {
+            "target": 7,
+            "c1": 7,
+            "c2": 8,
+            "honest_residual": 18
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "e30fd3ed6b94cbfbfa2f14c138cf14c8cb4dcedfbb316a335ddde8fbd6efb41d"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "19776ed0233326c87e41bb17c879b8038d6afd33e85d80c11cf0f3ceb12e7f20"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "11d704a99d133290789c8bdfcb824f222e23df90ba15c569abbf224c9fa74a37"
+            }
+          }
+        },
+        "selfish": {
+          "events": 40,
+          "rewards": {
+            "target": 8,
+            "c1": 3,
+            "c2": 4,
+            "honest_residual": 25
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "626c27af73ff039aae239dc50b35fbb77e02f7cc3bbdc5136624408b168f0b3e"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "45ab047872d02c2ace816b339142ad489f56d8be931a3ea51aed8d5f17d3f7b7"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "d0590be3058d23e5e0242074a0c67ea53bdbda9ad44324e239591464594bbfa0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "honest",
+      "lambda": 0,
+      "aligned_streams": true,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "ignore": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "selfish": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "honest",
+      "lambda": 0.005,
+      "aligned_streams": false,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 2,
+          "discovery_sequence": 2,
+          "publication_sequence": 2,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 2,
+          "rewards": 2
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "ignore": {
+          "events": 40,
+          "rewards": {
+            "target": 7,
+            "c1": 7,
+            "c2": 8,
+            "honest_residual": 18
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "e30fd3ed6b94cbfbfa2f14c138cf14c8cb4dcedfbb316a335ddde8fbd6efb41d"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "19776ed0233326c87e41bb17c879b8038d6afd33e85d80c11cf0f3ceb12e7f20"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "11d704a99d133290789c8bdfcb824f222e23df90ba15c569abbf224c9fa74a37"
+            }
+          }
+        },
+        "selfish": {
+          "events": 40,
+          "rewards": {
+            "target": 8,
+            "c1": 3,
+            "c2": 4,
+            "honest_residual": 25
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "626c27af73ff039aae239dc50b35fbb77e02f7cc3bbdc5136624408b168f0b3e"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "45ab047872d02c2ace816b339142ad489f56d8be931a3ea51aed8d5f17d3f7b7"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "d0590be3058d23e5e0242074a0c67ea53bdbda9ad44324e239591464594bbfa0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "honest",
+      "lambda": 0.005,
+      "aligned_streams": true,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "ignore": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "selfish": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "honest",
+      "lambda": 0.02,
+      "aligned_streams": false,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": 28,
+          "private_chain": null,
+          "release_batches": 28,
+          "public_frontier": 28,
+          "canonical_chain": 28,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 2,
+          "discovery_sequence": 2,
+          "publication_sequence": 2,
+          "natural_forks": 28,
+          "private_chain": null,
+          "release_batches": 28,
+          "public_frontier": 28,
+          "canonical_chain": 28,
+          "rng": 0,
+          "event_trace": 2,
+          "rewards": 2
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "ignore": {
+          "events": 41,
+          "rewards": {
+            "target": 6,
+            "c1": 7,
+            "c2": 8,
+            "honest_residual": 19
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 41,
+              "state_sha256": "2d970bc6908676ed5f26619fd4057087ae0cdc9c5d763396b4b3c99b8fda9f85"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "19776ed0233326c87e41bb17c879b8038d6afd33e85d80c11cf0f3ceb12e7f20"
+            },
+            "natural_rng": {
+              "draw_count": 39,
+              "state_sha256": "b3f8e7714baaf7801b4eb3973e2c137409dd09e5142236517ba9a9310bd0b165"
+            }
+          }
+        },
+        "selfish": {
+          "events": 40,
+          "rewards": {
+            "target": 8,
+            "c1": 3,
+            "c2": 4,
+            "honest_residual": 25
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "626c27af73ff039aae239dc50b35fbb77e02f7cc3bbdc5136624408b168f0b3e"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "45ab047872d02c2ace816b339142ad489f56d8be931a3ea51aed8d5f17d3f7b7"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "d0590be3058d23e5e0242074a0c67ea53bdbda9ad44324e239591464594bbfa0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "honest",
+      "lambda": 0.02,
+      "aligned_streams": true,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "ignore": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        },
+        "selfish": {
+          "events": 40,
+          "rewards": {
+            "target": 5,
+            "c1": 4,
+            "c2": 2,
+            "honest_residual": 29
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 40,
+              "state_sha256": "faba4048295730e911b5dd638cf42bcbe643019a1c224af6833aa0f02a6af140"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "db2ab444910aa885f9510bd1c95f549a73b1dfdaad12f3ce421b6d9adad0dba3"
+            },
+            "natural_rng": {
+              "draw_count": 40,
+              "state_sha256": "4fc66ae69b6f9a4701722aadc7875fe4d3868e60153ff38b6a99bd0f3ec71b1a"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "selfish",
+      "lambda": 0,
+      "aligned_streams": false,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": 2,
+          "release_batches": 2,
+          "public_frontier": 2,
+          "canonical_chain": 2,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": 6,
+          "release_batches": 6,
+          "public_frontier": 6,
+          "canonical_chain": 6,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 2,
+          "discovery_sequence": 2,
+          "publication_sequence": 2,
+          "natural_forks": null,
+          "private_chain": 2,
+          "release_batches": 2,
+          "public_frontier": 2,
+          "canonical_chain": 2,
+          "rng": 0,
+          "event_trace": 2,
+          "rewards": 2
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "ignore": {
+          "events": 46,
+          "rewards": {
+            "target": 3,
+            "c1": 7,
+            "c2": 9,
+            "honest_residual": 21
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 46,
+              "state_sha256": "9dbe925fadb8c48fc78c00ed2ea5a69cb40bd1c91efd4a3477d48afb4b6c25c4"
+            },
+            "tie_rng": {
+              "draw_count": 4,
+              "state_sha256": "9ec920676080e1aaf6d875aaf91371ab6619dc7929060a87778da212dd98290c"
+            },
+            "natural_rng": {
+              "draw_count": 28,
+              "state_sha256": "32b435bf109cb6fe9f9ef54be33b03fc71f163e92643551d51cbd3b051ec85e6"
+            }
+          }
+        },
+        "selfish": {
+          "events": 46,
+          "rewards": {
+            "target": 6,
+            "c1": 3,
+            "c2": 4,
+            "honest_residual": 27
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 46,
+              "state_sha256": "4ea43d85a384921f27e1c5a08f2abcc210b4e19d0202d9cb9ac6dfe01bc58a76"
+            },
+            "tie_rng": {
+              "draw_count": 4,
+              "state_sha256": "faebfa7ae8e76e8d2d03a7c3e1eda78f2c4ee468a12adc744f55cfe0ca2381ff"
+            },
+            "natural_rng": {
+              "draw_count": 28,
+              "state_sha256": "4b31941a792681efda043925201181bad21fa856381694b93028aa6a218e0319"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "selfish",
+      "lambda": 0,
+      "aligned_streams": true,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "ignore": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "selfish": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "selfish",
+      "lambda": 0.005,
+      "aligned_streams": false,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": 2,
+          "release_batches": 2,
+          "public_frontier": 2,
+          "canonical_chain": 2,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": 6,
+          "release_batches": 6,
+          "public_frontier": 6,
+          "canonical_chain": 6,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 2,
+          "discovery_sequence": 2,
+          "publication_sequence": 2,
+          "natural_forks": null,
+          "private_chain": 2,
+          "release_batches": 2,
+          "public_frontier": 2,
+          "canonical_chain": 2,
+          "rng": 0,
+          "event_trace": 2,
+          "rewards": 2
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "ignore": {
+          "events": 46,
+          "rewards": {
+            "target": 3,
+            "c1": 7,
+            "c2": 9,
+            "honest_residual": 21
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 46,
+              "state_sha256": "9dbe925fadb8c48fc78c00ed2ea5a69cb40bd1c91efd4a3477d48afb4b6c25c4"
+            },
+            "tie_rng": {
+              "draw_count": 4,
+              "state_sha256": "9ec920676080e1aaf6d875aaf91371ab6619dc7929060a87778da212dd98290c"
+            },
+            "natural_rng": {
+              "draw_count": 28,
+              "state_sha256": "32b435bf109cb6fe9f9ef54be33b03fc71f163e92643551d51cbd3b051ec85e6"
+            }
+          }
+        },
+        "selfish": {
+          "events": 46,
+          "rewards": {
+            "target": 6,
+            "c1": 3,
+            "c2": 4,
+            "honest_residual": 27
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 46,
+              "state_sha256": "4ea43d85a384921f27e1c5a08f2abcc210b4e19d0202d9cb9ac6dfe01bc58a76"
+            },
+            "tie_rng": {
+              "draw_count": 4,
+              "state_sha256": "faebfa7ae8e76e8d2d03a7c3e1eda78f2c4ee468a12adc744f55cfe0ca2381ff"
+            },
+            "natural_rng": {
+              "draw_count": 28,
+              "state_sha256": "4b31941a792681efda043925201181bad21fa856381694b93028aa6a218e0319"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "selfish",
+      "lambda": 0.005,
+      "aligned_streams": true,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "ignore": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "selfish": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "selfish",
+      "lambda": 0.02,
+      "aligned_streams": false,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": 2,
+          "release_batches": 2,
+          "public_frontier": 2,
+          "canonical_chain": 2,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 1,
+          "discovery_sequence": 1,
+          "publication_sequence": 1,
+          "natural_forks": null,
+          "private_chain": 6,
+          "release_batches": 6,
+          "public_frontier": 6,
+          "canonical_chain": 6,
+          "rng": 0,
+          "event_trace": 1,
+          "rewards": 1
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": 2,
+          "discovery_sequence": 2,
+          "publication_sequence": 2,
+          "natural_forks": 46,
+          "private_chain": 2,
+          "release_batches": 2,
+          "public_frontier": 2,
+          "canonical_chain": 2,
+          "rng": 0,
+          "event_trace": 2,
+          "rewards": 2
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "ignore": {
+          "events": 47,
+          "rewards": {
+            "target": 3,
+            "c1": 7,
+            "c2": 9,
+            "honest_residual": 21
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 47,
+              "state_sha256": "79a5eeefc96e21b3b0d8f6e390cb0be914aef0181da8d2a69f1c3eac890df087"
+            },
+            "tie_rng": {
+              "draw_count": 5,
+              "state_sha256": "67baba42804600d00146569274e3064c519fc6f20c076ad664f4410aebdadcdd"
+            },
+            "natural_rng": {
+              "draw_count": 27,
+              "state_sha256": "1dccea927c372c2a89b41cc501c70331dd5d3a225a016efb5085e5271669bce6"
+            }
+          }
+        },
+        "selfish": {
+          "events": 46,
+          "rewards": {
+            "target": 6,
+            "c1": 3,
+            "c2": 4,
+            "honest_residual": 27
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 46,
+              "state_sha256": "4ea43d85a384921f27e1c5a08f2abcc210b4e19d0202d9cb9ac6dfe01bc58a76"
+            },
+            "tie_rng": {
+              "draw_count": 4,
+              "state_sha256": "faebfa7ae8e76e8d2d03a7c3e1eda78f2c4ee468a12adc744f55cfe0ca2381ff"
+            },
+            "natural_rng": {
+              "draw_count": 28,
+              "state_sha256": "4b31941a792681efda043925201181bad21fa856381694b93028aa6a218e0319"
+            }
+          }
+        }
+      }
+    },
+    {
+      "strategy": "selfish",
+      "lambda": 0.02,
+      "aligned_streams": true,
+      "comparisons": [
+        {
+          "pair": [
+            "counter_fork",
+            "ignore"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "counter_fork",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        },
+        {
+          "pair": [
+            "ignore",
+            "selfish"
+          ],
+          "first_state_or_behavior_difference": null,
+          "discovery_sequence": null,
+          "publication_sequence": null,
+          "natural_forks": null,
+          "private_chain": null,
+          "release_batches": null,
+          "public_frontier": null,
+          "canonical_chain": null,
+          "rng": null,
+          "event_trace": null,
+          "rewards": null
+        }
+      ],
+      "final": {
+        "counter_fork": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "ignore": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        },
+        "selfish": {
+          "events": 44,
+          "rewards": {
+            "target": 3,
+            "c1": 5,
+            "c2": 2,
+            "honest_residual": 30
+          },
+          "rng": {
+            "rng": {
+              "draw_count": 44,
+              "state_sha256": "7bcb4f6a2c62a4a6019089f43eba1039d3f1f853f185dd87268f132007ce06c2"
+            },
+            "tie_rng": {
+              "draw_count": 3,
+              "state_sha256": "7862de99a2ed2df820002a578378ef690c7bacdf6702112f2d7733e70d35e8da"
+            },
+            "natural_rng": {
+              "draw_count": 32,
+              "state_sha256": "c573826a8fe6b6e42d5585f0f5b580ddf545c74ceb42e32b6a1fb96d2ae6f2ad"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "scripted_cases": [
+    {
+      "lambda": 0,
+      "schedule": [
+        "target",
+        "target",
+        "target",
+        "honest_residual",
+        "c1"
+      ],
+      "first_rng_difference": {
+        "event": 4,
+        "fields": [
+          "rng"
+        ],
+        "left": {
+          "rng": {
+            "rng": {
+              "draw_count": 0,
+              "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+            },
+            "natural_rng": {
+              "draw_count": 0,
+              "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+            }
+          }
+        },
+        "right": {
+          "rng": {
+            "rng": {
+              "draw_count": 0,
+              "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+            },
+            "natural_rng": {
+              "draw_count": 1,
+              "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+            }
+          }
+        }
+      },
+      "first_transition_difference": null,
+      "events": {
+        "counter_fork": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          }
+        ],
+        "ignore": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          }
+        ],
+        "selfish": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 1,
+                "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 1,
+                "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "lambda": 0.005,
+      "schedule": [
+        "target",
+        "target",
+        "target",
+        "honest_residual",
+        "c1"
+      ],
+      "first_rng_difference": {
+        "event": 4,
+        "fields": [
+          "rng"
+        ],
+        "left": {
+          "rng": {
+            "rng": {
+              "draw_count": 0,
+              "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+            },
+            "natural_rng": {
+              "draw_count": 0,
+              "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+            }
+          }
+        },
+        "right": {
+          "rng": {
+            "rng": {
+              "draw_count": 0,
+              "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+            },
+            "natural_rng": {
+              "draw_count": 1,
+              "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+            }
+          }
+        }
+      },
+      "first_transition_difference": {
+        "event": 4,
+        "fields": [
+          "pending_window"
+        ],
+        "left": {
+          "pending_window": null
+        },
+        "right": {
+          "pending_window": {
+            "origin": 4,
+            "blocks": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "events": {
+        "counter_fork": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          }
+        ],
+        "ignore": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          }
+        ],
+        "selfish": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": {
+              "origin": 4,
+              "blocks": [
+                4,
+                1
+              ]
+            },
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 1,
+                "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "natural_fork"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              },
+              {
+                "id": 5,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "natural_fork",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [
+                5
+              ],
+              "pairs": {
+                "c1--honest_residual": 1
+              }
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "natural_fork",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              1,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              1,
+              4,
+              5
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 1,
+                "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "lambda": 0.02,
+      "schedule": [
+        "target",
+        "target",
+        "target",
+        "honest_residual",
+        "c1"
+      ],
+      "first_rng_difference": {
+        "event": 4,
+        "fields": [
+          "rng"
+        ],
+        "left": {
+          "rng": {
+            "rng": {
+              "draw_count": 0,
+              "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+            },
+            "natural_rng": {
+              "draw_count": 0,
+              "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+            }
+          }
+        },
+        "right": {
+          "rng": {
+            "rng": {
+              "draw_count": 0,
+              "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+            },
+            "tie_rng": {
+              "draw_count": 0,
+              "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+            },
+            "natural_rng": {
+              "draw_count": 1,
+              "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+            }
+          }
+        }
+      },
+      "first_transition_difference": {
+        "event": 4,
+        "fields": [
+          "pending_window"
+        ],
+        "left": {
+          "pending_window": null
+        },
+        "right": {
+          "pending_window": {
+            "origin": 4,
+            "blocks": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "events": {
+        "counter_fork": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          }
+        ],
+        "ignore": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                1,
+                2,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": 4,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": 5,
+                "release_batch": 4,
+                "publication_kind": "target_selfish_release",
+                "canonical": true
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": false
+              },
+              {
+                "id": 5,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "ordinary",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "ordinary",
+                "discovery_event": 5
+              },
+              {
+                "batch": 4,
+                "blocks": [
+                  2,
+                  3
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              3,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              3
+            ],
+            "canonical_chain": [
+              1,
+              2,
+              3
+            ],
+            "reference_tip": 3,
+            "pending_window": null,
+            "rewards": {
+              "target": 3,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 0
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 3,
+              "private": [],
+              "rewards": {
+                "target": 3,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 0
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 1,
+                "state_sha256": "b5b210c088313e80bae4348948da913752fdb04e9a364572a72b24517b4c8249"
+              },
+              "natural_rng": {
+                "draw_count": 0,
+                "state_sha256": "e0589645fd4e5a611e55ac2e667291bafc1bd47d1ad005c1cf524667f05a7534"
+              }
+            }
+          }
+        ],
+        "selfish": [
+          {
+            "event": 4,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              }
+            ],
+            "natural_forks": {
+              "blocks": [],
+              "pairs": {}
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              }
+            ],
+            "public_frontier": [
+              1,
+              4
+            ],
+            "leading_frontier": [
+              1,
+              4
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": {
+              "origin": 4,
+              "blocks": [
+                4,
+                1
+              ]
+            },
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 4,
+              "discoverer": "honest_residual",
+              "block": 4,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 1,
+                "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+              }
+            }
+          },
+          {
+            "event": 5,
+            "discovery_sequence": [
+              [
+                1,
+                "target",
+                null,
+                1,
+                true
+              ],
+              [
+                2,
+                "target",
+                1,
+                2,
+                true
+              ],
+              [
+                3,
+                "target",
+                2,
+                3,
+                true
+              ],
+              [
+                4,
+                "honest_residual",
+                null,
+                1,
+                false
+              ],
+              [
+                5,
+                "c1",
+                null,
+                1,
+                false
+              ]
+            ],
+            "publication_sequence": [
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary"
+              },
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release"
+              },
+              {
+                "id": 5,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "natural_fork"
+              }
+            ],
+            "block_ledger": [
+              {
+                "id": 1,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "target",
+                "discovery_sequence": 1,
+                "initially_withheld": true,
+                "publication_sequence": 2,
+                "release_batch": 2,
+                "publication_kind": "target_selfish_release",
+                "canonical": false
+              },
+              {
+                "id": 2,
+                "parent_id": 1,
+                "height": 2,
+                "owner_id": "target",
+                "discovery_sequence": 2,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 3,
+                "parent_id": 2,
+                "height": 3,
+                "owner_id": "target",
+                "discovery_sequence": 3,
+                "initially_withheld": true,
+                "publication_sequence": null,
+                "release_batch": null,
+                "publication_kind": null,
+                "canonical": false
+              },
+              {
+                "id": 4,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "honest_residual",
+                "discovery_sequence": 4,
+                "initially_withheld": false,
+                "publication_sequence": 1,
+                "release_batch": 1,
+                "publication_kind": "ordinary",
+                "canonical": true
+              },
+              {
+                "id": 5,
+                "parent_id": null,
+                "height": 1,
+                "owner_id": "c1",
+                "discovery_sequence": 5,
+                "initially_withheld": false,
+                "publication_sequence": 3,
+                "release_batch": 3,
+                "publication_kind": "natural_fork",
+                "canonical": false
+              }
+            ],
+            "natural_forks": {
+              "blocks": [
+                5
+              ],
+              "pairs": {
+                "c1--honest_residual": 1
+              }
+            },
+            "private_chain": [
+              2,
+              3
+            ],
+            "abandoned_private": [],
+            "release_batches": [
+              {
+                "batch": 1,
+                "blocks": [
+                  4
+                ],
+                "kind": "ordinary",
+                "discovery_event": 4
+              },
+              {
+                "batch": 2,
+                "blocks": [
+                  1
+                ],
+                "kind": "target_selfish_release",
+                "discovery_event": 4
+              },
+              {
+                "batch": 3,
+                "blocks": [
+                  5
+                ],
+                "kind": "natural_fork",
+                "discovery_event": 5
+              }
+            ],
+            "public_frontier": [
+              1,
+              4,
+              5
+            ],
+            "leading_frontier": [
+              1,
+              4,
+              5
+            ],
+            "canonical_chain": [
+              4
+            ],
+            "reference_tip": 4,
+            "pending_window": null,
+            "rewards": {
+              "target": 0,
+              "c1": 0,
+              "c2": 0,
+              "honest_residual": 1
+            },
+            "event_trace": {
+              "event": 5,
+              "discoverer": "c1",
+              "block": 5,
+              "reference_tip": 4,
+              "private": [
+                2,
+                3
+              ],
+              "rewards": {
+                "target": 0,
+                "c1": 0,
+                "c2": 0,
+                "honest_residual": 1
+              }
+            },
+            "rng": {
+              "rng": {
+                "draw_count": 0,
+                "state_sha256": "1ccc392387bc804890d643ae5eebaf27e787d98dd9ce996f3d3c3d8ff8155f42"
+              },
+              "tie_rng": {
+                "draw_count": 0,
+                "state_sha256": "787860911b395e1559359592beb063d78eb2080ad55f9ffe04c933a63b6ff5fa"
+              },
+              "natural_rng": {
+                "draw_count": 1,
+                "state_sha256": "3679c547ed6f92938fc0e9ccec657871c3e10a5df4c2d7b620342236b3c0fdd0"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "alignment_source": "persistent-counter-fork-v1 initial state, all three streams",
+  "scripted_discoveries": "forced actors only; no discovery RNG draw, natural/tie RNG are real seeded streams",
+  "engine_sha256": {
+    "punishment_sim/ostracism.py": "76d199530d0d1e26678f6ad536b255dc421634af1f9651a7c9b5531287e287e2",
+    "punishment_sim/persistent.py": "f3c7356f27f951ee978559addf0a4cdc39523ef3a214b4c859a54997f617b7da",
+    "punishment_sim/persistent_checkpoint.py": "ae0928f2555f5236ed3b151f42914d51cdc080a3287828483eebb4e1e7547b05",
+    "punishment_sim/persistent_study.py": "b647bb73704650d4a83b15953ffa8a8505c8902d200c48e8678898610911c3fe",
+    "punishment_sim/persistent_sweep.py": "74ff9fcdccba913fa4dbe22418e70049ef89ac5d5725ed34455cff740fe5c88d",
+    "punishment_sim/selfish_counter.py": "2f3fe9c32bb4305425d3f8bf1e78fbfc862cbceea5d48a7c5b43cc20dc669818",
+    "punishment_sim/selfish_strategy.py": "5b030390d53a32d4c4105ca6b28923fa5b751971d3b1c5c9c9cbea1a5b506a17",
+    "punishment_sim/selfish_validation.py": "5fe6ee288a3c1518ed7db0d70599249945fe352474f90bfb6b8d04ac09bd017b"
+  }
+}

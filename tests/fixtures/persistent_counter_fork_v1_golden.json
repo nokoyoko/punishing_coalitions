@@ -1,0 +1,152 @@
+{
+  "captured_from": "persistent-counter-fork-v1 before adding ignore policy",
+  "engine_cases": [
+    {
+      "k": 1,
+      "strategy": "honest",
+      "rate": 0,
+      "result_sha256": "9814e51d09446735b9c4742d8a67585da7ca1975fca35b0f5ca39633960e3b57",
+      "configuration_id": "d59965593cd14124598ca1bb",
+      "cache_key_sha256": "aaae5c153e144b22d0740902b8ad0e12ad53273c5d3ab6f24fd26e27000af548"
+    },
+    {
+      "k": 1,
+      "strategy": "honest",
+      "rate": 0.25,
+      "result_sha256": "12d3f2c39520f15866b432ac773930b9cee9fa36a9f594b4114da32bc1d25cdf",
+      "configuration_id": "7ce46e184d1cb99a8a7534df",
+      "cache_key_sha256": "ada7336857ec971c5d9260baab183d0f5f3629e31f5c76f5179ee9a66e28fe01"
+    },
+    {
+      "k": 1,
+      "strategy": "selfish",
+      "rate": 0,
+      "result_sha256": "09eee7a9322dbef383f7e291e0e4b62e1a402fb1e1d876721fe4467ff2381a27",
+      "configuration_id": "d59965593cd14124598ca1bb",
+      "cache_key_sha256": "c943d8dfd998307cc83364f4fdcc5c7d9badc9ae0d0b7197ec6187272ac71aa4"
+    },
+    {
+      "k": 1,
+      "strategy": "selfish",
+      "rate": 0.25,
+      "result_sha256": "3245455f2aba2a50dcd393115a2f444ff534034757efa6ba13a8864aa521bb54",
+      "configuration_id": "7ce46e184d1cb99a8a7534df",
+      "cache_key_sha256": "4d98216fd36e0d7f8697a681104602798397120633908a20ccaa81ca5601d5ea"
+    },
+    {
+      "k": 2,
+      "strategy": "honest",
+      "rate": 0,
+      "result_sha256": "892c1e42ef1e39293086df73a1b16e9850e35f37ff41433b3d1b0573e7495cf4",
+      "configuration_id": "2f8b86324d158e595d89a596",
+      "cache_key_sha256": "dfb435dae6340b139f8a0d80dd35c66a3e602b9b258da5a03c4b1f29a08823b5"
+    },
+    {
+      "k": 2,
+      "strategy": "honest",
+      "rate": 0.25,
+      "result_sha256": "9538967131e05927da69bc1aec9f4d739ec72a3d83350de8e46b40d169220217",
+      "configuration_id": "b350014c2f97c8e9ae059ec0",
+      "cache_key_sha256": "42a76f6dca3ce91e2137432e7889667189b0f7647bd42b73beb3cc876b5b6aa5"
+    },
+    {
+      "k": 2,
+      "strategy": "selfish",
+      "rate": 0,
+      "result_sha256": "9127b6f0ca8a3225a9945e4e164eab60fa1cd33ead7d7ca224ea0279d90ce9d8",
+      "configuration_id": "2f8b86324d158e595d89a596",
+      "cache_key_sha256": "24694789ad333c7ec19da89b3d6598b8db8cae884e1a73829b6adcf0e9c4d373"
+    },
+    {
+      "k": 2,
+      "strategy": "selfish",
+      "rate": 0.25,
+      "result_sha256": "2d6d8ce6f72ba66b88c08a86f02cb429117341d282948610fdd068b431c6b50b",
+      "configuration_id": "b350014c2f97c8e9ae059ec0",
+      "cache_key_sha256": "14ad78e52f56c1e091109cbe81a47dbbf861fecad1a28b66f485380241e5bc8e"
+    },
+    {
+      "k": 3,
+      "strategy": "honest",
+      "rate": 0,
+      "result_sha256": "e617676a7ccc54c906c16aafe5db76477c59fff830fdafa7dae012810c45898b",
+      "configuration_id": "41706034d10e1523d3e25af8",
+      "cache_key_sha256": "298738a8e04b3ecd7c52ea6b5fb5335be758b28ebf13553c0ce1f994cc11375a"
+    },
+    {
+      "k": 3,
+      "strategy": "honest",
+      "rate": 0.25,
+      "result_sha256": "c5fe470c6703d302f28238d3f51b0e18c1fed1c5c7fe76f7b2c46b109c35b1b2",
+      "configuration_id": "d587baaabc73b72c85948bbd",
+      "cache_key_sha256": "1ee4978f4e07bba384d0c47d79247a3c7d0261a318ed0b4942d57a1c6aef39dc"
+    },
+    {
+      "k": 3,
+      "strategy": "selfish",
+      "rate": 0,
+      "result_sha256": "58f7c5b48b5e7eb7e7353498271e78719e4d38ba1eb2dccf978fcf5190ba0ff2",
+      "configuration_id": "41706034d10e1523d3e25af8",
+      "cache_key_sha256": "71446ef0f1bb41213a92e5cf9b1360dd8713bc0eea39a8f7561ecd9efd2cc9af"
+    },
+    {
+      "k": 3,
+      "strategy": "selfish",
+      "rate": 0.25,
+      "result_sha256": "6c35ccde70fe95f21f56f4873941c52ac666af285c33f6e9d69a958ccac9060b",
+      "configuration_id": "d587baaabc73b72c85948bbd",
+      "cache_key_sha256": "2e5bacc552bd043b098a80e268082abd0248c626d81dbb366d1edef9de8c195c"
+    }
+  ],
+  "runner_specification": {
+    "expected_model_version": "persistent-counter-fork-v1",
+    "punishment_rule": "counter_fork",
+    "counter_fork_k": 2,
+    "seed": 701,
+    "accepted_blocks": 12,
+    "repetitions": 2,
+    "bootstrap_samples": 12,
+    "tpr": [
+      0.5,
+      1
+    ],
+    "fpr": [
+      0,
+      0.1
+    ],
+    "composition": {
+      "target_hash": [
+        0.2
+      ],
+      "candidate_power": [
+        0.2
+      ],
+      "gamma": [
+        0.5
+      ],
+      "natural_fork_rate": [
+        0,
+        0.2
+      ],
+      "systematic": {
+        "power_step": 0.1,
+        "minimum_member_power": 0.1,
+        "member_counts": [
+          2
+        ]
+      }
+    }
+  },
+  "runner_files_sha256": {
+    "checkpoints/4301f3589476710f5d0cb2ba.json": "b13e083ee82ac6c4e19adc992a8f64baec763f77fea4c2152af9f1db0ede83db",
+    "checkpoints/e349cb9128a0c7203d1ff039.json": "5f0ff399c8791b7a4b477879466e49fb43c0daf4b72d73464444c1043ff677bc",
+    "coalition_results.csv": "c38f8919a083349394192dcc98b7a15249c28acea56121735046b68722bd4a00",
+    "continuous_tpr_thresholds.csv": "96d1c371d10d9f0ccc3eab5a2cbd22c356c80110b87d8081dc70fb529180afbb",
+    "detector_evaluations.csv": "b7cc050377230f5e08502202b19c59e8acca194b4652d5bb76140f89e76aa181",
+    "member_credibility.csv": "e9beb772591e4adc28d165d685ffc45d60a9bc92ec0bda821a35202b08d5e60b",
+    "minimum_thresholds.csv": "4ed51686327750f77d70103382db8ac70aebc9bf55bacb7bf7e81548dcc2e04f",
+    "persistent_manifest.json": "9744178a0c03af117220ae3cfe8d705b74afb0838a15547a1e77f5d73a6e5b00",
+    "persistent_results.json": "0bad44ce192aec532e833ea7a6ef1a7b01b5fa62c63d175e0179258876fcc448",
+    "repetition_metrics.csv": "f3afbeb3ed7bc6a66fc15cb0873887bcd85d02785b2b03f96264449e080cb011"
+  }
+}
