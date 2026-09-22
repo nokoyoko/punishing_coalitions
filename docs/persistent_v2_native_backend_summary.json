@@ -1,0 +1,170 @@
+{
+  "status": "COMPLETE_WITH_REFERENCE_LIMITS",
+  "verified_conditions": 230,
+  "paired_conditions": 607,
+  "conditions": 607,
+  "python": 1016.7644939999984,
+  "native": 206.54705899999993,
+  "speedup": 4.922677180312689,
+  "cpu_seconds_per_condition": {
+    "python": 1.6750650642504092,
+    "native": 0.34027522075782524
+  },
+  "replay_count": 98,
+  "replay_fraction": 0.1611842105263158,
+  "completed_conditions": {
+    "native": 608,
+    "python": 607
+  },
+  "speedup_scope": "completed paired conditions only; memory-limited Python references excluded explicitly",
+  "native_total_cpu_seconds_including_unpaired": 242.65387800000002,
+  "reference_limited_condition_ids": [
+    "ae86482dcdf074dfc767ea4be85e4890b52797636c47de601d0daf80baf89d45"
+  ],
+  "by": {
+    "rule": {
+      "counter_fork_k1": {
+        "conditions": 95,
+        "python": 111.08747400000146,
+        "native": 28.5436909999994,
+        "speedup": 3.8918398465007136
+      },
+      "counter_fork_k2": {
+        "conditions": 95,
+        "python": 119.39381199999781,
+        "native": 30.699492999999677,
+        "speedup": 3.8891134781932415
+      },
+      "counter_fork_k3": {
+        "conditions": 95,
+        "python": 121.09804599999762,
+        "native": 31.05708699999923,
+        "speedup": 3.8992081259907163
+      },
+      "ignore": {
+        "conditions": 95,
+        "python": 159.0181550000014,
+        "native": 30.575775000001727,
+        "speedup": 5.200789023336037
+      },
+      "petty": {
+        "conditions": 95,
+        "python": 97.57196099999999,
+        "native": 18.625334999998984,
+        "speedup": 5.238668780991339
+      },
+      "selfish": {
+        "conditions": 94,
+        "python": 376.4537360000013,
+        "native": 61.05062700000042,
+        "speedup": 6.166255032892598
+      },
+      "shared_baseline": {
+        "conditions": 38,
+        "python": 32.14130999999878,
+        "native": 5.995051000000501,
+        "speedup": 5.361307184875674
+      }
+    },
+    "cardinality": {
+      "2": {
+        "conditions": 155,
+        "python": 351.303911,
+        "native": 57.0878229999999,
+        "speedup": 6.153745099020515
+      },
+      "3": {
+        "conditions": 224,
+        "python": 295.3081469999996,
+        "native": 64.53540599999963,
+        "speedup": 4.575909028913545
+      },
+      "4": {
+        "conditions": 228,
+        "python": 370.1524359999987,
+        "native": 84.92383000000041,
+        "speedup": 4.358640395752252
+      }
+    },
+    "lambda": {
+      "0": {
+        "conditions": 224,
+        "python": 330.5147940000016,
+        "native": 73.4768069999987,
+        "speedup": 4.498219336068964
+      },
+      "0.005": {
+        "conditions": 192,
+        "python": 425.5515409999973,
+        "native": 74.24388200000055,
+        "speedup": 5.7318061709110815
+      },
+      "0.02": {
+        "conditions": 191,
+        "python": 260.69815899999946,
+        "native": 58.82637000000068,
+        "speedup": 4.431654698394555
+      }
+    },
+    "kind": {
+      "H": {
+        "conditions": 19,
+        "python": 12.83725699999934,
+        "native": 2.048471000000063,
+        "speedup": 6.266750664275425
+      },
+      "HF": {
+        "conditions": 114,
+        "python": 129.61516599999862,
+        "native": 27.291097999999636,
+        "speedup": 4.749356951486538
+      },
+      "S0": {
+        "conditions": 19,
+        "python": 19.304052999999442,
+        "native": 3.946580000000438,
+        "speedup": 4.891337056387378
+      },
+      "SC": {
+        "conditions": 113,
+        "python": 255.53328400000186,
+        "native": 47.909317999999644,
+        "speedup": 5.333686528370197
+      },
+      "SC_leaveout": {
+        "conditions": 342,
+        "python": 599.4747339999991,
+        "native": 125.35159200000015,
+        "speedup": 4.782346394132739
+      }
+    }
+  },
+  "python_stages": {
+    "initialization": 0.04955899999600888,
+    "simulation": 408.6218670000015,
+    "terminal": 64.5998040000024,
+    "lightweight": 144.34938700000004,
+    "selection": 0.027628000001584496,
+    "replay": 156.61266799999913,
+    "extraction": 169.0357950000016,
+    "compact_validation": 0.09697299999947973,
+    "persistence": 0.38098999999971284,
+    "cleanup": 72.9292469999981
+  },
+  "native_stages": {
+    "prepare_cpu_seconds": 0.07556799999821351,
+    "native_simulation_cpu_seconds": 40.123682,
+    "native_emission_cpu_seconds": 67.569778,
+    "native_lightweight_cpu_seconds": 68.415544,
+    "boundary_decode_cpu_seconds": 0.04119200000076262,
+    "replay_cpu_seconds": 23.553364,
+    "compact_validation_cpu_seconds": 0.10222599999866588,
+    "persistence_cpu_seconds": 0.38344799999856605,
+    "cleanup_cpu_seconds": 2.19986100000375
+  },
+  "replay_reasons": {
+    "risk:cascading_selfish_reactions": 89,
+    "risk:simultaneous_selfish_reactions": 94,
+    "hash_sample": 4
+  }
+}

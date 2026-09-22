@@ -11,6 +11,7 @@ import random
 from .persistent import PersistentSimulation as TreeEngine, UnsupportedStateError
 from .persistent_v2_policies import CounterForkPolicy, PettyPolicy
 from .persistent_v2_index import PublicVisibility, initialize_indexes, index_publication, advance_frontier
+from .persistent_v2_terminal import terminal_state as base_terminal_state
 from .ostracism import OstracismPolicy
 from .selfish_counter import SelfishState, SelfishStateError
 from .selfish_strategy import release_plan
@@ -383,7 +384,7 @@ class PersistentSimulation(TreeEngine):
         return {a: state.snapshot(self) for a, state in self.selfish.states.items()}
 
     def terminal_state(self):
-        terminal = super().terminal_state()
+        terminal = base_terminal_state(self)
         states = self.state_snapshots()
         terminal.update(private_states=states, pending_publication_window=self.window,
             reaction_queue=list(self.selfish.pending),

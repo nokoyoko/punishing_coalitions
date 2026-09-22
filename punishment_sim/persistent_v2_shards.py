@@ -70,17 +70,19 @@ def _plan_digest(connection, *, anchors=None, policy=None):
     return h.hexdigest()
 
 
-def prepare_study(design, directory):
+def prepare_study(design, directory, *, backend='python'):
     """Enumerate exact native tasks; create immutable plan/control files, no mining."""
     design = normalize_design(design)
+    require(backend in ('python', 'native'), 'execution backend')
     directory = Path(directory)
     if (directory / "study.json").exists():
         manifest = load_manifest(directory)
         same(manifest["design"], design, "different study design")
+        require(manifest.get('backend', 'python') == backend, 'different execution backend')
         return manifest
     require(not directory.exists() or not any(directory.iterdir()), "nonempty study without manifest")
+    runtime = runtime_identity(backend)
     directory.mkdir(parents=True, exist_ok=True)
-    runtime = runtime_identity()
     rules = [Rule(**r) for r in design["variants"]]
     spec = {k: v for k, v in design.items() if k not in ("variants", "shard_count", "validation_policy")}
     spec.update(**asdict(rules[0]), expected_model_version=model_version(rules[0]))
@@ -126,7 +128,7 @@ def prepare_study(design, directory):
         "accepted_block_work_before_reuse": independent*design["accepted_blocks"],
         "accepted_block_work_after_reuse": unique*design["accepted_blocks"],
         "by_lambda": per_lambda, "by_cardinality": dict(cardinalities), "populations_by_shard": dict(shard_counts)}
-    unsigned = {"layout": LAYOUT, "design": design, "runtime": runtime, "plan_sha256": plan_hash, "scope": scope,
+    unsigned = {"layout": LAYOUT, "backend": backend, "design": design, "runtime": runtime, "plan_sha256": plan_hash, "scope": scope,
                 "validation": validation_context(design["validation_policy"], anchors)}
     # Hash the durable JSON representation: integer keys become strings, whose
     # canonical sort order can differ (e.g. shard 2 versus shard 10).
@@ -152,7 +154,7 @@ def load_manifest(directory):
     require(manifest["layout"] == LAYOUT, "compact study layout")
     unsigned = {k: v for k, v in manifest.items() if k not in ("study_id", "receipt_key_sha256")}
     require(manifest["study_id"] == digest(unsigned), "study manifest checksum")
-    same(manifest["runtime"], runtime_identity(), "worker/analysis source or Python version changed")
+    same(manifest["runtime"], runtime_identity(manifest.get('backend', 'python')), "worker/analysis source, backend, binary or Python version changed")
     same(manifest["validation"]["policy"], normalize_policy(manifest["design"]["validation_policy"]), "manifest validation policy")
     with sqlite3.connect(f"file:{directory / 'plan.sqlite3'}?mode=ro", uri=True) as connection:
         require(connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok", "plan integrity")
@@ -304,12 +306,38 @@ def _condition(store, p, rule, rep, condition, analyze_only, hook, baseline_cach
     if result is None:
         require(not analyze_only, "analysis-only missing compact condition")
         hook("before_condition", identity)
-        start = perf_counter()
-        raw = PersistentSimulation(p, strategy, flagged, coalition, rule, repetition=rep, production=True).run()
-        store.metrics["mining_seconds"] += perf_counter()-start
-        if raw["status"] != "COMPLETE":
-            raise IncompleteStudyError(condition, raw)
-        result = _validate_fresh(store, raw, p, rule, rep, strategy, flagged, coalition)
+        if store.manifest.get('backend', 'python') == 'native':
+            from .persistent_v2_native import execute
+            raw = None  # Nonselected conditions never create a Python witness.
+            try:
+                result, timings = execute(p, strategy, flagged, coalition, rule,
+                    repetition=rep, producer=producer, context=store.validation)
+            except Exception as exc:
+                store.put('validation_failure', key, {'condition_id': key,
+                    'validation_policy_sha256': store.validation.policy_sha256,
+                    'backend': 'native', 'error_type': type(exc).__name__, 'error': str(exc)})
+                raise
+            store.metrics['mining_seconds'] += timings['native_simulation_wall_seconds']
+            store.metrics['extraction_seconds'] += timings['native_emission_wall_seconds']
+            store.metrics['lightweight_validation_seconds'] += timings['native_lightweight_wall_seconds']
+            store.metrics['native_lightweight_conditions'] += 1
+            store.metrics['compact_validation_seconds'] += timings['compact_validation_wall_seconds']
+            if result['validation']['level'] == FULL:
+                elapsed = timings['replay_wall_seconds']
+                store.metrics['native_validation_seconds'] += elapsed
+                store.metrics['full_replay_seconds' if store.validation.mode == 'full' else 'sampled_replay_seconds'] += elapsed
+                store.metrics['replayed_conditions'] += 1
+            else:
+                store.metrics['lightweight_only_conditions'] += 1
+            for reason in result['validation']['replay_reasons']:
+                store.metrics['replay_reason:'+reason] += 1
+        else:
+            start = perf_counter()
+            raw = PersistentSimulation(p, strategy, flagged, coalition, rule, repetition=rep, production=True).run()
+            store.metrics["mining_seconds"] += perf_counter()-start
+            if raw["status"] != "COMPLETE":
+                raise IncompleteStudyError(condition, raw)
+            result = _validate_fresh(store, raw, p, rule, rep, strategy, flagged, coalition)
         store.metrics["mining_simulations_executed"] += 1
         start = perf_counter()
         hook("validated_condition", {"raw": raw, "compact": result})
@@ -646,6 +674,7 @@ def main():
     plan = sub.add_parser("plan")
     plan.add_argument("config", type=Path)
     plan.add_argument("directory", type=Path)
+    plan.add_argument("--backend", choices=('python', 'native'), default='python')
     run = sub.add_parser("run")
     run.add_argument("directory", type=Path)
     run.add_argument("--shard", type=int, required=True)
@@ -664,7 +693,7 @@ def main():
     export.add_argument("--preliminary", action="store_true")
     args = parser.parse_args()
     if args.command == "plan":
-        result = prepare_study(json.loads(args.config.read_text()), args.directory)["scope"]
+        result = prepare_study(json.loads(args.config.read_text()), args.directory, backend=args.backend)["scope"]
     elif args.command == "run":
         result = run_shard(args.directory, args.shard, analyze_only=args.analyze_only,
                            rep_start=args.rep_start, rep_end=args.rep_end, preliminary=args.preliminary)

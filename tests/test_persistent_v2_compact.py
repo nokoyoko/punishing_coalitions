@@ -311,6 +311,9 @@ def test_fixed_ten_repetition_benchmark_evidence_and_native_source_identity():
     assert len(evidence["tasks"]) == 14 and len(evidence["conditions"]) == 700
     assert all(r["reference_blocks"] >= 30000 for r in evidence["conditions"])
     assert {r["repetition"] for r in evidence["conditions"]} == set(range(10))
-    assert all(s["runtime"]["sources"]["persistent_v2"] == runtime_identity()["sources"]["persistent_v2"] and s["resume_metrics"].get("mining_simulations_executed",0) == 0
+    # The historical measurement predates exact terminal-block deduplication.
+    # Keep it pinned to the measured reference source, not today's runtime.
+    reference = json.loads((ROOT / "docs/persistent_v2_kernel_profile_before.json").read_text())
+    assert all(s["runtime"]["sources"]["persistent_v2"] == reference["runtime"]["sources"]["persistent_v2"] and s["resume_metrics"].get("mining_simulations_executed",0) == 0
                for s in evidence["studies"])
     assert not any(evidence[k] for k in ("production_sweep", "remote_job", "ssh", "xtra_access"))

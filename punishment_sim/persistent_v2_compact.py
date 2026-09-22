@@ -19,15 +19,21 @@ from .persistent_v2_validation import (validation_context, validate_lightweight,
 SCHEMA = "persistent-scientific-condition-v2-compact-2"
 
 
-def runtime_identity():
+def runtime_identity(backend='python'):
+    require(backend in ('python', 'native'), 'execution backend')
     root = Path(__file__).parent
     names = ("coalition", "persistent", "persistent_checkpoint", "persistent_study", "persistent_sweep",
              "ostracism", "selfish_counter", "selfish_strategy", "selfish_validation", "research_sweep",
              "stage_b_validation", "theory", "persistent_v2", "persistent_v2_index", "persistent_v2_policies",
              "persistent_v2_checkpoint", "persistent_v2_study", "persistent_v2_compact", "persistent_v2_shards",
-             "persistent_v2_outputs", "persistent_v2_production", "persistent_v2_sweep", "persistent_v2_validation")
-    return {"python": platform.python_version(), "sources": {
+             "persistent_v2_outputs", "persistent_v2_production", "persistent_v2_sweep", "persistent_v2_validation",
+             "persistent_v2_terminal", "persistent_v2_dag", "persistent_v2_native")
+    result = {"python": platform.python_version(), "sources": {
         name: hashlib.sha256((root / (name+".py")).read_bytes()).hexdigest() for name in names}}
+    if backend == 'native':
+        from .persistent_v2_native import backend_identity
+        result['execution_backend'] = backend_identity()
+    return result
 
 
 def sequence_summary(values):
@@ -159,7 +165,7 @@ def analysis_record(record):
         "terminal_omitted_selfish_share_bound": None}
 
 
-def rerun_condition(record, *, trace=False, context=None):
+def rerun_condition(record, *, trace=False, context=None, backend='python'):
     """Explicit audit mining only: regenerate and compare a compact condition."""
     from .coalition import Population
     from .persistent_v2 import Rule, PersistentSimulation
@@ -169,7 +175,7 @@ def rerun_condition(record, *, trace=False, context=None):
     population = Population(**values)
     rule = Rule(**identity["rule"]) if identity["flagged"] else Rule("petty")
     condition = (identity["repetition"], identity["strategy"], identity["flagged"], tuple(identity["active_coalition"]))
-    producer = digest(runtime_identity())
+    producer = digest(runtime_identity(backend))
     validate_compact(record, population, rule, *condition, producer, context)
     raw = PersistentSimulation(population, condition[1], condition[2], condition[3], rule,
         repetition=condition[0], production=not trace, trace_mode=trace).run()

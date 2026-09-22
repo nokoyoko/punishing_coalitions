@@ -37,11 +37,13 @@ def test_completed_identical_input_benchmark_and_phase_projections():
     evidence=json.loads((ROOT/'docs/persistent_v2_51pct_benchmark.json').read_text())
     assert evidence['status']=='COMPLETE'
     # This is historical full-replay timing, not a benchmark of sampled mode.
-    # Science/estimators and the full native validator remain byte-identical;
-    # compact/shard control contracts intentionally changed and are tested anew.
+    # Estimators and simulation transitions remain unchanged. The replay entry
+    # point now also accepts representation-equivalent DAG witnesses; native
+    # differential fixtures exercise both representations against this reference.
     current=runtime_identity()
-    changed_control={'persistent_v2_compact', 'persistent_v2_shards'}
-    assert set(current['sources']) == set(evidence['runtime']['sources']) | {'persistent_v2_validation'}
+    changed_control={'persistent_v2_compact', 'persistent_v2_shards', 'persistent_v2', 'persistent_v2_checkpoint'}
+    assert set(current['sources']) == set(evidence['runtime']['sources']) | {
+        'persistent_v2_validation', 'persistent_v2_terminal', 'persistent_v2_dag', 'persistent_v2_native'}
     for module, expected in evidence['runtime']['sources'].items():
         if module not in changed_control:
             assert current['sources'][module] == expected

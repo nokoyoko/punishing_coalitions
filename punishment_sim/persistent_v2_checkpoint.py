@@ -209,7 +209,7 @@ def validate_run(result, population, rule, repetition, strategy, flagged, coalit
 
 
 def _validate_run(result, population, rule, repetition, strategy, flagged, coalition,
-                  optimizations=frozenset(("reactions", "comparison", "debug", "metadata"))):
+                  optimizations=frozenset(("reactions", "comparison", "debug", "metadata")), *, _dag=False):
     compare = native_same if "comparison" in optimizations else same
     identity = condition_identity(population, repetition, strategy, flagged, coalition, rule)
     compare(result["identity"], identity, "identity mismatch")
@@ -263,6 +263,9 @@ def _validate_run(result, population, rule, repetition, strategy, flagged, coali
     public = set(public_order)
     require(public == {b for b in blocks if blocks[b]["publication_sequence"] is not None}, "public coverage")
     view = PublicReplay(population, rule, identity, blocks, cache_metadata="metadata" in optimizations)
+    if _dag:
+        from .persistent_v2_dag import ReorganizationEndpoints
+        view.reorganizations = ReorganizationEndpoints()
     actors = list(view.selfish.states)
     require(result["selfish_actor_order"] == actors, "selfish actor identity mismatch")
     if "reactions" not in optimizations:
@@ -351,7 +354,12 @@ def _validate_run(result, population, rule, repetition, strategy, flagged, coali
     # independently from the raw records and publication/discovery provenance.
     from .persistent import Block
     view.blocks = {bid: Block(**vars(b)) for bid, b in view.blocks.items()}
-    compare(terminal, view.terminal_state(), "terminal/frontier/boundary mismatch")
+    if _dag:
+        from .persistent_v2_dag import terminal_witness
+        expected_terminal = terminal_witness(view)
+    else:
+        expected_terminal = view.terminal_state()
+    compare(terminal, expected_terminal, "terminal/frontier/boundary mismatch")
     compare(result["rng"], view.rng_snapshot(), "RNG state/consumption mismatch")
     compare(result["episodes"], view.punishment.history if view.punishment else [], "policy history mismatch")
     compare(result["selfish_reactions"], view.selfish.history, "missing or incorrect selfish reaction history")

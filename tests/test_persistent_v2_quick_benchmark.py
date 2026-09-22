@@ -85,6 +85,47 @@ def test_selection_and_queue_do_not_depend_on_plan_row_order(planned, monkeypatc
     assert quick.select_jobs(directory, manifest) == (jobs, inventory)
 
 
+def test_kernel_profile_uses_real_identities_and_complete_stratum_coverage(planned, monkeypatch):
+    from analysis import profile_persistent_v2_kernel as profile
+    directory, manifest, jobs, inventory = planned
+    monkeypatch.setattr(profile, 'prepare_quick', lambda _: (manifest, jobs, inventory))
+    observed, cases = profile.corpus(directory)
+    assert observed == manifest
+    assert len(cases) == len({c['condition_id'] for c in cases}) == 230
+    assert Counter(c['kind'] for c in cases) == {'H':19, 'S0':19, 'HF':24, 'SC':114, 'SC_leaveout':54}
+    for case in cases:
+        p = quick.population(case['task']['population'])
+        identity = condition_identity(p, 0, case['strategy'], case['flagged'], case['coalition'], Rule(**case['rule']))
+        assert case['identity'] == identity and case['condition_id'] == digest(identity)
+        assert p.target_accepted_blocks == 30000 and p.seed == 51000
+    cells = {(len(c['task']['population']['candidates']), c['task']['population']['natural_fork_rate'],
+              c['composition'], c['rule']['punishment_rule'], c['rule']['counter_fork_k'])
+             for c in cases if c['kind'] == 'SC' and c['composition'] != 'gamma_zero_control'}
+    assert cells == {(m, rate, composition, r.punishment_rule, r.counter_fork_k)
+                     for m in (2,3,4) for rate in (0,.005,.02) for composition in ('balanced','skewed')
+                     for r in profile.VARIANTS}
+    assert {c['task']['population']['gamma'] for c in cases} == {0,.25,.5,.75,1}
+
+
+def test_native_backend_benchmark_covers_every_required_condition(planned, monkeypatch):
+    from analysis import profile_persistent_v2_kernel as profile
+    from analysis.benchmark_persistent_v2_native import inventory, source_goldens
+    from punishment_sim.persistent_study import required_conditions
+    directory, manifest, jobs, selected = planned
+    monkeypatch.setattr(profile, 'prepare_quick', lambda _: (manifest, jobs, selected))
+    _, source = profile.corpus(directory)
+    cases = inventory(source)
+    assert len(cases) == len({c['condition_id'] for c in cases}) == 608
+    assert Counter(c['kind'] for c in cases) == {'H':19, 'S0':19, 'HF':114, 'SC':114, 'SC_leaveout':342}
+    assert len(source_goldens()) == 229
+    for case in cases:
+        p = quick.population(case['task']['population'])
+        assert (case['strategy'], case['flagged'], tuple(case['coalition'])) in required_conditions(case['task']['coalitions'])
+        assert case['condition_id'] == digest(condition_identity(p, 0, case['strategy'], case['flagged'], case['coalition'], Rule(**case['rule'])))
+        assert p.seed == 51000 and p.target_accepted_blocks == 30000
+    assert {c['condition_id'] for c in source} <= {c['condition_id'] for c in cases}
+
+
 def test_quick_worker_calls_native_condition_pipeline_without_changing_context(planned, tmp_path, monkeypatch):
     core, manifest, jobs, _ = planned
     job = next(j for j in jobs if any(not c[1] for c in j['conditions']))

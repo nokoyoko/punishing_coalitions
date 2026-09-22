@@ -17,6 +17,9 @@ punishment-sim = "punishment_sim.cli:main"
 [tool.setuptools.packages.find]
 include = ["punishment_sim*"]
 
+[tool.setuptools.package-data]
+punishment_sim = ["native/*.cpp", "native/*.hpp"]
+
 [tool.pytest.ini_options]
 markers = ["statistical: slower Monte Carlo validation"]
 testpaths = ["tests"]
