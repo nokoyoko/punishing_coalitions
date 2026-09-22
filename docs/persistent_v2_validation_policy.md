@@ -1,5 +1,10 @@
 # Persistent-v2 production validation and measured concurrency
 
+For the current operational question, use the [quick 16-versus-28 benchmark](persistent_v2_quick_benchmark.md).
+It supersedes the larger concurrency procedure below for this decision: sampled
+validation only, 1,152 conditions per trial and exactly two initial trials.
+The validation contract described here is unchanged.
+
 The future core/extension configurations now explicitly select `sampled`
 validation. The scientific simulation and statistical reductions are unchanged.
 This control-plane change introduces a new manifest/compact-record contract;
