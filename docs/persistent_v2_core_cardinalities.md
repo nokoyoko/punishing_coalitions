@@ -4,6 +4,9 @@ This is the current **future** production design. It supersedes the cardinality
 scope and resource totals in the [earlier 2–6 report](persistent_v2_51pct_phased_production.md).
 No production sweep or new 30,000-block benchmark was executed for this update.
 Historical petty-v4 configuration, code, results, and jobs were not changed.
+The current [validation policy and concurrency procedure](persistent_v2_validation_policy.md)
+supersede the older mandatory-replay contract and ideal-scaling throughput advice.
+The four future configurations now explicitly select sampled validation.
 
 ## Configurations and preserved science
 
@@ -25,7 +28,7 @@ cardinality set. All three configs retain:
 - persistent-network-v2 with petty, counter-fork k=1/2/3, ignore, and selfish;
 - seed 51000, 30,000 reference blocks, ten repetitions, bootstrap count 2000;
 - TPR `[0.5, 0.7, 0.9, 1]`, FPR `[0, 0.001, 0.01, 0.05, 0.1]`, CRN pairing,
-  uncertainty/classification machinery, native validation and shared H/S0;
+  uncertainty/classification machinery and shared H/S0;
 - fixed global Phase I repetitions 1–5, followed by Phase II repetitions 6–10.
 
 Each extension uses the same fixed phase convention when run later. Phase I
@@ -92,15 +95,15 @@ Each lambda has the same counts within a dataset:
 | Unique simulations | 13,511,040 | 6,056,160 | 6,727,000 |
 | Nominal block work | 405,331,200,000 | 181,684,800,000 | 201,810,000,000 |
 
-## Runtime projections from existing evidence
+## Historical runtime illustrations, superseded for production forecasting
 
 `python -m analysis.project_persistent_v2_cardinalities` reuses the completed
-[local .51 benchmark](persistent_v2_51pct_benchmark.json). Mining, validation and
-reduction code remains unchanged. The subsequent [manifest canonicalization
-fix](persistent_v2_manifest_checksum_fix.md) changes the shard module source
-fingerprint only through its documented control-plane addition; the evidence test
-verifies the exact remaining benchmark source. No benchmark was rerun. The new
-collection layer is analysis only and has a separate source fingerprint. Detailed artifacts:
+[local .51 benchmark](persistent_v2_51pct_benchmark.json). The mining engine,
+full native validator and reducers remain byte-identical to that evidence.
+The compact/shard control contract and validation policy have changed; these
+old measurements do not time the new lightweight checks or sampled policy.
+The evidence test pins the unchanged scientific sources without relaxing runtime
+checks when loading checkpoints. No production benchmark was rerun. Detailed artifacts:
 [core](persistent_v2_core_2to4_projection.json),
 [extension 5](persistent_v2_extension_5_projection.json), and
 [extension 6](persistent_v2_extension_6_projection.json).
@@ -112,6 +115,12 @@ measured full-grid throughput. They include mining, native validation, extractio
 compact validation, aggregation and checkpoint serialization/write. They exclude
 setup, final merge/export, untimed bookkeeping, and target-machine effects.
 High-power/skewed cells remain unmeasured.
+The reported Kinakuta rate of 1,923 Phase-I repetition records/hour contradicts
+the old ideal-scaling estimate. Holding that rate fixed would imply 82.34 days
+for core Phase I; even an ideal 49% total-cost removal leaves 41.99 days. These
+are arithmetic illustrations, not forecasts of an early, nonuniform workload.
+Measure the [fixed concurrency workload](persistent_v2_validation_policy.md)
+before choosing worker count or issuing a new schedule.
 
 | Ideal 28-worker elapsed days | Core 2–4 | Extension 5 | Extension 6 |
 | --- | ---: | ---: | ---: |
@@ -132,7 +141,10 @@ measured local workers gives these full-run days (also not a bound):
 ## Storage projections
 
 All values below are **decimal GB** (10^9 bytes), estimates rather than exact disk
-requirements. The JSON artifacts retain unrounded byte projections. The model
+requirements. The JSON artifacts retain unrounded byte projections. They use the
+historical compact schema; the new validation attestations and reaction diagnostics
+have not been measured at production scale, so these are historical storage
+illustrations too. The model
 uses measured 1,000-task SQLite packing and two/six-member cardinality interpolation,
 plus exact generated plan sizes. Primary storage includes shard databases and
 source catalogs; final primary retains preliminary task records and both catalog

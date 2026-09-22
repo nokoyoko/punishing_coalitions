@@ -23,16 +23,19 @@ from .persistent_study import required_conditions, IncompleteStudyError
 from .persistent_v2 import Rule, PersistentSimulation, NETWORK_VERSION, model_version, condition_identity
 from .persistent_v2_compact import (runtime_identity, extract_validated, validate_compact, analysis_record)
 from .persistent_v2_checkpoint import require, same, validate_run
+from .persistent_v2_validation import (normalize_policy, validation_context, add_anchor,
+    validate_lightweight, attestation, prepare_context, FULL)
 from .persistent_v2_study import _analyze_validated
 from .persistent_v2_sweep import Task, validate_spec
 from .persistent_v2_production import plan_tasks, iter_tasks
 
-LAYOUT = "persistent-compact-shards-v2-1"
+LAYOUT = "persistent-compact-shards-v2-2"
 VARIANTS = (Rule("petty"), Rule("counter_fork", 1), Rule("counter_fork", 2), Rule("counter_fork", 3), Rule("ignore"), Rule("selfish"))
 
 
 def normalize_design(design):
     design = dict(design)
+    policy = normalize_policy(design.pop("validation_policy", None))
     variants = [Rule(**r) for r in design.pop("variants")]
     shards = design.pop("shard_count", 28)
     require(type(shards) is int and shards > 0 and variants and len(set(variants)) == len(variants), "variants/shards")
@@ -40,7 +43,7 @@ def normalize_design(design):
     spec, _ = validate_spec({**design, **asdict(first), "expected_model_version": model_version(first)})
     for k in ("punishment_rule", "counter_fork_k", "expected_model_version"):
         spec.pop(k)
-    return {**spec, "variants": [asdict(r) for r in variants], "shard_count": shards}
+    return {**spec, "variants": [asdict(r) for r in variants], "shard_count": shards, "validation_policy": policy}
 
 
 def single_variant_design(spec):
@@ -57,10 +60,13 @@ def task_key(ptask, rule):
     return Task(ptask, rule).task_id
 
 
-def _plan_digest(connection):
+def _plan_digest(connection, *, anchors=None, policy=None):
     h = hashlib.sha256()
     for pid, body, owner, group in connection.execute("SELECT population_key,body,owner,analysis_group FROM tasks ORDER BY ordinal"):
-        h.update(canonical_json([pid, json.loads(body), owner, group]).encode()+b"\n")
+        body = json.loads(body)
+        h.update(canonical_json([pid, body, owner, group]).encode()+b"\n")
+        if anchors is not None:
+            add_anchor(anchors, Population(**body['population']), policy)
     return h.hexdigest()
 
 
@@ -76,7 +82,7 @@ def prepare_study(design, directory):
     directory.mkdir(parents=True, exist_ok=True)
     runtime = runtime_identity()
     rules = [Rule(**r) for r in design["variants"]]
-    spec = {k: v for k, v in design.items() if k not in ("variants", "shard_count")}
+    spec = {k: v for k, v in design.items() if k not in ("variants", "shard_count", "validation_policy")}
     spec.update(**asdict(rules[0]), expected_model_version=model_version(rules[0]))
     with sqlite3.connect(directory / "plan.sqlite3") as connection:
         plan_tasks(connection, spec)
@@ -84,9 +90,11 @@ def prepare_study(design, directory):
         connection.execute("ALTER TABLE tasks ADD COLUMN analysis_group TEXT")
         per_lambda, cardinalities, shard_counts = {}, Counter(), Counter()
         populations = per_variant = baseline = 0
+        anchors = {}
         for task in iter_tasks(connection, rules[0]):
             ptask = task.population_task
             p, pid = ptask.population, digest(asdict(ptask.population))
+            add_anchor(anchors, p, design["validation_policy"])
             owner = population_owner(pid, design["shard_count"])
             group = canonical_json([p.target_hash_power, p.gamma, p.natural_fork_rate, ptask.candidate_total,
                                     p.target_accepted_blocks, p.seed])
@@ -118,7 +126,8 @@ def prepare_study(design, directory):
         "accepted_block_work_before_reuse": independent*design["accepted_blocks"],
         "accepted_block_work_after_reuse": unique*design["accepted_blocks"],
         "by_lambda": per_lambda, "by_cardinality": dict(cardinalities), "populations_by_shard": dict(shard_counts)}
-    unsigned = {"layout": LAYOUT, "design": design, "runtime": runtime, "plan_sha256": plan_hash, "scope": scope}
+    unsigned = {"layout": LAYOUT, "design": design, "runtime": runtime, "plan_sha256": plan_hash, "scope": scope,
+                "validation": validation_context(design["validation_policy"], anchors)}
     # Hash the durable JSON representation: integer keys become strings, whose
     # canonical sort order can differ (e.g. shard 2 versus shard 10).
     unsigned = json.loads(canonical_json(unsigned))
@@ -144,9 +153,13 @@ def load_manifest(directory):
     unsigned = {k: v for k, v in manifest.items() if k not in ("study_id", "receipt_key_sha256")}
     require(manifest["study_id"] == digest(unsigned), "study manifest checksum")
     same(manifest["runtime"], runtime_identity(), "worker/analysis source or Python version changed")
+    same(manifest["validation"]["policy"], normalize_policy(manifest["design"]["validation_policy"]), "manifest validation policy")
     with sqlite3.connect(f"file:{directory / 'plan.sqlite3'}?mode=ro", uri=True) as connection:
         require(connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok", "plan integrity")
-        require(_plan_digest(connection) == manifest["plan_sha256"], "plan content mismatch")
+        anchors = {}
+        policy = manifest["validation"]["policy"]
+        require(_plan_digest(connection, anchors=anchors, policy=policy) == manifest["plan_sha256"], "plan content mismatch")
+        same(manifest["validation"], validation_context(policy, anchors), "validation coverage differs from plan")
     return manifest
 
 
@@ -185,6 +198,7 @@ class ShardStore:
         require(hashlib.sha256(key).hexdigest() == manifest["receipt_key_sha256"][str(shard)], "receipt key provenance")
         self.key = key
         self.producer = digest(manifest["runtime"])
+        self.validation = prepare_context(manifest["validation"])
         self.path = self.directory / f"shard-{shard:02d}.sqlite3"
         self.connection = sqlite3.connect(f"file:{self.path}?mode=ro" if readonly else self.path, uri=readonly, timeout=0)
         if not readonly:
@@ -194,6 +208,9 @@ class ShardStore:
             self.connection.commit()
         require(self.connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok", "shard integrity")
         self.metrics = Counter()
+        if self.connection.execute("SELECT COUNT(*) FROM records WHERE kind='validation_failure'").fetchone()[0]:
+            self.connection.close()
+            require(False, "prior validation failure; explicit investigation and a fresh study are required")
 
     def close(self):
         self.connection.close()
@@ -235,6 +252,47 @@ class ShardStore:
         self.metrics[kind+"_bytes"] += len(blob)
 
 
+def _validate_fresh(store, raw, p, rule, rep, strategy, flagged, coalition):
+    identity, producer = condition_identity(p, rep, strategy, flagged, coalition, rule), store.producer
+    try:
+        start = perf_counter()
+        risks = validate_lightweight(raw, p, rule, rep, strategy, flagged, coalition)
+        store.metrics["lightweight_validation_seconds"] += perf_counter()-start
+        validation = attestation(identity, store.validation, risks)
+        if validation["level"] == FULL:
+            start = perf_counter()
+            # Fatal on failure. No catch/retry or downgrade to lightweight.
+            validate_run(raw, p, rule, rep, strategy, flagged, coalition)
+            elapsed = perf_counter()-start
+            store.metrics["native_validation_seconds"] += elapsed
+            store.metrics["full_replay_seconds" if store.validation.mode == "full" else "sampled_replay_seconds"] += elapsed
+            store.metrics["replayed_conditions"] += 1
+        else:
+            store.metrics["lightweight_only_conditions"] += 1
+        for reason in validation["replay_reasons"]:
+            store.metrics["replay_reason:"+reason] += 1
+        start = perf_counter()
+        result = extract_validated(raw, producer, validation)
+        store.metrics["extraction_seconds"] += perf_counter()-start
+        start = perf_counter()
+        validate_compact(result, p, rule, rep, strategy, flagged, coalition, producer, store.validation)
+        store.metrics["compact_validation_seconds"] += perf_counter()-start
+        return result
+    except Exception as exc:
+        # A validation failure is not a cache miss. Persist a signed stop marker
+        # before diagnostics, so a restart cannot silently remine until success.
+        key = digest(condition_identity(p, rep, strategy, flagged, coalition, rule))
+        store.put('validation_failure', key, {'condition_id': key,
+            'validation_policy_sha256': store.validation.policy_sha256,
+            'error_type': type(exc).__name__, 'error': str(exc)})
+        try:
+            atomic_json(store.directory/'validation_failures'/(key+'.json'),
+                        {'error': str(exc), 'raw': raw})
+        except (ValueError, TypeError):
+            pass  # Non-finite/malformed raw data cannot be serialized; marker persists.
+        raise
+
+
 def _condition(store, p, rule, rep, condition, analyze_only, hook, baseline_cache):
     strategy, flagged, coalition = condition
     identity = condition_identity(p, rep, strategy, flagged, coalition, rule)
@@ -251,12 +309,7 @@ def _condition(store, p, rule, rep, condition, analyze_only, hook, baseline_cach
         store.metrics["mining_seconds"] += perf_counter()-start
         if raw["status"] != "COMPLETE":
             raise IncompleteStudyError(condition, raw)
-        start = perf_counter()
-        validate_run(raw, p, rule, rep, strategy, flagged, coalition)
-        store.metrics["native_validation_seconds"] += perf_counter()-start
-        start = perf_counter()
-        result = extract_validated(raw, producer)
-        store.metrics["extraction_seconds"] += perf_counter()-start
+        result = _validate_fresh(store, raw, p, rule, rep, strategy, flagged, coalition)
         store.metrics["mining_simulations_executed"] += 1
         start = perf_counter()
         hook("validated_condition", {"raw": raw, "compact": result})
@@ -266,7 +319,7 @@ def _condition(store, p, rule, rep, condition, analyze_only, hook, baseline_cach
             store.put("baseline", key, result, hook)
     else:
         start = perf_counter()
-        validate_compact(result, p, rule, rep, strategy, flagged, coalition, producer)
+        validate_compact(result, p, rule, rep, strategy, flagged, coalition, producer, store.validation)
         store.metrics["compact_validation_seconds"] += perf_counter()-start
     if not identity["flagged"]:
         baseline_cache[key] = result
@@ -288,7 +341,7 @@ def load_repetition(store, ptask, rule, rep, payload, baseline_cache):
             record = store.get("baseline", key)
             require(record is not None, "missing shared baseline")
             identity = record["identity"]
-            validate_compact(record, p, rule, rep, identity["strategy"], False, (), store.producer)
+            validate_compact(record, p, rule, rep, identity["strategy"], False, (), store.producer, store.validation)
             require(not identity["flagged"], "flagged shared baseline")
             baseline_cache[key] = record
         record = baseline_cache[key]
@@ -301,7 +354,7 @@ def load_repetition(store, ptask, rule, rep, payload, baseline_cache):
         c = (identity["strategy"], identity["flagged"], tuple(identity["active_coalition"]))
         require(c not in found, "duplicate repetition condition")
         if c[1]:
-            validate_compact(record, p, rule, rep, *c, store.producer)
+            validate_compact(record, p, rule, rep, *c, store.producer, store.validation)
         else:
             same(record["identity"], condition_identity(p, rep, *c, rule), "cached baseline identity")
         found[c] = record

@@ -10,7 +10,7 @@ import tempfile
 from punishment_sim.coalition import Population
 from punishment_sim.persistent_checkpoint import canonical_json, digest
 from punishment_sim.persistent_v2 import Rule
-from punishment_sim.persistent_v2_shards import prepare_study, task_key
+from punishment_sim.persistent_v2_shards import prepare_study, task_key, load_manifest
 from punishment_sim.research_sweep import SweepTask
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +24,7 @@ def enumerate_scope(design):
     hashes = {}
     with tempfile.TemporaryDirectory(prefix='persistent-v2-plan-') as temporary:
         manifest = prepare_study(design, temporary)
+        assert load_manifest(temporary) == manifest
         with sqlite3.connect(Path(temporary)/'plan.sqlite3') as plan:
             for pid, body in plan.execute('SELECT population_key,body FROM tasks ORDER BY population_key'):
                 raw = json.loads(body)
@@ -39,7 +40,10 @@ def enumerate_scope(design):
                 hashes.setdefault(str(m), hashlib.sha256()).update(canonical_json([pid, asdict(task), identities]).encode()+b'\n')
         plan_bytes = (Path(temporary)/'plan.sqlite3').stat().st_size
     scope = manifest['scope']
-    scope.update(exact_enumeration=True, native_task_plan_sha256=manifest['plan_sha256'],
+    scope.update(validation_policy=manifest['validation']['policy'],
+        validation_coverage_strata=len(manifest['validation']['anchors']),
+        validation_anchor_populations=len(set(manifest['validation']['anchors'].values())),
+        exact_enumeration=True, native_task_plan_sha256=manifest['plan_sha256'],
         native_plan_bytes=plan_bytes, configuration_sha256=digest(design),
         coalition_totals=design['composition']['candidate_power'],
         feasible_total_cardinality_cells=len(cells), sampled_structures_per_environment=len(structures),

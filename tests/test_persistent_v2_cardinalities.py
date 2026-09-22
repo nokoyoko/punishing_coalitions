@@ -47,8 +47,12 @@ def test_configs_scopes_and_unchanged_science():
         expected['composition']['systematic']['member_counts'] = members
         assert config == expected
         assert config['repetitions'] == 10 and config['accepted_blocks'] == 30000
+        assert config['validation_policy'] == {'mode': 'sampled',
+            'salt': 'persistent-v2-production-audit-2026-09', 'sample_per_million': 10000}
         scope = json.loads((ROOT/f'docs/persistent_v2_{label}_scope.json').read_text())
         assert scope['configuration_sha256'] == digest(config)
+        assert scope['validation_policy']['mode'] == 'sampled'
+        assert scope['validation_coverage_strata'] == scope['validation_anchor_populations'] > 0
         assert set(map(int, scope['by_cardinality'])) == set(members)
         assert scope['exact_enumeration'] and scope['final_repetitions'] == 10
         assert scope['populations'] == scope['sampled_structures_per_environment']*186

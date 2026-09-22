@@ -1,5 +1,10 @@
 # Persistent v2: ten repetitions and compact production storage
 
+Historical full-replay contract and measurements: the current
+[validation policy](persistent_v2_validation_policy.md) supersedes the mandatory
+replay and compact-attestation statements below. The retained benchmark is not
+a measurement of sampled validation or current Kinakuta throughput.
+
 Current production planning is documented in [the core 2–4 design and optional 5/6 extensions](persistent_v2_core_cardinalities.md), with the 0.51 cutoff and fixed 5+5 phases. Earlier scope/runtime figures below remain historical evidence.
 
 The intended design is now **ten independent repetitions for every configuration**,

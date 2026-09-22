@@ -155,5 +155,10 @@
       "punishment_rule": "selfish",
       "counter_fork_k": null
     }
-  ]
+  ],
+  "validation_policy": {
+    "mode": "sampled",
+    "salt": "persistent-v2-production-audit-2026-09",
+    "sample_per_million": 10000
+  }
 }

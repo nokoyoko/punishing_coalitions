@@ -47,13 +47,16 @@ def project_cardinalities(scope):
     result.pop('storage_change_vs_previous_060')
     result['runtime_ranges_ideal_28_worker_days'] = result.pop('runtime_ranges_ideal_28_core_days')
     result['timing_evidence'] = {'path': 'docs/persistent_v2_51pct_benchmark.json', 'sha256': digest(benchmark),
-                               'new_benchmark_executed': False, 'native_mining_validation_and_reducers_unchanged': True}
+                               'new_benchmark_executed': False, 'native_mining_validation_and_reducers_unchanged': True,
+                               'validation_contract': 'historical full replay; new lightweight checks and sampled policy are not timed'}
+    result['projection_use'] = 'historical timing/storage illustration only; not a current production throughput or storage forecast'
+    result['runtime_note'] = 'The user-reported Kinakuta rate contradicts ideal 28-worker scaling; measure concurrency before forecasting. ' + result['runtime_note']
     result['kinakuta_planning'] = {'logical_cpus': 32, 'physical_cores': 16, 'workers': 28,
                                   'hardware_source': 'user supplied; not remotely verified',
                                   'note': '28 workers use SMT/hyperthreads. Ideal 28-worker times are not guaranteed wall-clock times.',
                                   'illustrative_16_core_capacity_days': {phase: [days*28/16 for days in values]
                                       for phase, values in result['runtime_ranges_ideal_28_worker_days'].items()}}
-    result['storage_note'] += '; native plan and 100 KiB collection control included; scoped CSV columns allowed 200 B/row; pooled threshold rows allowed 32 KiB each; temporary per-source strict merge catalog fits the 2x allowance; cross-scope combined exports require their own allowance'
+    result['storage_note'] += '; native plan and 100 KiB collection control included; scoped CSV columns allowed 200 B/row; pooled threshold rows allowed 32 KiB each; temporary per-source strict merge catalog fits the 2x allowance; cross-scope combined exports require their own allowance; historical compact schema: new validation attestation/diagnostic storage is not measured'
     return result
 
 

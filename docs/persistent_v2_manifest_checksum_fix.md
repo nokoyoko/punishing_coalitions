@@ -1,5 +1,10 @@
 # Persistent-v2 study-manifest canonicalization fix
 
+This report records the earlier fix and its tests. The fix remains in place.
+The subsequent [validation policy](persistent_v2_validation_policy.md) also
+changes the compact/shard control contract and source-evidence audit; use its
+separate-checkout deployment instructions for that update.
+
 The fresh-plan startup failure was reproduced locally without mining. A synthetic
 36-population, 28-shard plan failed immediate `load_manifest` with `study manifest
 checksum`. A temporary plan using the actual core configuration now passes the

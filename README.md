@@ -6,6 +6,7 @@ honest hash power. The target is never part of the coalition. The first
 milestone studies identity-based noisy detection and petty tie-breaking only.
 
 The future persistent-network-v2 cross-rule study uses a [core 2–4 design with optional 5/6 extensions](docs/persistent_v2_core_cardinalities.md), ten repetitions in fixed 5+5 phases, and explicit analysis scopes.
+Its [production validation policy](docs/persistent_v2_validation_policy.md) performs lightweight checks on every condition and deterministic sampled native replay. Full replay remains available. The same report provides an explicit, fixed-workload 8/16/24/28-worker benchmark; no concurrency performance is assumed.
 
 ## Install and quick start
 

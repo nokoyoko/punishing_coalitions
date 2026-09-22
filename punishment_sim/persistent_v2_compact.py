@@ -1,4 +1,4 @@
-"""Sufficient scientific records, extracted only after full native validation.
+"""Sufficient scientific records with explicit production-validation attestations.
 
 These are completed-run results, not resumable engine states. A trajectory can
 be regenerated from identity and checked against its canonical production hash.
@@ -14,8 +14,9 @@ import platform
 from .persistent_checkpoint import digest
 from .persistent_v2 import condition_identity
 from .persistent_v2_checkpoint import validate_run, require, same
+from .persistent_v2_validation import (validation_context, validate_lightweight, attestation, validate_attestation, reaction_diagnostics)
 
-SCHEMA = "persistent-scientific-condition-v2-compact-1"
+SCHEMA = "persistent-scientific-condition-v2-compact-2"
 
 
 def runtime_identity():
@@ -24,7 +25,7 @@ def runtime_identity():
              "ostracism", "selfish_counter", "selfish_strategy", "selfish_validation", "research_sweep",
              "stage_b_validation", "theory", "persistent_v2", "persistent_v2_index", "persistent_v2_policies",
              "persistent_v2_checkpoint", "persistent_v2_study", "persistent_v2_compact", "persistent_v2_shards",
-             "persistent_v2_outputs", "persistent_v2_production", "persistent_v2_sweep")
+             "persistent_v2_outputs", "persistent_v2_production", "persistent_v2_sweep", "persistent_v2_validation")
     return {"python": platform.python_version(), "sources": {
         name: hashlib.sha256((root / (name+".py")).read_bytes()).hexdigest() for name in names}}
 
@@ -79,20 +80,21 @@ def terminal_summary(terminal):
     return result
 
 
-def extract_validated(result, producer):
-    """Internal: caller must have just passed validate_run on this immutable run."""
+def extract_validated(result, producer, validation):
+    """Internal: caller has performed exactly the checks attested by validation."""
     native = {k: v for k, v in result.items() if k not in ("public_events", "trace")}
     native["recording_mode"] = "production-v2"
     actors = result["actors"]
     terminal = terminal_summary(result["terminal"])
     return {"schema": SCHEMA, "identity": result["identity"], "condition_id": result["condition_id"],
-        "producer": producer, "validation": "complete-native-ledger-and-rng-v2",
+        "producer": producer, "validation": validation,
         "status": result["status"], "events": result["events"], "accepted_blocks": result["accepted_blocks"],
         "actors": actors, "member_opportunities": result["member_opportunities"],
         "member_activations": result["member_activations"], "natural_pairs": result["natural_pairs"],
         "terminal": terminal, "rng": result["rng"], "native_result_sha256": digest(native),
         "accounting": {name: sum(a[name] for a in actors.values()) for name in ("discovered", "accepted", "orphaned", "unresolved")},
-        "punishment": {"episodes": sequence_summary(result["episodes"]),
+        "punishment": {"reaction_diagnostics": reaction_diagnostics(result),
+            "episodes": sequence_summary(result["episodes"]),
             "outcomes": dict(Counter(e["outcome"] for e in result["episodes"])),
             "selfish_reactions": sequence_summary(result["selfish_reactions"]),
             "publication_batches": sequence_summary(result["publication_batches"]),
@@ -101,11 +103,12 @@ def extract_validated(result, producer):
 
 
 def compact_run(result, population, rule, repetition, strategy, flagged, coalition, producer):
+    risks = validate_lightweight(result, population, rule, repetition, strategy, flagged, coalition)
     validate_run(result, population, rule, repetition, strategy, flagged, coalition)
-    return extract_validated(result, producer)
+    return extract_validated(result, producer, attestation(result["identity"], validation_context(), risks))
 
 
-def validate_compact(record, population, rule, repetition, strategy, flagged, coalition, producer):
+def validate_compact(record, population, rule, repetition, strategy, flagged, coalition, producer, context=None):
     """Strict scientific/schema checks; authenticated native receipt checked by store.
 
 No compact checksum is represented as an independent proof of a mining trace.
@@ -116,7 +119,8 @@ Unauthenticated external summaries cannot enter the native shard store.
         identity = condition_identity(population, repetition, strategy, flagged, coalition, rule)
         same(record["identity"], identity, "compact identity")
         require(record["condition_id"] == digest(identity), "compact condition ID")
-        require(record["status"] == "COMPLETE" and record["validation"] == "complete-native-ledger-and-rng-v2", "compact validation receipt")
+        require(record["status"] == "COMPLETE", "compact completion")
+        validate_attestation(record, validation_context() if context is None else context)
         n, events = record["accepted_blocks"], record["events"]
         require(type(n) is int and type(events) is int and events >= n >= population.target_accepted_blocks, "compact horizon")
         actors = record["actors"]
@@ -155,7 +159,7 @@ def analysis_record(record):
         "terminal_omitted_selfish_share_bound": None}
 
 
-def rerun_condition(record, *, trace=False):
+def rerun_condition(record, *, trace=False, context=None):
     """Explicit audit mining only: regenerate and compare a compact condition."""
     from .coalition import Population
     from .persistent_v2 import Rule, PersistentSimulation
@@ -166,9 +170,11 @@ def rerun_condition(record, *, trace=False):
     rule = Rule(**identity["rule"]) if identity["flagged"] else Rule("petty")
     condition = (identity["repetition"], identity["strategy"], identity["flagged"], tuple(identity["active_coalition"]))
     producer = digest(runtime_identity())
-    validate_compact(record, population, rule, *condition, producer)
+    validate_compact(record, population, rule, *condition, producer, context)
     raw = PersistentSimulation(population, condition[1], condition[2], condition[3], rule,
         repetition=condition[0], production=not trace, trace_mode=trace).run()
     regenerated = compact_run(raw, population, rule, *condition, producer)
-    same(record, regenerated, "deterministic compact audit mismatch")
+    # A deterministic audit can fully replay a formerly lightweight condition.
+    same({k: v for k, v in record.items() if k != "validation"},
+         {k: v for k, v in regenerated.items() if k != "validation"}, "deterministic compact audit mismatch")
     return raw
